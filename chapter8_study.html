@@ -168,6 +168,81 @@
     .study-detail p {
       margin: 6px 0;
     }
+    .hint-term,
+    .formula-chip {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      color: var(--accent);
+      font: inherit;
+      font-weight: 700;
+      border: 0;
+      background: transparent;
+      cursor: help;
+    }
+    .hint-term {
+      padding: 0 2px;
+      border-bottom: 1px dashed var(--accent);
+    }
+    .formula-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 18px;
+    }
+    .formula-chip {
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--soft);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+    .hint-bubble {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 10px);
+      z-index: 20;
+      display: none;
+      width: max-content;
+      min-width: 240px;
+      max-width: min(420px, 80vw);
+      padding: 12px 14px;
+      color: var(--ink);
+      text-align: left;
+      white-space: normal;
+      line-height: 1.55;
+      font-size: 14px;
+      font-weight: 400;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 12px 30px var(--shadow);
+      transform: translateX(-50%);
+    }
+    .hint-bubble::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      width: 10px;
+      height: 10px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+      transform: translate(-50%, -5px) rotate(45deg);
+    }
+    .hint-term:hover .hint-bubble,
+    .hint-term:focus-visible .hint-bubble,
+    .formula-chip:hover .hint-bubble,
+    .formula-chip:focus-visible .hint-bubble {
+      display: block;
+    }
+    .hint-term:focus-visible,
+    .formula-chip:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+      outline-offset: 3px;
+    }
     .problem-figure {
       margin: 14px 0;
       padding: 10px;
@@ -228,7 +303,14 @@
       body { background: white; }
       main { margin: 0; max-width: none; border: 0; box-shadow: none; }
       .problem { break-inside: avoid; }
-      .theme-switch { display: none; }
+      .theme-switch,
+      .hint-bubble,
+      .formula-bank { display: none; }
+      .hint-term {
+        color: inherit;
+        border-bottom: 0;
+        font-weight: inherit;
+      }
     }
     @media (max-width: 640px) {
       main {
@@ -251,7 +333,7 @@
   <div class="page-header">
     <div>
       <h1>微積分 Chapter 8 作業題目與詳解</h1>
-      <p class="note">這是學習版：公式使用 MathJax 真正排版顯示；文字完整打出來，方便一步一步讀解法。</p>
+      <p class="note">這是學習版：公式使用 MathJax 真正排版顯示；文字完整打出來，方便一步一步讀解法。滑鼠停在公式提示或有虛線底線的名詞上，可以看推導與形式。</p>
     </div>
     <label class="theme-switch" for="themeToggle">
       <span id="themeText">夜間模式</span>
@@ -1080,6 +1162,206 @@
     box.innerHTML = `<p><span class="label">補充</span>${note}</p>`;
     problem.insertBefore(box, problem.querySelector('.answer'));
   }
+
+  const formulaHints = {
+    s81: [
+      {
+        label: String.raw`分部積分公式`,
+        hint: String.raw`形式：\(\displaystyle \int u\,dv=uv-\int v\,du\)。推導：乘積法則 \(d(uv)=u\,dv+v\,du\)，兩邊積分得 \(uv=\int u\,dv+\int v\,du\)，移項即可。`
+      }
+    ],
+    s82: [
+      {
+        label: String.raw`product-to-sum`,
+        hint: String.raw`常用形式：\(\sin m x\cos n x=\frac12[\sin(m-n)x+\sin(m+n)x]\)，把乘積改成和，積分會直接很多。`
+      },
+      {
+        label: String.raw`奇次冪三角積分`,
+        hint: String.raw`若 \(\sin^m x\cos^n x\) 中某一個次方是奇數，通常保留一個那個函數與 \(dx\)，其餘用 \(\sin^2x+\cos^2x=1\) 改寫。`
+      }
+    ],
+    s83: [
+      {
+        label: String.raw`三角代換表`,
+        hint: String.raw`\(\sqrt{a^2-x^2}\) 用 \(x=a\sin\theta\)；\(\sqrt{a^2+x^2}\) 用 \(x=a\tan\theta\)；\(\sqrt{x^2-a^2}\) 用 \(x=a\sec\theta\)。`
+      }
+    ],
+    s84: [
+      {
+        label: String.raw`部分分式形式`,
+        hint: String.raw`若分母有 \((x-a)(x-b)\)，寫成 \(\frac{A}{x-a}+\frac{B}{x-b}\)。若有不可約二次式 \(x^2+px+q\)，分子要寫 \(Ax+B\)。`
+      }
+    ],
+    s87: [
+      {
+        label: String.raw`improper integral 定義`,
+        hint: String.raw`無窮上限：\(\displaystyle \int_a^\infty f(x)\,dx=\lim_{b\to\infty}\int_a^b f(x)\,dx\)。垂直漸近線也要用單側極限定義。`
+      }
+    ]
+  };
+
+  function hintButton(label, hint, className) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = className;
+    button.innerHTML = `${label}<span class="hint-bubble" role="tooltip">${hint}</span>`;
+    return button;
+  }
+
+  for (const [sectionId, hints] of Object.entries(formulaHints)) {
+    const heading = document.querySelector(`#${sectionId}`);
+    if (!heading) continue;
+    const bank = document.createElement('div');
+    bank.className = 'formula-bank';
+    bank.setAttribute('aria-label', '本節常用公式提示');
+    for (const item of hints) {
+      bank.appendChild(hintButton(item.label, item.hint, 'formula-chip'));
+    }
+    heading.insertAdjacentElement('afterend', bank);
+  }
+
+  const glossary = [
+    {
+      term: 'Type II improper integral',
+      hint: String.raw`區間端點或中間點有無限不連續，例如分母變 0。做法是用單側極限，不能直接代入端點。`
+    },
+    {
+      term: 'improper integral',
+      hint: String.raw`瑕積分。常見兩類：積分區間無限長，或 integrand 在區間內/端點有垂直漸近線。核心工具都是極限。`
+    },
+    {
+      term: 'integration by parts',
+      hint: String.raw`分部積分。形式：\(\int u\,dv=uv-\int v\,du\)，適合「多項式乘指數/三角/反三角」這類乘積。`
+    },
+    {
+      term: 'product-to-sum',
+      hint: String.raw`積化和差公式，例如 \(\cos A\cos B=\frac12[\cos(A-B)+\cos(A+B)]\)。乘積變和後會比較好積分。`
+    },
+    {
+      term: 'cylindrical shells',
+      hint: String.raw`圓柱殼法。體積元素是 \(dV=2\pi(\text{半徑})(\text{高度})\,dx\)，常用在繞 \(y\) 軸旋轉且函數以 \(x\) 表示時。`
+    },
+    {
+      term: 'reduction formula',
+      hint: String.raw`遞減公式。把高次方或高階積分化成較低次方的積分，例如 \(I_n\) 用 \(I_{n-2}\) 表示。`
+    },
+    {
+      term: 'centroid',
+      hint: String.raw`形心。若區域在 \(0\le y\le f(x)\)，面積 \(A=\int f(x)\,dx\)，則 \(\bar{x}=\frac1A\int x f(x)\,dx\)，\(\bar{y}=\frac1{2A}\int f(x)^2\,dx\)。`
+    },
+    {
+      term: 'disks',
+      hint: String.raw`圓盤法。繞 \(x\) 軸時，截面面積通常是 \(\pi[f(x)]^2\)，體積為 \(\int \pi[f(x)]^2\,dx\)。`
+    },
+    {
+      term: '分部積分',
+      hint: String.raw`形式：\(\displaystyle \int u\,dv=uv-\int v\,du\)。推導來自乘積法則：\(d(uv)=u\,dv+v\,du\)。`
+    },
+    {
+      term: '部分分式',
+      hint: String.raw`把一個有理函數拆成較簡單的分式和。例如 \(\frac{1}{(x-a)(x-b)}=\frac{A}{x-a}+\frac{B}{x-b}\)。`
+    },
+    {
+      term: '三角代換',
+      hint: String.raw`用三角函數消掉根號：\(\sqrt{a^2-x^2}\) 配 \(x=a\sin\theta\)，\(\sqrt{x^2-a^2}\) 配 \(x=a\sec\theta\)。`
+    },
+    {
+      term: '換元',
+      hint: String.raw`也就是 \(u\)-substitution。看到「內函數」和它的微分一起出現時，用 \(u=\) 內函數，讓積分變簡單。`
+    },
+    {
+      term: '長除',
+      hint: String.raw`當分子次數 \(\ge\) 分母次數時，先做多項式長除，把它變成「多項式 + 真分式」。`
+    },
+    {
+      term: '完成平方',
+      hint: String.raw`把二次式改成平方加減常數，例如 \(x^2+2x+2=(x+1)^2+1\)，方便三角代換或反三角公式。`
+    },
+    {
+      term: '有理化',
+      hint: String.raw`乘以共軛式消掉根號，例如 \(\frac{x}{x+\sqrt{x^2+2}}\) 乘 \(\frac{x-\sqrt{x^2+2}}{x-\sqrt{x^2+2}}\)。`
+    },
+    {
+      term: '反三角函數',
+      hint: String.raw`如 \(\sin^{-1}x\)、\(\tan^{-1}x\)。分部積分時常把它選成 \(u\)，因為微分後會變成代數式。`
+    },
+    {
+      term: '鏈鎖律',
+      hint: String.raw`如果 \(F'(u)u'(x)\) 出現，反積分就是 \(F(u)+C\)。很多換元題就是鏈鎖律倒著用。`
+    },
+    {
+      term: '半角式',
+      hint: String.raw`常用於根號三角式，例如 \(1+\sin x=(\sin\frac{x}{2}+\cos\frac{x}{2})^2\)。`
+    },
+    {
+      term: '比較係數',
+      hint: String.raw`兩個多項式相等時，各次方係數必須相等。常用來解待定係數 \(A,B,C\)。`
+    },
+    {
+      term: '垂直漸近線',
+      hint: String.raw`函數在某點趨近 \(\pm\infty\)。若在積分區間內，必須把積分拆開並使用單側極限。`
+    },
+    {
+      term: '奇函數',
+      hint: String.raw`滿足 \(f(-x)=-f(x)\)。若在對稱區間 \([-a,a]\) 上可積，積分為 \(0\)。`
+    },
+    {
+      term: '偶函數',
+      hint: String.raw`滿足 \(f(-x)=f(x)\)。若在對稱區間 \([-a,a]\) 上可積，積分等於 \(2\int_0^a f(x)\,dx\)。`
+    },
+    {
+      term: '收斂',
+      hint: String.raw`極限存在且是有限值時稱為收斂。瑕積分收斂才有確定的積分值。`
+    },
+    {
+      term: '發散',
+      hint: String.raw`極限不存在或趨近無限大時稱為發散。只要拆開後其中一段發散，整個瑕積分就發散。`
+    }
+  ].sort((a, b) => b.term.length - a.term.length);
+
+  function markGlossaryTerms(root) {
+    const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const termPattern = new RegExp(glossary.map((item) => escapeRegExp(item.term)).join('|'), 'gi');
+    const glossaryByTerm = new Map(glossary.map((item) => [item.term.toLowerCase(), item]));
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        const parent = node.parentElement;
+        if (!parent || parent.closest('.hint-term, .formula-chip, .label, script, style')) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    for (const node of nodes) {
+      const text = node.nodeValue;
+      termPattern.lastIndex = 0;
+      const matches = [...text.matchAll(termPattern)];
+      if (!matches.length) continue;
+      const fragment = document.createDocumentFragment();
+      let cursor = 0;
+      for (const match of matches) {
+        const matched = match[0];
+        const index = match.index;
+        const item = glossaryByTerm.get(matched.toLowerCase());
+        if (!item) continue;
+        if (index > cursor) {
+          fragment.appendChild(document.createTextNode(text.slice(cursor, index)));
+        }
+        fragment.appendChild(hintButton(matched, item.hint, 'hint-term'));
+        cursor = index + matched.length;
+      }
+      if (cursor < text.length) {
+        fragment.appendChild(document.createTextNode(text.slice(cursor)));
+      }
+      node.replaceWith(fragment);
+    }
+  }
+
+  markGlossaryTerms(document.querySelector('main'));
 </script>
 </body>
 </html>
