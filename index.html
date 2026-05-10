@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>微積分 Chapter 8 作業題目與詳解</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    :root {
+      --ink: #202124;
+      --muted: #5f6368;
+      --line: #dadce0;
+      --accent: #0b57d0;
+      --soft: #f8fafd;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+      line-height: 1.7;
+      background: #eef2f7;
+    }
+    main {
+      max-width: 960px;
+      margin: 28px auto;
+      padding: 44px 56px;
+      background: white;
+      box-shadow: 0 10px 28px rgba(60, 64, 67, 0.16);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      line-height: 1.25;
+    }
+    h2 {
+      margin: 44px 0 18px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--line);
+      color: var(--accent);
+      font-size: 24px;
+    }
+    h3 {
+      margin: 30px 0 10px;
+      font-size: 19px;
+    }
+    p { margin: 8px 0; }
+    .note {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .problem {
+      padding: 18px 20px;
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .label {
+      display: inline-block;
+      margin-right: 8px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .answer {
+      padding: 10px 14px;
+      margin-top: 12px;
+      border-left: 4px solid var(--accent);
+      background: var(--soft);
+    }
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 8px;
+      margin: 22px 0 30px;
+      padding: 14px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .toc a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 8px 0;
+    }
+    @media print {
+      body { background: white; }
+      main { margin: 0; max-width: none; box-shadow: none; }
+      .problem { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>微積分 Chapter 8 作業題目與詳解</h1>
+  <p class="note">這是學習版：公式使用 MathJax 真正排版顯示；文字完整打出來，方便一步一步讀解法。</p>
+
+  <nav class="toc">
+    <a href="#s81">8.1 Integration by Parts</a>
+    <a href="#s82">8.2 Trigonometric Integrals</a>
+    <a href="#s83">8.3 Trigonometric Substitutions</a>
+    <a href="#s84">8.4 Partial Fractions</a>
+    <a href="#s87">8.7 Improper Integrals</a>
+  </nav>
+
+  <h2 id="s81">8.1 Integration by Parts</h2>
+
+  <section class="problem">
+    <h3>8.1 #8</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int x e^{3x}\,dx\)</p>
+    <p><span class="label">詳解</span>分部積分選 \(u=x\), \(dv=e^{3x}\,dx\)。因此 \(du=dx\), \(v=\frac13e^{3x}\)。</p>
+    \[
+      \int x e^{3x}\,dx
+      = \frac{x}{3}e^{3x}-\frac13\int e^{3x}\,dx
+      = \frac{x}{3}e^{3x}-\frac19e^{3x}+C
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle e^{3x}\left(\frac{x}{3}-\frac19\right)+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.1 #10</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int (x^2-2x+1)e^{2x}\,dx\)</p>
+    <p><span class="label">詳解</span>這類「多項式乘指數」可以連續分部積分，也可以設答案為 \(e^{2x}(ax^2+bx+c)\)。微分後：</p>
+    \[
+      \frac{d}{dx}\left[e^{2x}(ax^2+bx+c)\right]
+      = e^{2x}\left(2ax^2+(2b+2a)x+(2c+b)\right)
+    \]
+    <p>比較係數得到 \(2a=1\), \(2b+2a=-2\), \(2c+b=1\)，所以 \(a=\frac12\), \(b=-\frac32\), \(c=\frac54\)。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle e^{2x}\left(\frac{x^2}{2}-\frac{3x}{2}+\frac54\right)+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.1 #18</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int (r^2+r+1)e^r\,dr\)</p>
+    <p><span class="label">詳解</span>設答案為 \(e^r(ar^2+br+c)\)。微分後：</p>
+    \[
+      \frac{d}{dr}\left[e^r(ar^2+br+c)\right]
+      = e^r\left(ar^2+(2a+b)r+(b+c)\right)
+    \]
+    <p>比較 \(r^2+r+1\)，得 \(a=1\), \(2a+b=1\Rightarrow b=-1\), \(b+c=1\Rightarrow c=2\)。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle e^r(r^2-r+2)+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.1 #24</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int e^{-2x}\sin 2x\,dx\)</p>
+    <p><span class="label">詳解</span>這題可用兩次分部積分，也可套公式：</p>
+    \[
+      \int e^{ax}\sin bx\,dx
+      = \frac{e^{ax}(a\sin bx-b\cos bx)}{a^2+b^2}+C
+    \]
+    <p>代入 \(a=-2\), \(b=2\)：</p>
+    \[
+      \int e^{-2x}\sin 2x\,dx
+      = \frac{e^{-2x}(-2\sin2x-2\cos2x)}{8}+C
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle -\frac14e^{-2x}(\sin2x+\cos2x)+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.1 #39</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int x^3\sqrt{x^2+1}\,dx\)</p>
+    <p><span class="label">詳解</span>把 \(x^3dx\) 拆成 \(x^2\cdot xdx\)。令 \(u=x^2+1\)，則 \(du=2x\,dx\)，且 \(x^2=u-1\)。</p>
+    \[
+      \int x^3\sqrt{x^2+1}\,dx
+      =\frac12\int (u-1)u^{1/2}\,du
+      =\frac12\int (u^{3/2}-u^{1/2})\,du
+    \]
+    \[
+      =\frac15u^{5/2}-\frac13u^{3/2}+C
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac15(x^2+1)^{5/2}-\frac13(x^2+1)^{3/2}+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.1 #40</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int x^2\sin(x^3)\,dx\)</p>
+    <p><span class="label">詳解</span>令 \(u=x^3\)，則 \(du=3x^2\,dx\)。</p>
+    \[
+      \int x^2\sin(x^3)\,dx
+      = \frac13\int \sin u\,du
+      = -\frac13\cos u+C
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle -\frac13\cos(x^3)+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.1 #52</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int x^2\tan^{-1}\!\left(\frac{x}{2}\right)\,dx\)</p>
+    <p><span class="label">詳解</span>反三角函數通常選為 \(u\)。令 \(u=\tan^{-1}(x/2)\), \(dv=x^2dx\)。</p>
+    \[
+      du=\frac{2}{x^2+4}\,dx,\qquad v=\frac{x^3}{3}
+    \]
+    \[
+      \int x^2\tan^{-1}(x/2)\,dx
+      =\frac{x^3}{3}\tan^{-1}(x/2)-\frac23\int\frac{x^3}{x^2+4}\,dx
+    \]
+    <p>除法整理：</p>
+    \[
+      \frac{x^3}{x^2+4}=x-\frac{4x}{x^2+4}
+    \]
+    \[
+      -\frac23\int\left(x-\frac{4x}{x^2+4}\right)dx
+      =-\frac{x^2}{3}+\frac43\ln(x^2+4)
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac{x^3}{3}\tan^{-1}\!\left(\frac{x}{2}\right)-\frac{x^2}{3}+\frac43\ln(x^2+4)+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.1 #56</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int \frac{(\sin^{-1}x)^2}{\sqrt{1-x^2}}\,dx\)</p>
+    <p><span class="label">詳解</span>因為 \(\frac{d}{dx}(\sin^{-1}x)=\frac{1}{\sqrt{1-x^2}}\)，令 \(u=\sin^{-1}x\)。</p>
+    \[
+      \int \frac{(\sin^{-1}x)^2}{\sqrt{1-x^2}}\,dx
+      =\int u^2\,du
+      =\frac{u^3}{3}+C
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac{(\sin^{-1}x)^3}{3}+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.1 #67</h3>
+    <p><span class="label">題目</span>證明 \(\displaystyle \int x^n\cos x\,dx=x^n\sin x-n\int x^{n-1}\sin x\,dx\)。</p>
+    <p><span class="label">詳解</span>取 \(u=x^n\), \(dv=\cos x\,dx\)，則 \(du=nx^{n-1}dx\), \(v=\sin x\)。</p>
+    \[
+      \int x^n\cos x\,dx
+      =x^n\sin x-\int \sin x\cdot nx^{n-1}\,dx
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \int x^n\cos x\,dx=x^n\sin x-n\int x^{n-1}\sin x\,dx\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.1 額外 A</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int \sin^5x\,dx\)，不用 reduction formula。</p>
+    <p><span class="label">詳解</span>保留一個 \(\sin x\)，其餘改成 \(\cos x\)：</p>
+    \[
+      \sin^5x=\sin x(1-\cos^2x)^2
+    \]
+    <p>令 \(u=\cos x\)，則 \(du=-\sin x\,dx\)。</p>
+    \[
+      \int\sin^5x\,dx=-\int(1-u^2)^2du
+      =-\int(1-2u^2+u^4)du
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle -\cos x+\frac23\cos^3x-\frac15\cos^5x+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.1 額外 B</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int \tan^5x\,dx\)，不用 reduction formula。</p>
+    <p><span class="label">詳解</span>使用 \(\tan^2x=\sec^2x-1\)。</p>
+    \[
+      \int\tan^5x\,dx
+      =\int\tan^3x(\sec^2x-1)\,dx
+      =\int\tan^3x\sec^2x\,dx-\int\tan^3x\,dx
+    \]
+    \[
+      \int\tan^3x\sec^2x\,dx=\frac14\tan^4x
+    \]
+    \[
+      \int\tan^3x\,dx=\int\tan x(\sec^2x-1)\,dx=\frac12\tan^2x-\ln|\sec x|
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac14\tan^4x-\frac12\tan^2x+\ln|\sec x|+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.1 額外 C</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int \sec^5x\,dx\)，不用 reduction formula。</p>
+    <p><span class="label">詳解</span>令 \(I=\int\sec^5x\,dx\)。分部積分取 \(u=\sec^3x\), \(dv=\sec^2x\,dx\)。</p>
+    \[
+      du=3\sec^3x\tan x\,dx,\qquad v=\tan x
+    \]
+    \[
+      I=\sec^3x\tan x-3\int\sec^3x\tan^2x\,dx
+    \]
+    <p>用 \(\tan^2x=\sec^2x-1\)：</p>
+    \[
+      I=\sec^3x\tan x-3\int\sec^5x\,dx+3\int\sec^3x\,dx
+    \]
+    \[
+      4I=\sec^3x\tan x+3\int\sec^3x\,dx
+    \]
+    <p>且 \(\int\sec^3x\,dx=\frac12\sec x\tan x+\frac12\ln|\sec x+\tan x|\)。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac14\sec^3x\tan x+\frac38\sec x\tan x+\frac38\ln|\sec x+\tan x|+C\)</p>
+  </section>
+
+  <h2 id="s82">8.2 Trigonometric Integrals</h2>
+
+  <section class="problem">
+    <h3>8.2 #4</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int \sin^4(2x)\cos 2x\,dx\)</p>
+    <p><span class="label">詳解</span>令 \(u=\sin2x\)，則 \(du=2\cos2x\,dx\)。</p>
+    \[
+      \int\sin^4(2x)\cos2x\,dx=\frac12\int u^4\,du
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac{\sin^5(2x)}{10}+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.2 #28</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int_0^{\pi/6}\sqrt{1+\sin x}\,dx\)</p>
+    <p><span class="label">詳解</span>利用半角式：</p>
+    \[
+      1+\sin x=\left(\sin\frac{x}{2}+\cos\frac{x}{2}\right)^2
+    \]
+    <p>在 \(0\le x\le\frac{\pi}{6}\) 時平方根為正，所以：</p>
+    \[
+      \int_0^{\pi/6}\left(\sin\frac{x}{2}+\cos\frac{x}{2}\right)dx
+      =\left[-2\cos\frac{x}{2}+2\sin\frac{x}{2}\right]_0^{\pi/6}
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle 2-\sqrt2\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.2 #32</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int_{-\pi}^{\pi}(1-\cos^2t)^{3/2}\,dt\)</p>
+    <p><span class="label">詳解</span>因為 \(1-\cos^2t=\sin^2t\)，所以：</p>
+    \[
+      (1-\cos^2t)^{3/2}=|\sin t|^3
+    \]
+    <p>在 \([-\pi,\pi]\) 對稱，故為 \(2\int_0^\pi\sin^3t\,dt\)。</p>
+    \[
+      2\int_0^\pi \sin t(1-\cos^2t)\,dt=\frac83
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac83\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.2 #36</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\sec^3x\tan^3x\,dx\)</p>
+    <p><span class="label">詳解</span>保留 \(\sec x\tan x\,dx\)，令 \(u=\sec x\)。</p>
+    \[
+      \sec^3x\tan^3x\,dx=\sec^2x\tan^2x(\sec x\tan x\,dx)
+      =u^2(u^2-1)\,du
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac15\sec^5x-\frac13\sec^3x+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.2 #40</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int e^x\sec^3(e^x)\,dx\)</p>
+    <p><span class="label">詳解</span>令 \(u=e^x\)，則 \(du=e^x\,dx\)。</p>
+    \[
+      \int e^x\sec^3(e^x)\,dx=\int\sec^3u\,du
+    \]
+    <p>標準結果：</p>
+    \[
+      \int\sec^3u\,du=\frac12\sec u\tan u+\frac12\ln|\sec u+\tan u|+C
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac12\sec(e^x)\tan(e^x)+\frac12\ln|\sec(e^x)+\tan(e^x)|+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.2 #58</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int_{-\pi/2}^{\pi/2}\cos x\cos 7x\,dx\)</p>
+    <p><span class="label">詳解</span>使用 product-to-sum：</p>
+    \[
+      \cos x\cos7x=\frac12(\cos6x+\cos8x)
+    \]
+    \[
+      \frac12\left[\frac{\sin6x}{6}+\frac{\sin8x}{8}\right]_{-\pi/2}^{\pi/2}=0
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle 0\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.2 #64</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int \sin u\sin2u\sin3u\,du\)</p>
+    <p><span class="label">詳解</span>先用 \(\sin2u=2\sin u\cos u\), \(\sin3u=3\sin u-4\sin^3u\)。</p>
+    \[
+      \sin u\sin2u\sin3u
+      =2\sin^2u\cos u(3\sin u-4\sin^3u)
+    \]
+    <p>令 \(w=\sin u\), \(dw=\cos u\,du\)。</p>
+    \[
+      \int(6w^3-8w^5)\,dw
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac32\sin^4u-\frac43\sin^6u+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.2 #67</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{\tan^2x}{\csc x}\,dx\)</p>
+    <p><span class="label">詳解</span>因為 \(\frac{1}{\csc x}=\sin x\)，所以：</p>
+    \[
+      \int\frac{\tan^2x}{\csc x}\,dx=\int\sin x\tan^2x\,dx
+      =\int \sin x\frac{\sin^2x}{\cos^2x}\,dx
+    \]
+    <p>令 \(u=\cos x\)，則 \(du=-\sin x\,dx\)，且 \(\sin^2x=1-u^2\)。</p>
+    \[
+      -\int\frac{1-u^2}{u^2}\,du
+      =-\int(u^{-2}-1)\,du
+      =u^{-1}+u+C
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \sec x+\cos x+C\)</p>
+  </section>
+
+  <h2 id="s83">8.3 Trigonometric Substitutions</h2>
+
+  <section class="problem">
+    <h3>8.3 #4</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int_0^2\frac{dx}{8+2x^2}\)</p>
+    <p><span class="label">詳解</span>先把常數提出：</p>
+    \[
+      \int_0^2\frac{dx}{8+2x^2}
+      =\frac12\int_0^2\frac{dx}{x^2+4}
+      =\frac12\cdot\frac12\left[\tan^{-1}\frac{x}{2}\right]_0^2
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac{\pi}{16}\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.3 #8</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\sqrt{1-9t^2}\,dt\)</p>
+    <p><span class="label">詳解</span>令 \(u=3t\)，則 \(dt=\frac13du\)。</p>
+    \[
+      \int\sqrt{1-9t^2}\,dt
+      =\frac13\int\sqrt{1-u^2}\,du
+    \]
+    <p>標準公式：</p>
+    \[
+      \int\sqrt{1-u^2}\,du=\frac12u\sqrt{1-u^2}+\frac12\sin^{-1}u+C
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac12t\sqrt{1-9t^2}+\frac16\sin^{-1}(3t)+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.3 #25</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\sqrt{\frac{x+1}{1-x}}\,dx\)</p>
+    <p><span class="label">詳解</span>令 \(x=\sin\theta\)，則 \(dx=\cos\theta\,d\theta\)。</p>
+    \[
+      \sqrt{\frac{1+\sin\theta}{1-\sin\theta}}
+      =\frac{1+\sin\theta}{\cos\theta}
+    \]
+    \[
+      \int\sqrt{\frac{x+1}{1-x}}\,dx
+      =\int(1+\sin\theta)\,d\theta
+      =\theta-\cos\theta+C
+    \]
+    <p>換回 \(x\)：\(\theta=\sin^{-1}x\), \(\cos\theta=\sqrt{1-x^2}\)。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \sin^{-1}x-\sqrt{1-x^2}+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.3 #32</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{\sqrt{1-x^2}}{x^4}\,dx\)</p>
+    <p><span class="label">詳解</span>令 \(x=\sin\theta\)，則 \(dx=\cos\theta d\theta\)，\(\sqrt{1-x^2}=\cos\theta\)。</p>
+    \[
+      \int\frac{\cos^2\theta}{\sin^4\theta}\,d\theta
+      =\int \cot^2\theta\csc^2\theta\,d\theta
+    \]
+    <p>令 \(u=\cot\theta\)，則 \(du=-\csc^2\theta d\theta\)。</p>
+    \[
+      -\int u^2du=-\frac{u^3}{3}+C
+    \]
+    <p>因為 \(\cot\theta=\frac{\sqrt{1-x^2}}{x}\)。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle -\frac{(1-x^2)^{3/2}}{3x^3}+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.3 #43</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{x}{\sqrt{1+x^4}}\,dx\)</p>
+    <p><span class="label">詳解</span>令 \(u=x^2\)，則 \(du=2x\,dx\)。</p>
+    \[
+      \int\frac{x}{\sqrt{1+x^4}}\,dx
+      =\frac12\int\frac{du}{\sqrt{1+u^2}}
+    \]
+    <p>標準公式 \(\int\frac{du}{\sqrt{u^2+1}}=\ln|u+\sqrt{u^2+1}|+C\)。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac12\ln|x^2+\sqrt{1+x^4}|+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.3 #44</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{\sqrt{1-(\ln x)^2}}{x\ln x}\,dx\)</p>
+    <p><span class="label">詳解</span>令 \(u=\ln x\)，則 \(du=\frac{dx}{x}\)。</p>
+    \[
+      \int\frac{\sqrt{1-(\ln x)^2}}{x\ln x}\,dx
+      =\int\frac{\sqrt{1-u^2}}{u}\,du
+    \]
+    <p>令 \(u=\sin\theta\)，則 \(du=\cos\theta d\theta\)，\(\sqrt{1-u^2}=\cos\theta\)。</p>
+    \[
+      \int\frac{\cos^2\theta}{\sin\theta}d\theta
+      =\int(\csc\theta-\sin\theta)d\theta
+    \]
+    \[
+      =\ln|\csc\theta-\cot\theta|+\cos\theta+C
+    \]
+    <p>換回 \(u=\ln x\)。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \sqrt{1-(\ln x)^2}+\ln\left|\frac{1-\sqrt{1-(\ln x)^2}}{\ln x}\right|+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.3 #45</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\sqrt{\frac{4-x}{x}}\,dx\)</p>
+    <p><span class="label">詳解</span>令 \(x=4\sin^2\theta\)，則 \(dx=8\sin\theta\cos\theta d\theta\)。</p>
+    \[
+      \sqrt{\frac{4-x}{x}}=\sqrt{\frac{4\cos^2\theta}{4\sin^2\theta}}=\cot\theta
+    \]
+    \[
+      \int\sqrt{\frac{4-x}{x}}dx
+      =8\int\cos^2\theta d\theta
+      =4\theta+2\sin2\theta+C
+    \]
+    <p>換回 \(x\)：\(\theta=\sin^{-1}(\sqrt{x}/2)\)，且 \(2\sin2\theta=\sqrt{x(4-x)}\)。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle 4\sin^{-1}\left(\frac{\sqrt{x}}{2}\right)+\sqrt{x(4-x)}+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.3 #46</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\sqrt{\frac{x}{1-x^3}}\,dx\)</p>
+    <p><span class="label">詳解</span>把 integrand 寫成 \(\frac{\sqrt{x}}{\sqrt{1-x^3}}\)。令 \(u=x^{3/2}\)，則 \(du=\frac32\sqrt{x}\,dx\)。</p>
+    \[
+      \int\sqrt{\frac{x}{1-x^3}}dx
+      =\frac23\int\frac{du}{\sqrt{1-u^2}}
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac23\sin^{-1}(x^{3/2})+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.3 #48</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\sqrt{\frac{x-2}{x-1}}\,dx\)</p>
+    <p><span class="label">詳解</span>令 \(t=\sqrt{x-2}\)，則 \(x=t^2+2\), \(dx=2t\,dt\), \(x-1=t^2+1\)。</p>
+    \[
+      \int\sqrt{\frac{x-2}{x-1}}dx
+      =2\int\frac{t^2}{\sqrt{t^2+1}}dt
+    \]
+    \[
+      2\int\frac{t^2}{\sqrt{t^2+1}}dt
+      =2\int\sqrt{t^2+1}dt-2\int\frac{dt}{\sqrt{t^2+1}}
+    \]
+    <p>整理後得到 \(t\sqrt{t^2+1}-\ln|t+\sqrt{t^2+1}|+C\)。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \sqrt{(x-2)(x-1)}-\ln|\sqrt{x-2}+\sqrt{x-1}|+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.3 #52</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{\sqrt{x^2+2x+2}}{x^2+2x+1}\,dx\)</p>
+    <p><span class="label">詳解</span>先 complete the square。令 \(u=x+1\)，則：</p>
+    \[
+      x^2+2x+2=u^2+1,\qquad x^2+2x+1=u^2
+    \]
+    \[
+      \int\frac{\sqrt{x^2+2x+2}}{x^2+2x+1}dx
+      =\int\frac{\sqrt{u^2+1}}{u^2}du
+    \]
+    <p>可用 \(u=\tan\theta\)，或直接使用結果：</p>
+    \[
+      \int\frac{\sqrt{u^2+1}}{u^2}du
+      =-\frac{\sqrt{u^2+1}}{u}+\ln|u+\sqrt{u^2+1}|+C
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle -\frac{\sqrt{x^2+2x+2}}{x+1}+\ln|x+1+\sqrt{x^2+2x+2}|+C\)</p>
+  </section>
+
+  <h2 id="s84">8.4 Integration of Rational Functions by Partial Fractions</h2>
+
+  <section class="problem">
+    <h3>8.4 #27</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{x^2-x+2}{x^3-1}\,dx\)</p>
+    <p><span class="label">詳解</span>分母分解：</p>
+    \[
+      x^3-1=(x-1)(x^2+x+1)
+    \]
+    <p>設</p>
+    \[
+      \frac{x^2-x+2}{x^3-1}=\frac{A}{x-1}+\frac{Bx+C}{x^2+x+1}
+    \]
+    <p>比較係數可得 \(A=\frac23\), \(B=\frac13\), \(C=-\frac43\)。</p>
+    \[
+      \int\left(\frac{2/3}{x-1}+\frac{(x-4)/3}{x^2+x+1}\right)dx
+    \]
+    <p>第二項拆成分母導數 \(2x+1\) 的部分再積分。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac23\ln|x-1|+\frac16\ln(x^2+x+1)-\sqrt3\tan^{-1}\left(\frac{2x+1}{\sqrt3}\right)+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.4 #30</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{x^2+x}{x^4-3x^2-4}\,dx\)</p>
+    <p><span class="label">詳解</span>先分解分母：</p>
+    \[
+      x^4-3x^2-4=(x^2-4)(x^2+1)=(x-2)(x+2)(x^2+1)
+    \]
+    <p>部分分式分解為：</p>
+    \[
+      \frac{x^2+x}{x^4-3x^2-4}
+      =\frac{-x+1}{5(x^2+1)}+\frac{3}{10(x-2)}-\frac{1}{10(x+2)}
+    \]
+    <p>逐項積分即可。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle -\frac1{10}\ln(x^2+1)+\frac15\tan^{-1}x+\frac3{10}\ln|x-2|-\frac1{10}\ln|x+2|+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.4 #35</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{9x^3-3x+1}{x^3-x^2}\,dx\)</p>
+    <p><span class="label">詳解</span>因為分子分母同次，先長除：</p>
+    \[
+      \frac{9x^3-3x+1}{x^3-x^2}
+      =9+\frac{9x^2-3x+1}{x^2(x-1)}
+    \]
+    <p>部分分式：</p>
+    \[
+      \frac{9x^2-3x+1}{x^2(x-1)}
+      =\frac2x-\frac1{x^2}+\frac7{x-1}
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle 9x+2\ln|x|+\frac1x+7\ln|x-1|+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.4 #47</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{\sqrt{x+1}}{x}\,dx\)</p>
+    <p><span class="label">詳解</span>令 \(u=\sqrt{x+1}\)，則 \(x=u^2-1\), \(dx=2u\,du\)。</p>
+    \[
+      \int\frac{\sqrt{x+1}}{x}dx
+      =\int\frac{u}{u^2-1}2u\,du
+      =\int\frac{2u^2}{u^2-1}du
+    \]
+    \[
+      \frac{2u^2}{u^2-1}=2+\frac{2}{u^2-1}
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle 2\sqrt{x+1}+\ln\left|\frac{\sqrt{x+1}-1}{\sqrt{x+1}+1}\right|+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.4 #48</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{1}{x\sqrt{x+9}}\,dx\)</p>
+    <p><span class="label">詳解</span>令 \(u=\sqrt{x+9}\)，則 \(x=u^2-9\), \(dx=2u\,du\)。</p>
+    \[
+      \int\frac{1}{x\sqrt{x+9}}dx
+      =\int\frac{2}{u^2-9}du
+    \]
+    \[
+      \frac{2}{u^2-9}=\frac13\left(\frac1{u-3}-\frac1{u+3}\right)
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac13\ln\left|\frac{\sqrt{x+9}-3}{\sqrt{x+9}+3}\right|+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.4 #49</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{1}{x(x^4+1)}\,dx\)</p>
+    <p><span class="label">詳解</span>依提示乘以 \(\frac{x^3}{x^3}\)：</p>
+    \[
+      \int\frac{x^3}{x^4(x^4+1)}dx
+    \]
+    <p>令 \(u=x^4\)，則 \(du=4x^3dx\)。</p>
+    \[
+      \frac14\int\frac{1}{u(u+1)}du
+      =\frac14\int\left(\frac1u-\frac1{u+1}\right)du
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \ln|x|-\frac14\ln(x^4+1)+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.4 #55</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{x^3-2x^2-3x}{x+2}\,dx\)</p>
+    <p><span class="label">詳解</span>做多項式長除：</p>
+    \[
+      \frac{x^3-2x^2-3x}{x+2}=x^2-4x+5-\frac{10}{x+2}
+    \]
+    <p>逐項積分。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac{x^3}{3}-2x^2+5x-10\ln|x+2|+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.4 #58</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{2^x}{2^{2x}+2^x-2}\,dx\)</p>
+    <p><span class="label">詳解</span>令 \(u=2^x\)，則 \(du=(\ln2)2^x dx\)。</p>
+    \[
+      \int\frac{2^x}{2^{2x}+2^x-2}dx
+      =\frac1{\ln2}\int\frac{du}{u^2+u-2}
+    \]
+    \[
+      u^2+u-2=(u+2)(u-1)
+    \]
+    \[
+      \frac1{(u+2)(u-1)}=\frac13\left(\frac1{u-1}-\frac1{u+2}\right)
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac{1}{3\ln2}\ln\left|\frac{2^x-1}{2^x+2}\right|+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.4 #63</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{1}{\sqrt{x^2-1}}\,dx\)</p>
+    <p><span class="label">詳解</span>這是標準反雙曲或三角代換形式：</p>
+    \[
+      \int\frac{dx}{\sqrt{x^2-a^2}}
+      =\ln|x+\sqrt{x^2-a^2}|+C
+    \]
+    <p>此題 \(a=1\)。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \ln|x+\sqrt{x^2-1}|+C\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.4 #64</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int\frac{x}{x+\sqrt{x^2+2}}\,dx\)</p>
+    <p><span class="label">詳解</span>先有理化：</p>
+    \[
+      \frac{x}{x+\sqrt{x^2+2}}
+      =\frac{x(\sqrt{x^2+2}-x)}{(x+\sqrt{x^2+2})(\sqrt{x^2+2}-x)}
+      =\frac{x\sqrt{x^2+2}-x^2}{2}
+    \]
+    \[
+      \int\frac{x}{x+\sqrt{x^2+2}}dx
+      =\frac12\int x\sqrt{x^2+2}dx-\frac12\int x^2dx
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac16(x^2+2)^{3/2}-\frac{x^3}{6}+C\)</p>
+  </section>
+
+  <h2 id="s87">8.7 Improper Integrals</h2>
+
+  <section class="problem">
+    <h3>8.7 #12</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int_2^\infty\frac{2}{t^2-1}\,dt\)</p>
+    <p><span class="label">詳解</span>先做部分分式：</p>
+    \[
+      \frac{2}{t^2-1}=\frac{1}{t-1}-\frac{1}{t+1}
+    \]
+    \[
+      \int_2^b\frac{2}{t^2-1}dt
+      =\left[\ln|t-1|-\ln|t+1|\right]_2^b
+      =\ln\frac{b-1}{b+1}+\ln3
+    \]
+    <p>令 \(b\to\infty\)，\(\ln\frac{b-1}{b+1}\to0\)。</p>
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \ln3\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.7 #27</h3>
+    <p><span class="label">題目</span>\(\displaystyle \int_0^2\frac{ds}{\sqrt{4-s^2}}\)</p>
+    <p><span class="label">詳解</span>上限 \(s=2\) 讓分母為 0，所以用極限：</p>
+    \[
+      \int_0^2\frac{ds}{\sqrt{4-s^2}}
+      =\lim_{b\to2^-}\int_0^b\frac{ds}{\sqrt{4-s^2}}
+    \]
+    \[
+      \int\frac{ds}{\sqrt{4-s^2}}=\sin^{-1}\frac{s}{2}+C
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac{\pi}{2}\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.7 #39</h3>
+    <p><span class="label">題目</span>判斷 \(\displaystyle \int_0^{\pi/2}\tan u\,du\) 收斂或發散。</p>
+    <p><span class="label">詳解</span>在 \(u=\frac{\pi}{2}\) 有無限不連續點。</p>
+    \[
+      \int_0^b\tan u\,du=\left[-\ln|\cos u|\right]_0^b=-\ln(\cos b)
+    \]
+    <p>當 \(b\to\frac{\pi}{2}^{-}\)，\(\cos b\to0^+\)，所以 \(-\ln(\cos b)\to\infty\)。</p>
+    <p class="answer"><span class="label">答案</span>發散。</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.7 #47</h3>
+    <p><span class="label">題目</span>判斷 \(\displaystyle \int_0^2\frac{dx}{1-x^2}\) 收斂或發散。</p>
+    <p><span class="label">詳解</span>在 \(x=1\) 有垂直漸近線，所以必須拆成：</p>
+    \[
+      \int_0^2\frac{dx}{1-x^2}
+      =\int_0^1\frac{dx}{1-x^2}+\int_1^2\frac{dx}{1-x^2}
+    \]
+    <p>只要其中一邊發散，整個 improper integral 就發散。因為</p>
+    \[
+      \frac{1}{1-x^2}=\frac12\left(\frac1{1-x}+\frac1{1+x}\right)
+    \]
+    <p>當 \(x\to1^-\)，\(\int\frac{dx}{1-x}\) 發散。</p>
+    <p class="answer"><span class="label">答案</span>發散。</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.7 #50</h3>
+    <p><span class="label">題目</span>判斷 \(\displaystyle \int_{-1}^{1}-x\ln|x|\,dx\) 收斂或發散。</p>
+    <p><span class="label">詳解</span>\(\ln|x|\) 在 \(x=0\) 有問題，但 \(x\ln|x|\) 在 0 附近仍可積。又因 \(\ln|x|\) 是偶函數，\(-x\) 是奇函數，所以 integrand 是奇函數。</p>
+    \[
+      \int_{-1}^{1}-x\ln|x|\,dx=0
+    \]
+    <p class="answer"><span class="label">答案</span>收斂，值為 \(0\)。</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.7 #58</h3>
+    <p><span class="label">題目</span>判斷 \(\displaystyle \int_2^\infty\frac{x}{\sqrt{x^4-1}}\,dx\) 收斂或發散。</p>
+    <p><span class="label">詳解</span>令 \(u=x^2\)，則 \(du=2x\,dx\)。</p>
+    \[
+      \int_2^\infty\frac{x}{\sqrt{x^4-1}}\,dx
+      =\frac12\int_4^\infty\frac{du}{\sqrt{u^2-1}}
+    \]
+    \[
+      \int\frac{du}{\sqrt{u^2-1}}
+      =\ln|u+\sqrt{u^2-1}|+C
+    \]
+    <p>當 \(u\to\infty\)，\(\ln|u+\sqrt{u^2-1}|\to\infty\)。</p>
+    <p class="answer"><span class="label">答案</span>發散。</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.7 #71</h3>
+    <p><span class="label">題目</span>求第一象限中 \(y=e^{-x}\) 與 \(x\) 軸之間無限區域的面積。</p>
+    <p><span class="label">詳解</span>面積為：</p>
+    \[
+      A=\int_0^\infty e^{-x}dx
+      =\lim_{b\to\infty}\left[-e^{-x}\right]_0^b
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle 1\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.7 #72</h3>
+    <p><span class="label">題目</span>求同一無限區域的 centroid。</p>
+    <p><span class="label">詳解</span>區域在 \(y=e^{-x}\) 下方，面積 \(A=1\)。</p>
+    \[
+      \bar{x}=\frac1A\int_0^\infty x e^{-x}\,dx=1
+    \]
+    \[
+      \bar{y}=\frac1{2A}\int_0^\infty (e^{-x})^2\,dx
+      =\frac12\int_0^\infty e^{-2x}\,dx
+      =\frac14
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle (\bar{x},\bar{y})=\left(1,\frac14\right)\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.7 #73</h3>
+    <p><span class="label">題目</span>將同一無限區域繞 \(y\) 軸旋轉，求體積。</p>
+    <p><span class="label">詳解</span>繞 \(y\) 軸適合用 cylindrical shells。半徑 \(x\)，高度 \(e^{-x}\)。</p>
+    \[
+      V=2\pi\int_0^\infty xe^{-x}\,dx=2\pi
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle 2\pi\)</p>
+  </section>
+
+  <section class="problem">
+    <h3>8.7 #74</h3>
+    <p><span class="label">題目</span>將同一無限區域繞 \(x\) 軸旋轉，求體積。</p>
+    <p><span class="label">詳解</span>繞 \(x\) 軸用 disks，半徑為 \(e^{-x}\)。</p>
+    \[
+      V=\pi\int_0^\infty(e^{-x})^2dx
+      =\pi\int_0^\infty e^{-2x}dx
+    \]
+    <p class="answer"><span class="label">答案</span>\(\displaystyle \frac{\pi}{2}\)</p>
+  </section>
+
+</main>
+</body>
+</html>
