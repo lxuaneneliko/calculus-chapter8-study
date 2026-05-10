@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>微積分 Chapter 8 作業題目與詳解</title>
   <script>
+    (() => {
+      const savedTheme = localStorage.getItem('theme');
+      const theme = savedTheme || 'dark';
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <script>
     window.MathJax = {
       tex: {
         inlineMath: [['\\(', '\\)']],
@@ -27,6 +34,22 @@
       --panel: #18211e;
       --soft: #202b27;
       --shadow: rgba(0, 0, 0, 0.38);
+      --page: #0b0f0e;
+      --main-border: #26322e;
+    }
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --ink: #202124;
+      --muted: #5f6368;
+      --line: #dadce0;
+      --accent: #0b57d0;
+      --accent-strong: #b06000;
+      --paper: #ffffff;
+      --panel: #ffffff;
+      --soft: #f8fafd;
+      --shadow: rgba(60, 64, 67, 0.16);
+      --page: #eef2f7;
+      --main-border: transparent;
     }
     * { box-sizing: border-box; }
     body {
@@ -34,15 +57,21 @@
       color: var(--ink);
       font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
       line-height: 1.7;
-      background: #0b0f0e;
+      background: var(--page);
     }
     main {
       max-width: 960px;
       margin: 28px auto;
       padding: 44px 56px;
       background: var(--paper);
-      border: 1px solid #26322e;
+      border: 1px solid var(--main-border);
       box-shadow: 0 18px 40px var(--shadow);
+    }
+    .page-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
     }
     h1 {
       margin: 0 0 8px;
@@ -65,6 +94,51 @@
       color: var(--muted);
       margin-bottom: 24px;
     }
+    .theme-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .theme-switch input {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      opacity: 0;
+    }
+    .switch-track {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 28px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--soft);
+      cursor: pointer;
+    }
+    .switch-track::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--accent);
+      transition: transform 160ms ease, background 160ms ease;
+    }
+    .theme-switch input:checked + .switch-track::after {
+      transform: translateX(22px);
+      background: var(--accent-strong);
+    }
+    .theme-switch input:focus-visible + .switch-track {
+      outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+      outline-offset: 3px;
+    }
     .problem {
       padding: 18px 20px;
       margin: 18px 0;
@@ -83,6 +157,36 @@
       margin-top: 12px;
       border-left: 4px solid var(--accent-strong);
       background: var(--soft);
+    }
+    .study-detail {
+      margin: 12px 0;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--soft) 78%, transparent);
+    }
+    .study-detail p {
+      margin: 6px 0;
+    }
+    .problem-figure {
+      margin: 14px 0;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+    .problem-figure img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 4px;
+    }
+    .problem-figure figcaption {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
     }
     .toc {
       display: grid;
@@ -124,13 +228,37 @@
       body { background: white; }
       main { margin: 0; max-width: none; border: 0; box-shadow: none; }
       .problem { break-inside: avoid; }
+      .theme-switch { display: none; }
+    }
+    @media (max-width: 640px) {
+      main {
+        margin: 0;
+        padding: 28px 18px;
+        border: 0;
+      }
+      .page-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+      .theme-switch {
+        justify-content: space-between;
+      }
     }
   </style>
 </head>
 <body>
 <main>
-  <h1>微積分 Chapter 8 作業題目與詳解</h1>
-  <p class="note">這是學習版：公式使用 MathJax 真正排版顯示；文字完整打出來，方便一步一步讀解法。</p>
+  <div class="page-header">
+    <div>
+      <h1>微積分 Chapter 8 作業題目與詳解</h1>
+      <p class="note">這是學習版：公式使用 MathJax 真正排版顯示；文字完整打出來，方便一步一步讀解法。</p>
+    </div>
+    <label class="theme-switch" for="themeToggle">
+      <span id="themeText">夜間模式</span>
+      <input id="themeToggle" type="checkbox" aria-label="切換夜間模式">
+      <span class="switch-track" aria-hidden="true"></span>
+    </label>
+  </div>
 
   <nav class="toc">
     <a href="#s81">8.1 Integration by Parts</a>
@@ -873,5 +1001,85 @@
   </section>
 
 </main>
+<script>
+  const themeToggle = document.querySelector('#themeToggle');
+  const themeText = document.querySelector('#themeText');
+
+  function setTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    const isDark = theme === 'dark';
+    themeToggle.checked = isDark;
+    themeText.textContent = isDark ? '夜間模式' : '白天模式';
+  }
+
+  setTheme(document.documentElement.dataset.theme || 'dark');
+  themeToggle.addEventListener('change', () => {
+    setTheme(themeToggle.checked ? 'dark' : 'light');
+  });
+
+  const detailNotes = {
+    '8.1 #8': String.raw`分部積分的選擇原則是讓 \(u\) 微分後變簡單，所以取 \(u=x\)。\(e^{3x}\) 積分後只多出係數 \(\frac13\)，因此計算量最少。最後記得把剩下的 \(\int e^{3x}\,dx\) 再積一次，常數 \(C\) 只需放在最後。`,
+    '8.1 #10': String.raw`這題也可以連續分部積分兩次；設 \(e^{2x}(ax^2+bx+c)\) 是比較快的做法。因為微分 \(e^{2x}P(x)\) 會得到 \(e^{2x}(2P(x)+P'(x))\)，所以只要讓 \(2P+P'=x^2-2x+1\)，逐項比較係數即可。`,
+    '8.1 #18': String.raw`多項式乘 \(e^r\) 的反導函數仍會長成 \(e^r\) 乘一個同次多項式。檢查時把答案微分：\(\frac{d}{dr}[e^rP(r)]=e^r(P+P')\)，所以讓 \(P+P'=r^2+r+1\)。`,
+    '8.1 #24': String.raw`若用兩次分部積分，會回到原本的積分，所以要把原積分 \(I\) 移到同一邊解出來。套公式時也要注意 \(a=-2\), \(b=2\)，分母是 \(a^2+b^2=8\)。`,
+    '8.1 #39': String.raw`關鍵不是分部積分，而是先換元。把 \(x^3\) 拆成 \(x^2\cdot x\)，因為 \(d(x^2+1)=2x\,dx\)。換成 \(u\) 後，\(x^2=u-1\)，題目就變成普通冪次積分。`,
+    '8.1 #40': String.raw`看到 \(\sin(x^3)\) 裡面是 \(x^3\)，外面剛好有 \(x^2dx\)，表示直接令 \(u=x^3\)。這題不需要分部積分；先找「內函數的微分」會更快。`,
+    '8.1 #52': String.raw`反三角函數通常放在 \(u\)，因為微分後會變成有理式。\(dv=x^2dx\) 的積分是 \(\frac{x^3}{3}\)，分部積分後剩下的 \(x^3/(x^2+4)\) 要先長除成 \(x-\frac{4x}{x^2+4}\)。`,
+    '8.1 #56': String.raw`這題其實是鏈鎖律的逆向。若令 \(u=\sin^{-1}x\)，分母 \(\sqrt{1-x^2}\) 正好出現在 \(du\) 裡，所以整題變成 \(\int u^2\,du\)。`,
+    '8.1 #67': String.raw`證明 reduction formula 時不用真的算出積分值，只要選對 \(u\) 與 \(dv\)。取 \(u=x^n\) 是因為微分會降次，取 \(dv=\cos x\,dx\) 是因為它能直接積成 \(\sin x\)。`,
+    '8.1 額外 A': String.raw`奇數次 \(\sin\) 的標準想法是保留一個 \(\sin x\,dx\)，其餘全部改成 \(1-\cos^2x\)。這樣令 \(u=\cos x\) 時，\(-du=\sin x\,dx\)，積分就只剩多項式。`,
+    '8.1 額外 B': String.raw`奇數次 \(\tan\) 常把 \(\tan^2x\) 改成 \(\sec^2x-1\)，並保留 \(\sec^2x\,dx\) 來換元。剩下的 \(\int\tan x\,dx\) 等於 \(\ln|\sec x|\)，這一步最容易漏掉。`,
+    '8.1 額外 C': String.raw`不用 reduction formula 仍然會遇到「把原積分移項」的技巧。先把 \(\sec^5x\) 寫成 \(\sec^3x\sec^2x\)，分部積分後用 \(\tan^2x=\sec^2x-1\)，最後解出 \(I\)。`,
+    '8.2 #4': String.raw`這題是直接換元：\(\sin(2x)\) 的微分是 \(2\cos(2x)\,dx\)。因為只差常數 \(2\)，所以提出 \(\frac12\)，再把 \(\int u^4\,du\) 積完。`,
+    '8.2 #28': String.raw`根號內 \(1+\sin x\) 先用 \(1+\sin x=(\sin\frac{x}{2}+\cos\frac{x}{2})^2\)。在 \(0\le x\le\pi/6\) 時括號為正，所以開根號不用加絕對值。`,
+    '8.2 #32': String.raw`先把 \(1-\cos^2t\) 改成 \(\sin^2t\)，但 \((\sin^2t)^{3/2}=|\sin t|^3\)。因為跨過 0，必須用偶函數對稱性處理，不能直接寫成 \(\sin^3t\) 從 \(-\pi\) 積到 \(\pi\)。`,
+    '8.2 #36': String.raw`保留 \(\sec x\tan x\,dx\) 是因為它是 \(\sec x\) 的微分。令 \(u=\sec x\) 後，\(\tan^2x=\sec^2x-1=u^2-1\)，整題變成多項式積分。`,
+    '8.2 #40': String.raw`先令 \(u=e^x\)，題目變成標準的 \(\int\sec^3u\,du\)。\(\sec^3\) 的公式可由分部積分得到，最後再把 \(u=e^x\) 代回。`,
+    '8.2 #58': String.raw`用 product-to-sum 把乘積變成和：\(\cos x\cos7x=\frac12(\cos6x+\cos8x)\)。上下限對稱時也可觀察週期與正負抵消，最後兩個正弦值都讓結果為 0。`,
+    '8.2 #64': String.raw`先把三倍角與二倍角公式展開，目標是變成只含 \(\sin u\) 的冪次。出現 \(\sin^3u\cos u\) 與 \(\sin^5u\cos u\) 後，就能令 \(w=\sin u\)。`,
+    '8.2 #67': String.raw`先把 \(\frac{1}{\csc x}\) 改成 \(\sin x\)，再把 \(\tan^2x\sin x\) 改寫成 \(\frac{\sin^3x}{\cos^2x}\)。拆成 \(\sec^2x-\sin x\) 後會比較容易積分。`,
+    '8.3 #4': String.raw`這是 \(a^2+x^2\) 型，標準結果是 \(\int\frac{dx}{a^2+x^2}=\frac1a\tan^{-1}(x/a)\)。先把 \(8+2x^2\) 提成 \(2(x^2+4)\)，就能看到 \(a=2\)。`,
+    '8.3 #8': String.raw`根號是 \(1-(3t)^2\)，所以先令 \(u=3t\) 把它變成標準半圓積分 \(\int\sqrt{1-u^2}\,du\)。公式中的 \(\sin^{-1}u\) 來自單位圓面積。`,
+    '8.3 #25': String.raw`令 \(x=\sin\theta\) 後，\(\sqrt{1-x^2}=\cos\theta\)。原式會化成 \(\int(1+\sin\theta)\,d\theta\)，最後用 \(\theta=\sin^{-1}x\) 代回。`,
+    '8.3 #32': String.raw`令 \(x=\sin\theta\) 後，分母 \(x^4\) 會變成 \(\sin^4\theta\)，分子和 \(dx\) 合成 \(\cos^2\theta\)。再把 \(\cot^2\theta\csc^2\theta\) 看成 \(u=\cot\theta\) 的形式。`,
+    '8.3 #43': String.raw`先令 \(u=x^2\)，因為 \(du=2x\,dx\)。根號變成 \(\sqrt{1+u^2}\)，標準反導函數是 \(\ln|u+\sqrt{1+u^2}|\)。`,
+    '8.3 #44': String.raw`先令 \(u=\ln x\)，原式變成 \(\int\frac{\sqrt{1-u^2}}{u}\,du\)。再用 \(u=\sin\theta\)，會得到 \(\int(\csc\theta-\sin\theta)\,d\theta\)。`,
+    '8.3 #45': String.raw`提示 \(x=u^2\) 是為了把 \(\sqrt{x}\) 消掉。接著令 \(u=2\sin\theta\)，根號 \(4-u^2\) 就會變成 \(2\cos\theta\)，最後再回到 \(x\)。`,
+    '8.3 #46': String.raw`先令 \(u=x^{3/2}\)，因為 \(du=\frac32\sqrt{x}\,dx\)。分母變成 \(\sqrt{1-u^2}\)，所以答案會出現 \(\sin^{-1}u\)。`,
+    '8.3 #48': String.raw`令 \(t=\sqrt{x-2}\) 會讓 \(x-2=t^2\)，同時 \(x-1=t^2+1\)。題目就變成 \(\int\frac{2t^2}{\sqrt{t^2+1}}\,dt\)，再拆成 \(\sqrt{t^2+1}-\frac1{\sqrt{t^2+1}}\)。`,
+    '8.3 #52': String.raw`先完成平方 \(x^2+2x+2=(x+1)^2+1\)，再令 \(u=x+1\)。分母是 \(u^2\)，所以可拆成 \(\int\frac{\sqrt{u^2+1}}{u^2}\,du\)，分部積分會產生根號項與對數項。`,
+    '8.4 #27': String.raw`先分解 \(x^3-1=(x-1)(x^2+x+1)\)。不可約二次因式的分子要設成 \(Bx+C\)，再清分母比較係數。二次分母積分時要完成平方。`,
+    '8.4 #30': String.raw`分母可分解成 \((x^2+1)(x-2)(x+2)\)。每個因式對應一個部分分式；\(x^2+1\) 的分子要設 \(Ax+B\)，積分後會同時出現 \(\ln(x^2+1)\) 和 \(\tan^{-1}x\)。`,
+    '8.4 #35': String.raw`分子分母同次，必須先做長除。長除後剩下的真分式再拆成 \(\frac{A}{x}+\frac{B}{x^2}+\frac{C}{x-1}\)，不要一開始就硬拆。`,
+    '8.4 #47': String.raw`提示 \(x+1=u^2\) 是為了處理 \(\sqrt{x+1}\)。代換後分母 \(x\) 變成 \(u^2-1\)，所以會出現 \(\frac{1}{u-1}\) 與 \(\frac{1}{u+1}\) 的對數。`,
+    '8.4 #48': String.raw`令 \(u=\sqrt{x+9}\)，則 \(x=u^2-9\)。原式會簡化成 \(\frac{2}{u^2-9}\,du\)，這就是兩個線性因式 \((u-3)(u+3)\) 的部分分式。`,
+    '8.4 #49': String.raw`題目提示乘 \(\frac{x^3}{x^3}\)，目的是讓分母出現 \(x^4+1\) 的微分 \(4x^3dx\)。拆成 \(\frac1x-\frac{x^3}{x^4+1}\) 後就能直接積分。`,
+    '8.4 #55': String.raw`這是 improper fraction，先長除比部分分式更重要。長除得到多項式加上 \(\frac{-10}{x+2}\)，所以最後只有一個對數項。`,
+    '8.4 #58': String.raw`先令 \(u=2^x\)，因為分子 \(2^x dx\) 正好與 \(du=(\ln2)2^xdx\) 配合。分母變成 \(u^2+u-2=(u-1)(u+2)\)，再做部分分式。`,
+    '8.4 #63': String.raw`這是標準型 \(\int\frac{dx}{\sqrt{x^2-a^2}}\)，可用 \(x=\sec\theta\) 或直接記公式。答案的對數形式來自 \(\int\sec\theta\,d\theta\)。`,
+    '8.4 #64': String.raw`先有理化：乘上 \(x-\sqrt{x^2+2}\)。分子會變成 \(x^2-x^2-2=-2\)，因此原式可拆成 \(\frac{x\sqrt{x^2+2}}{2}-\frac{x^2}{2}\) 的積分。`,
+    '8.7 #12': String.raw`無窮上限要先改成極限 \(\lim_{b\to\infty}\int_2^b\)。部分分式後得到對數差，代上 \(b\) 時 \(\ln(b-1)-\ln(b+1)\to0\)，所以只留下下限的值。`,
+    '8.7 #27': String.raw`上限 \(s=2\) 讓分母為 0，所以這是 Type II improper integral。先算到 \(b<2\)，最後令 \(b\to2^-\)，\(\sin^{-1}(b/2)\) 會趨近 \(\pi/2\)。`,
+    '8.7 #39': String.raw`\(\tan u\) 在 \(\pi/2\) 發散。把上限寫成 \(b\to\pi/2^-\) 後，\(-\ln|\cos b|\to\infty\)，所以積分發散。`,
+    '8.7 #47': String.raw`中間點 \(x=1\) 是垂直漸近線，所以必須拆成 \(\int_0^1+\int_1^2\)。只要其中一邊發散，整個 improper integral 就發散。`,
+    '8.7 #50': String.raw`雖然 \(\ln|x|\) 在 0 發散，但乘上 \(x\) 後仍可積。更快的判斷是 integrand \(-x\ln|x|\) 是奇函數，且 improper integral 收斂，所以對稱區間積分為 0。`,
+    '8.7 #58': String.raw`令 \(u=x^2\) 後會得到 \(\int\frac{du}{\sqrt{u^2-1}}\)。當 \(u\to\infty\) 時，\(\ln(u+\sqrt{u^2-1})\to\infty\)，因此發散。`,
+    '8.7 #71': String.raw`區域在第一象限，從 \(x=0\) 延伸到無窮遠，高度是 \(e^{-x}\)。面積就是 \(\int_0^\infty e^{-x}\,dx\)，指數衰減讓它收斂。`,
+    '8.7 #72': String.raw`質心公式要先知道面積 \(A=1\)。\(\bar{x}\) 用 \(\int x f(x)\,dx/A\)，\(\bar{y}\) 用 \(\frac{1}{2A}\int [f(x)]^2dx\)，因為每個垂直小長條的中心高度是 \(f(x)/2\)。`,
+    '8.7 #73': String.raw`繞 \(y\) 軸用 cylindrical shells：半徑是 \(x\)，高度是 \(e^{-x}\)，所以 \(dV=2\pi x e^{-x}dx\)。這裡 \(\int_0^\infty xe^{-x}dx=1\)。`,
+    '8.7 #74': String.raw`繞 \(x\) 軸用 disks：半徑是 \(e^{-x}\)，截面面積是 \(\pi e^{-2x}\)。注意平方後指數變成 \(-2x\)，所以積分值是 \(\pi\cdot\frac12\)。`
+  };
+
+  for (const problem of document.querySelectorAll('.problem')) {
+    const key = problem.querySelector('h3')?.textContent.trim();
+    const note = detailNotes[key];
+    if (!note) continue;
+    const box = document.createElement('div');
+    box.className = 'study-detail';
+    box.innerHTML = `<p><span class="label">補充</span>${note}</p>`;
+    problem.insertBefore(box, problem.querySelector('.answer'));
+  }
+</script>
 </body>
 </html>
