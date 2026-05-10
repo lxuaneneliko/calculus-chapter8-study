@@ -198,6 +198,13 @@
       font-size: 14px;
       line-height: 1.35;
     }
+    .problem-formulas {
+      margin: 12px 0;
+    }
+    .problem-formulas .formula-chip {
+      max-width: 100%;
+      border-radius: 8px;
+    }
     .hint-bubble {
       position: absolute;
       left: 50%;
@@ -1218,6 +1225,99 @@
       bank.appendChild(hintButton(item.label, item.hint, 'formula-chip'));
     }
     heading.insertAdjacentElement('afterend', bank);
+  }
+
+  const problemFormulaHints = {
+    '8.1 #24': [
+      {
+        label: String.raw`\(\displaystyle \int e^{ax}\sin bx\,dx\)`,
+        hint: String.raw`特殊公式：\(\displaystyle \int e^{ax}\sin bx\,dx=\frac{e^{ax}(a\sin bx-b\cos bx)}{a^2+b^2}+C\)。推導做法：令 \(I=\int e^{ax}\sin bx\,dx\)，分部積分兩次後會得到 \(I=\frac{e^{ax}(a\sin bx-b\cos bx)}{a^2+b^2}\)。`
+      },
+      {
+        label: String.raw`\(\displaystyle \int e^{ax}\cos bx\,dx\)`,
+        hint: String.raw`配套公式：\(\displaystyle \int e^{ax}\cos bx\,dx=\frac{e^{ax}(a\cos bx+b\sin bx)}{a^2+b^2}+C\)。它和 sine 公式一樣，都來自兩次分部積分。`
+      }
+    ],
+    '8.2 #28': [
+      {
+        label: String.raw`\(\displaystyle 1+\sin x=\left(\sin\frac{x}{2}+\cos\frac{x}{2}\right)^2\)`,
+        hint: String.raw`推導：\(\left(\sin\frac{x}{2}+\cos\frac{x}{2}\right)^2=\sin^2\frac{x}{2}+\cos^2\frac{x}{2}+2\sin\frac{x}{2}\cos\frac{x}{2}=1+\sin x\)。`
+      }
+    ],
+    '8.2 #40': [
+      {
+        label: String.raw`\(\displaystyle \int \sec^3 u\,du\)`,
+        hint: String.raw`公式：\(\displaystyle \int\sec^3u\,du=\frac12\sec u\tan u+\frac12\ln|\sec u+\tan u|+C\)。推導可取 \(A=\int\sec^3u\,du\)，分部積分令 \(dv=\sec^2u\,du\)，再把 \(\tan^2u\) 改成 \(\sec^2u-1\)，最後解出 \(A\)。`
+      }
+    ],
+    '8.2 #58': [
+      {
+        label: String.raw`\(\displaystyle \cos A\cos B=\frac12[\cos(A-B)+\cos(A+B)]\)`,
+        hint: String.raw`這是 product-to-sum。推導來自 \(\cos(A+B)=\cos A\cos B-\sin A\sin B\) 與 \(\cos(A-B)=\cos A\cos B+\sin A\sin B\)，兩式相加即可。`
+      }
+    ],
+    '8.3 #4': [
+      {
+        label: String.raw`\(\displaystyle \int\frac{dx}{x^2+a^2}=\frac1a\tan^{-1}\frac{x}{a}+C\)`,
+        hint: String.raw`推導：令 \(u=x/a\)，則 \(dx=a\,du\)，分母 \(x^2+a^2=a^2(u^2+1)\)，所以原式變成 \(\frac1a\int\frac{du}{1+u^2}\)。`
+      }
+    ],
+    '8.3 #8': [
+      {
+        label: String.raw`\(\displaystyle \int\sqrt{1-u^2}\,du\)`,
+        hint: String.raw`公式：\(\displaystyle \int\sqrt{1-u^2}\,du=\frac12\left(u\sqrt{1-u^2}+\sin^{-1}u\right)+C\)。可用 \(u=\sin\theta\) 推出。`
+      }
+    ],
+    '8.3 #43': [
+      {
+        label: String.raw`\(\displaystyle \int\frac{du}{\sqrt{1+u^2}}\)`,
+        hint: String.raw`公式：\(\displaystyle \int\frac{du}{\sqrt{1+u^2}}=\ln|u+\sqrt{1+u^2}|+C\)。可用 \(u=\tan\theta\)，或視為 \(\sinh^{-1}u\)。`
+      }
+    ],
+    '8.4 #63': [
+      {
+        label: String.raw`\(\displaystyle \int\frac{dx}{\sqrt{x^2-a^2}}\)`,
+        hint: String.raw`公式：\(\displaystyle \int\frac{dx}{\sqrt{x^2-a^2}}=\ln|x+\sqrt{x^2-a^2}|+C\)。用 \(x=a\sec\theta\) 後會變成 \(\int\sec\theta\,d\theta\)。`
+      }
+    ],
+    '8.7 #27': [
+      {
+        label: String.raw`\(\displaystyle \int_a^b f(x)\,dx=\lim_{t\to b^-}\int_a^t f(x)\,dx\)`,
+        hint: String.raw`當上限 \(b\) 是垂直漸近線時，要用左極限。這題 \(s=2\) 讓 \(\sqrt{4-s^2}=0\)，所以不能直接代入上限。`
+      }
+    ],
+    '8.7 #72': [
+      {
+        label: String.raw`\(\displaystyle \bar{x}=\frac1A\int x f(x)\,dx,\quad \bar{y}=\frac1{2A}\int [f(x)]^2\,dx\)`,
+        hint: String.raw`這是曲線 \(y=f(x)\) 下方區域的 centroid 公式。推導來自矩：\(M_y=\int x\,dA=\int x f(x)\,dx\)，\(M_x=\int \frac{f(x)}2\,dA=\frac12\int f(x)^2\,dx\)。`
+      }
+    ],
+    '8.7 #73': [
+      {
+        label: String.raw`\(\displaystyle dV=2\pi(\text{半徑})(\text{高度})\,dx\)`,
+        hint: String.raw`圓柱殼法：小長方形繞軸轉一圈形成薄殼，圓周長是 \(2\pi r\)，高是 \(h\)，厚度是 \(dx\)，所以 \(dV=2\pi rh\,dx\)。`
+      }
+    ],
+    '8.7 #74': [
+      {
+        label: String.raw`\(\displaystyle V=\pi\int [f(x)]^2\,dx\)`,
+        hint: String.raw`圓盤法：垂直切片繞 \(x\) 軸旋轉會形成圓盤，半徑是 \(f(x)\)，截面面積是 \(\pi[f(x)]^2\)，再沿 \(x\) 積分。`
+      }
+    ]
+  };
+
+  for (const problem of document.querySelectorAll('.problem')) {
+    const key = problem.querySelector('h3')?.textContent.trim();
+    const hints = problemFormulaHints[key];
+    if (!hints) continue;
+    const bank = document.createElement('div');
+    bank.className = 'formula-bank problem-formulas';
+    bank.setAttribute('aria-label', `${key} 特殊公式提示`);
+    for (const item of hints) {
+      bank.appendChild(hintButton(item.label, item.hint, 'formula-chip'));
+    }
+    const detail = problem.querySelector('p:nth-of-type(2)');
+    detail?.insertAdjacentElement('afterend', bank);
   }
 
   const glossary = [
