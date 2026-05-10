@@ -441,21 +441,59 @@
   <section class="problem">
     <h3>8.1 #52</h3>
     <p><span class="label">題目</span>\(\displaystyle \int x^2\tan^{-1}\!\left(\frac{x}{2}\right)\,dx\)</p>
-    <p><span class="label">詳解</span>反三角函數通常選為 \(u\)。令 \(u=\tan^{-1}(x/2)\), \(dv=x^2dx\)。</p>
+    <p><span class="label">詳解</span>這題是「多項式 \(\times\) 反三角函數」，通常用分部積分，並且把反三角函數選成 \(u\)，因為它微分後會變成有理式。</p>
+    <p>先設定：</p>
+    \[
+      u=\tan^{-1}\!\left(\frac{x}{2}\right),\qquad dv=x^2\,dx
+    \]
+    <p>接著分別求 \(du\) 與 \(v\)。反三角微分要用鏈鎖律：</p>
+    \[
+      \frac{d}{dx}\tan^{-1}\!\left(\frac{x}{2}\right)
+      =\frac{1}{1+(x/2)^2}\cdot\frac12
+      =\frac{2}{x^2+4}
+    \]
     \[
       du=\frac{2}{x^2+4}\,dx,\qquad v=\frac{x^3}{3}
     \]
+    <p>套分部積分公式 \(\int u\,dv=uv-\int v\,du\)：</p>
     \[
       \int x^2\tan^{-1}(x/2)\,dx
       =\frac{x^3}{3}\tan^{-1}(x/2)-\frac23\int\frac{x^3}{x^2+4}\,dx
     \]
-    <p>除法整理：</p>
+    <p>現在重點變成計算剩下的有理式積分。先做多項式長除：</p>
     \[
       \frac{x^3}{x^2+4}=x-\frac{4x}{x^2+4}
     \]
+    <p>所以：</p>
     \[
-      -\frac23\int\left(x-\frac{4x}{x^2+4}\right)dx
-      =-\frac{x^2}{3}+\frac43\ln(x^2+4)
+      \int\frac{x^3}{x^2+4}\,dx
+      =\int x\,dx-\int\frac{4x}{x^2+4}\,dx
+    \]
+    <p>第一項直接積分，第二項用 \(t=x^2+4\), \(dt=2x\,dx\) 換元：</p>
+    \[
+      \int x\,dx=\frac{x^2}{2}
+    \]
+    \[
+      \int\frac{4x}{x^2+4}\,dx
+      =2\int\frac{dt}{t}
+      =2\ln|t|
+      =2\ln(x^2+4)
+    \]
+    <p>因此：</p>
+    \[
+      \int\frac{x^3}{x^2+4}\,dx
+      =\frac{x^2}{2}-2\ln(x^2+4)
+    \]
+    <p>把它代回分部積分後的式子：</p>
+    \[
+      \int x^2\tan^{-1}(x/2)\,dx
+      =\frac{x^3}{3}\tan^{-1}(x/2)
+      -\frac23\left(\frac{x^2}{2}-2\ln(x^2+4)\right)+C
+    \]
+    \[
+      =\frac{x^3}{3}\tan^{-1}(x/2)
+      -\frac{x^2}{3}
+      +\frac43\ln(x^2+4)+C
     \]
     <p class="answer"><span class="label">答案</span>\(\displaystyle \frac{x^3}{3}\tan^{-1}\!\left(\frac{x}{2}\right)-\frac{x^2}{3}+\frac43\ln(x^2+4)+C\)</p>
   </section>
@@ -1228,6 +1266,16 @@
   }
 
   const problemFormulaHints = {
+    '8.1 #52': [
+      {
+        label: String.raw`\(\displaystyle \frac{d}{dx}\tan^{-1}\!\left(\frac{x}{2}\right)\)`,
+        hint: String.raw`用鏈鎖律。先令 \(w=x/2\)，則 \(\frac{d}{dx}\tan^{-1}w=\frac{w'}{1+w^2}\)。所以 \(\frac{d}{dx}\tan^{-1}(x/2)=\frac{1/2}{1+x^2/4}=\frac{2}{x^2+4}\)。`
+      },
+      {
+        label: String.raw`\(\displaystyle \int\frac{f'(x)}{f(x)}\,dx=\ln|f(x)|+C\)`,
+        hint: String.raw`這是對數微分的反向。因為 \(\frac{d}{dx}\ln|f(x)|=\frac{f'(x)}{f(x)}\)。在本題中 \(f(x)=x^2+4\)，\(f'(x)=2x\)。`
+      }
+    ],
     '8.1 #24': [
       {
         label: String.raw`\(\displaystyle \int e^{ax}\sin bx\,dx\)`,
