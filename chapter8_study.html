@@ -168,6 +168,57 @@
     .study-detail p {
       margin: 6px 0;
     }
+    .deep-steps {
+      margin: 12px 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--soft) 62%, transparent);
+      overflow: hidden;
+    }
+    .deep-steps summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      color: var(--accent);
+      font-weight: 800;
+      cursor: pointer;
+      list-style: none;
+    }
+    .deep-steps summary::-webkit-details-marker {
+      display: none;
+    }
+    .deep-steps summary::after {
+      content: "+";
+      display: inline-grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--ink);
+      background: var(--paper);
+      font-size: 18px;
+      line-height: 1;
+    }
+    .deep-steps[open] summary {
+      border-bottom: 1px solid var(--line);
+    }
+    .deep-steps[open] summary::after {
+      content: "-";
+    }
+    .deep-steps-body {
+      padding: 12px 14px 14px;
+    }
+    .deep-steps-body p {
+      margin: 7px 0;
+    }
+    .deep-steps-body .step-title {
+      color: var(--accent-strong);
+      font-weight: 800;
+    }
     .hint-term,
     .formula-chip {
       position: relative;
@@ -1198,6 +1249,25 @@
     '8.7 #74': String.raw`繞 \(x\) 軸用 disks：半徑是 \(e^{-x}\)，截面面積是 \(\pi e^{-2x}\)。注意平方後指數變成 \(-2x\)，所以積分值是 \(\pi\cdot\frac12\)。`
   };
 
+  function sectionGuide(key) {
+    if (key.startsWith('8.1')) {
+      return String.raw`<p><span class="step-title">章節讀法：</span>先判斷是否真的需要分部積分。若需要，固定寫出 \(u,dv,du,v\)，再套 \(\int u\,dv=uv-\int v\,du\)。若分部後出現新的有理式或三角式，下一步才做長除、換元或恆等式整理。</p>`;
+    }
+    if (key.startsWith('8.2')) {
+      return String.raw`<p><span class="step-title">章節讀法：</span>三角積分先看次方奇偶。奇次方通常保留一個 \(\sin x\,dx\)、\(\cos x\,dx\) 或 \(\sec x\tan x\,dx\) 來換元；乘積如 \(\sin mx\cos nx\) 則先用 product-to-sum。</p>`;
+    }
+    if (key.startsWith('8.3')) {
+      return String.raw`<p><span class="step-title">章節讀法：</span>根號題先辨認型態：\(\sqrt{a^2-x^2}\)、\(\sqrt{a^2+x^2}\)、\(\sqrt{x^2-a^2}\)。代換後一定要把 \(dx\)、根號、分母分子全部換成同一個變數，最後再代回。</p>`;
+    }
+    if (key.startsWith('8.4')) {
+      return String.raw`<p><span class="step-title">章節讀法：</span>有理函數先看分子分母次數。若分子次數不小於分母，要先長除；剩下的真分式再因式分解，依線性因式或不可約二次因式設定部分分式。</p>`;
+    }
+    if (key.startsWith('8.7')) {
+      return String.raw`<p><span class="step-title">章節讀法：</span>瑕積分先找問題點：無窮上下限、端點分母為 0、或區間內垂直漸近線。每個問題點都要改成極限；只要其中一段發散，整題就發散。</p>`;
+    }
+    return '';
+  }
+
   for (const problem of document.querySelectorAll('.problem')) {
     const key = problem.querySelector('h3')?.textContent.trim();
     const note = detailNotes[key];
@@ -1206,6 +1276,19 @@
     box.className = 'study-detail';
     box.innerHTML = `<p><span class="label">補充</span>${note}</p>`;
     problem.insertBefore(box, problem.querySelector('.answer'));
+
+    const deep = document.createElement('details');
+    deep.className = 'deep-steps';
+    deep.innerHTML = `
+      <summary>展開詳細步驟</summary>
+      <div class="deep-steps-body">
+        <p><span class="step-title">1. 先判斷方法：</span>${note}</p>
+        ${sectionGuide(key)}
+        <p><span class="step-title">2. 再看上方算式：</span>每一行公式都對應一個動作，例如分部積分、換元、長除、三角恆等式、部分分式或瑕積分極限。讀的時候先確認這一步把哪個式子變簡單。</p>
+        <p><span class="step-title">3. 最後檢查答案：</span>不定積分可把答案微分回去；定積分或瑕積分則確認上下限、單側極限、收斂或發散判斷都已處理。</p>
+      </div>
+    `;
+    problem.insertBefore(deep, problem.querySelector('.answer'));
   }
 
   const formulaHints = {
