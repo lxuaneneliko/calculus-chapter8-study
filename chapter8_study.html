@@ -894,6 +894,9 @@
   </section>
 
   <h2 id="s84">8.4 Integration of Rational Functions by Partial Fractions</h2>
+  <div class="study-detail">
+    <p><span class="label">8.4 思路</span>先看是不是有理函數 \(\frac{P(x)}{Q(x)}\)。若分子次數 \(\ge\) 分母次數，第一步一定先長除；若分子次數較小，再分解分母並設部分分式。線性因式用 \(\frac{A}{x-a}\)，重複線性因式用 \(\frac{A}{x-a}+\frac{B}{(x-a)^2}+\cdots\)，不可約二次因式用 \(\frac{Ax+B}{x^2+px+q}\)。最後清分母、比較係數、逐項積分。</p>
+  </div>
 
   <section class="problem">
     <h3>8.4 #27</h3>
@@ -1795,67 +1798,140 @@
       \]
     `,
     '8.4 #27': String.raw`
+      <p><span class="step-title">思路 1：先看分母能不能分解。</span>分母是三次式，而且 \(x^3-1\) 是立方差：</p>
       \[
         x^3-1=(x-1)(x^2+x+1)
       \]
+      <p>\(x-1\) 是線性因式，所以設 \(\frac{A}{x-1}\)。\(x^2+x+1\) 判別式 \(1-4=-3<0\)，不能再分解成實線性因式，所以分子要設一次式 \(Bx+C\)。</p>
       \[
         \frac{x^2-x+2}{x^3-1}
         =\frac{A}{x-1}+\frac{Bx+C}{x^2+x+1}
       \]
-      <p>清分母：</p>
+      <p><span class="step-title">思路 2：清分母，變成多項式比較。</span></p>
       \[
         x^2-x+2=A(x^2+x+1)+(Bx+C)(x-1)
       \]
-      <p>比較係數可得 \(A=\frac23,\ B=\frac13,\ C=-\frac43\)。</p>
+      <p>展開右邊：</p>
       \[
-        \int\left(\frac{2/3}{x-1}+\frac{(1/3)x-4/3}{x^2+x+1}\right)dx
+        A(x^2+x+1)+(Bx+C)(x-1)
+        =(A+B)x^2+(A-B+C)x+(A-C)
       \]
-      <p>二次式完成平方 \(x^2+x+1=(x+\frac12)^2+\frac34\)，積分後得到</p>
+      <p>比較 \(x^2\)、\(x\)、常數項：</p>
       \[
-        \frac23\ln|x-1|+\frac16\ln(x^2+x+1)
-        -\sqrt3\tan^{-1}\left(\frac{2x+1}{\sqrt3}\right)+C
+        A+B=1,\qquad A-B+C=-1,\qquad A-C=2
+      \]
+      <p>解得：</p>
+      \[
+        A=\frac23,\qquad B=\frac13,\qquad C=-\frac43
+      \]
+      <p><span class="step-title">思路 3：拆開後逐項積。</span></p>
+      \[
+        \int\frac{x^2-x+2}{x^3-1}\,dx
+        =\int\left(\frac{2/3}{x-1}+\frac{\frac13x-\frac43}{x^2+x+1}\right)dx
+      \]
+      <p>二次分母那項要拆成「分母微分」和「剩餘常數」。因為 \((x^2+x+1)'=2x+1\)：</p>
+      \[
+        \frac13x-\frac43=\frac16(2x+1)-\frac32
+      \]
+      \[
+        \int\frac{\frac13x-\frac43}{x^2+x+1}dx
+        =\frac16\ln(x^2+x+1)-\frac32\int\frac{dx}{x^2+x+1}
+      \]
+      <p>完成平方：</p>
+      \[
+        x^2+x+1=\left(x+\frac12\right)^2+\frac34
+      \]
+      \[
+        \int\frac{dx}{x^2+x+1}
+        =\frac{2}{\sqrt3}\tan^{-1}\left(\frac{2x+1}{\sqrt3}\right)
+      \]
+      \[
+        \boxed{\frac23\ln|x-1|+\frac16\ln(x^2+x+1)
+        -\sqrt3\tan^{-1}\left(\frac{2x+1}{\sqrt3}\right)+C}
       \]
     `,
     '8.4 #30': String.raw`
+      <p><span class="step-title">思路 1：先分解分母。</span>分母只含 \(x^2\)，可以把它看成 \(y=x^2\)：</p>
       \[
-        x^4-3x^2-4=(x^2+1)(x^2-4)=(x^2+1)(x-2)(x+2)
+        x^4-3x^2-4=(x^2-4)(x^2+1)=(x-2)(x+2)(x^2+1)
       \]
+      <p>兩個線性因式各放常數，二次不可約因式 \(x^2+1\) 的分子設 \(Ax+B\)：</p>
       \[
         \frac{x^2+x}{x^4-3x^2-4}
         =\frac{Ax+B}{x^2+1}+\frac{C}{x-2}+\frac{D}{x+2}
       \]
-      <p>清分母比較係數後可得：</p>
+      <p><span class="step-title">思路 2：清分母。</span></p>
+      \[
+        x^2+x=(Ax+B)(x-2)(x+2)+C(x^2+1)(x+2)+D(x^2+1)(x-2)
+      \]
+      <p>代入好算的根先求 \(C,D\)：</p>
+      \[
+        x=2:\quad 6=C(5)(4)\Rightarrow C=\frac3{10}
+      \]
+      \[
+        x=-2:\quad 2=D(5)(-4)\Rightarrow D=-\frac1{10}
+      \]
+      <p>再用 \(x=0\) 和比較高次項求 \(A,B\)。\(x=0\) 時：</p>
+      \[
+        0=-4B+2C-2D
+        \Rightarrow -4B+\frac35+\frac15=0
+        \Rightarrow B=\frac15
+      \]
+      <p>看 \(x^3\) 係數：左邊沒有 \(x^3\)，右邊是 \(A+C+D\)，所以</p>
+      \[
+        A+C+D=0\Rightarrow A=-\frac15
+      \]
+      <p><span class="step-title">思路 3：逐項積分。</span></p>
       \[
         \frac{x^2+x}{x^4-3x^2-4}
         =\frac{-x+1}{5(x^2+1)}+\frac{3}{10(x-2)}-\frac{1}{10(x+2)}
       \]
       \[
-        \int\frac{-x}{5(x^2+1)}dx=-\frac1{10}\ln(x^2+1),\quad
+        \int\frac{-x}{5(x^2+1)}dx=-\frac1{10}\ln(x^2+1)
+      \]
+      \[
         \int\frac{1}{5(x^2+1)}dx=\frac15\tan^{-1}x
       \]
       \[
-        =-\frac1{10}\ln(x^2+1)+\frac15\tan^{-1}x+\frac3{10}\ln|x-2|-\frac1{10}\ln|x+2|+C
+        \boxed{-\frac1{10}\ln(x^2+1)+\frac15\tan^{-1}x+\frac3{10}\ln|x-2|-\frac1{10}\ln|x+2|+C}
       \]
     `,
     '8.4 #35': String.raw`
-      <p>先長除：</p>
+      <p><span class="step-title">思路 1：先看次數。</span>分子與分母同為三次，所以這不是 proper fraction，不能一開始就設部分分式，要先長除。</p>
       \[
-        \frac{9x^3-3x+1}{x^3-x^2}=9+\frac{9x^2-3x+1}{x^3-x^2}
+        \frac{9x^3-3x+1}{x^3-x^2}
+        =9+\frac{9x^2-3x+1}{x^3-x^2}
         =9+\frac{9x^2-3x+1}{x^2(x-1)}
       \]
+      <p><span class="step-title">思路 2：剩下的真分式再拆。</span>分母有重複因式 \(x^2\)，所以要放 \(\frac{A}{x}+\frac{B}{x^2}\)，另外 \(x-1\) 放 \(\frac{C}{x-1}\)。</p>
       \[
         \frac{9x^2-3x+1}{x^2(x-1)}
         =\frac{A}{x}+\frac{B}{x^2}+\frac{C}{x-1}
       \]
-      <p>清分母比較係數得 \(A=2,\ B=-1,\ C=7\)：</p>
+      <p>清分母：</p>
+      \[
+        9x^2-3x+1=Ax(x-1)+B(x-1)+Cx^2
+      \]
+      \[
+        =(A+C)x^2+(-A+B)x-B
+      \]
+      <p>比較係數：</p>
+      \[
+        A+C=9,\qquad -A+B=-3,\qquad -B=1
+      \]
+      \[
+        B=-1,\qquad A=2,\qquad C=7
+      \]
+      <p><span class="step-title">思路 3：積分。</span></p>
       \[
         \int\left(9+\frac2x-\frac1{x^2}+\frac7{x-1}\right)dx
       \]
       \[
-        =9x+2\ln|x|+\frac1x+7\ln|x-1|+C
+        \boxed{9x+2\ln|x|+\frac1x+7\ln|x-1|+C}
       \]
     `,
     '8.4 #47': String.raw`
+      <p><span class="step-title">思路 1：先處理根號。</span>分子有 \(\sqrt{x+1}\)，分母是 \(x\)。若令 \(u=\sqrt{x+1}\)，則 \(x=u^2-1\)，分母會變成可分解的 \(u^2-1\)。</p>
       \[
         u=\sqrt{x+1},\quad x=u^2-1,\quad dx=2u\,du
       \]
@@ -1864,18 +1940,25 @@
         =\int\frac{u}{u^2-1}(2u\,du)
         =\int\frac{2u^2}{u^2-1}\,du
       \]
+      <p><span class="step-title">思路 2：這時變成有理函數。</span>分子分母同次，先做長除：</p>
       \[
         \frac{2u^2}{u^2-1}=2+\frac{2}{u^2-1}
-        =2+\frac{1}{u-1}-\frac{1}{u+1}
       \]
+      <p>再拆 \(u^2-1=(u-1)(u+1)\)：</p>
       \[
+        \frac{2}{u^2-1}=\frac{1}{u-1}-\frac{1}{u+1}
+      \]
+      <p><span class="step-title">思路 3：積分並代回。</span></p>
+      \[
+        \int\left(2+\frac{1}{u-1}-\frac{1}{u+1}\right)du
         =2u+\ln|u-1|-\ln|u+1|+C
       \]
       \[
-        =2\sqrt{x+1}+\ln\left|\frac{\sqrt{x+1}-1}{\sqrt{x+1}+1}\right|+C
+        \boxed{2\sqrt{x+1}+\ln\left|\frac{\sqrt{x+1}-1}{\sqrt{x+1}+1}\right|+C}
       \]
     `,
     '8.4 #48': String.raw`
+      <p><span class="step-title">思路 1：根號在分母。</span>令 \(u=\sqrt{x+9}\)，目標是同時消掉根號並把 \(x\) 改成 \(u^2-9\)。</p>
       \[
         u=\sqrt{x+9},\quad x=u^2-9,\quad dx=2u\,du
       \]
@@ -1884,49 +1967,78 @@
         =\int\frac{1}{(u^2-9)u}(2u\,du)
         =2\int\frac{du}{u^2-9}
       \]
+      <p><span class="step-title">思路 2：分母是平方差。</span></p>
       \[
-        \frac{2}{u^2-9}=\frac{2}{(u-3)(u+3)}
-        =\frac13\left(\frac1{u-3}-\frac1{u+3}\right)
+        u^2-9=(u-3)(u+3)
+      \]
+      \[
+        \frac{2}{(u-3)(u+3)}=\frac{A}{u-3}+\frac{B}{u+3}
+      \]
+      <p>清分母：\(2=A(u+3)+B(u-3)\)。代 \(u=3\) 得 \(A=\frac13\)，代 \(u=-3\) 得 \(B=-\frac13\)。</p>
+      \[
+        2\int\frac{du}{u^2-9}
+        =\frac13\int\left(\frac1{u-3}-\frac1{u+3}\right)du
       \]
       \[
         =\frac13\ln\left|\frac{u-3}{u+3}\right|+C
-        =\frac13\ln\left|\frac{\sqrt{x+9}-3}{\sqrt{x+9}+3}\right|+C
+      \]
+      \[
+        \boxed{\frac13\ln\left|\frac{\sqrt{x+9}-3}{\sqrt{x+9}+3}\right|+C}
       \]
     `,
     '8.4 #49': String.raw`
+      <p><span class="step-title">思路 1：這題不是標準部分分式，而是用提示製造可積形式。</span>分母有 \(x(x^4+1)\)，若硬拆 \(x^4+1\) 會很麻煩。題目提示乘 \(x^3/x^3\)，等價於把分子湊出 \(x^4+1\)。</p>
       \[
         \frac{1}{x(x^4+1)}
         =\frac{x^4+1-x^4}{x(x^4+1)}
+      \]
+      \[
+        =\frac{x^4+1}{x(x^4+1)}-\frac{x^4}{x(x^4+1)}
         =\frac1x-\frac{x^3}{x^4+1}
       \]
+      <p><span class="step-title">思路 2：逐項積分。</span></p>
       \[
         \int\frac1x\,dx=\ln|x|
       \]
-      <p>第二項令 \(u=x^4+1,\ du=4x^3dx\)：</p>
+      <p>第二項剛好是分母微分型，令 \(u=x^4+1,\ du=4x^3dx\)：</p>
       \[
-        \int\frac{x^3}{x^4+1}\,dx=\frac14\ln(x^4+1)
+        \int\frac{x^3}{x^4+1}\,dx=\frac14\int\frac{du}{u}=\frac14\ln(x^4+1)
       \]
       \[
-        \int\frac{1}{x(x^4+1)}dx=\ln|x|-\frac14\ln(x^4+1)+C
+        \boxed{\int\frac{1}{x(x^4+1)}dx=\ln|x|-\frac14\ln(x^4+1)+C}
       \]
     `,
     '8.4 #55': String.raw`
-      <p>先做長除：</p>
+      <p><span class="step-title">思路 1：分子三次、分母一次，先長除。</span>這題若直接部分分式會很不自然，因為它是 improper fraction。</p>
+      \[
+        \frac{x^3-2x^2-3x}{x+2}
+      \]
+      <p>長除過程：</p>
+      \[
+        x^3\div x=x^2,\quad x^2(x+2)=x^3+2x^2
+      \]
+      \[
+        (x^3-2x^2-3x)-(x^3+2x^2)=-4x^2-3x
+      \]
+      \[
+        -4x^2\div x=-4x,\quad -4x(x+2)=-4x^2-8x
+      \]
+      \[
+        (-4x^2-3x)-(-4x^2-8x)=5x
+      \]
+      \[
+        5x\div x=5,\quad 5(x+2)=5x+10,\quad 5x-(5x+10)=-10
+      \]
       \[
         \frac{x^3-2x^2-3x}{x+2}=x^2-4x+5-\frac{10}{x+2}
       \]
-      <p>逐項積分：</p>
+      <p><span class="step-title">思路 2：逐項積分。</span></p>
       \[
-        \int x^2dx=\frac{x^3}{3},\quad \int -4x\,dx=-2x^2,\quad \int5dx=5x
-      \]
-      \[
-        \int-\frac{10}{x+2}\,dx=-10\ln|x+2|
-      \]
-      \[
-        =\frac{x^3}{3}-2x^2+5x-10\ln|x+2|+C
+        \boxed{\frac{x^3}{3}-2x^2+5x-10\ln|x+2|+C}
       \]
     `,
     '8.4 #58': String.raw`
+      <p><span class="step-title">思路 1：看到 \(2^x\) 重複出現，先換元。</span>分母有 \(2^{2x}\) 和 \(2^x\)，把 \(2^x\) 當成一個新變數。</p>
       \[
         u=2^x,\quad du=(\ln2)2^x\,dx
       \]
@@ -1934,56 +2046,76 @@
         \int\frac{2^x}{2^{2x}+2^x-2}\,dx
         =\frac1{\ln2}\int\frac{du}{u^2+u-2}
       \]
+      <p><span class="step-title">思路 2：換元後變成 8.4 的部分分式。</span></p>
       \[
         u^2+u-2=(u-1)(u+2)
       \]
       \[
-        \frac{1}{(u-1)(u+2)}=\frac13\left(\frac1{u-1}-\frac1{u+2}\right)
+        \frac{1}{(u-1)(u+2)}=\frac{A}{u-1}+\frac{B}{u+2}
+      \]
+      <p>清分母：\(1=A(u+2)+B(u-1)\)。代 \(u=1\) 得 \(A=\frac13\)，代 \(u=-2\) 得 \(B=-\frac13\)。</p>
+      \[
+        \frac1{\ln2}\int\frac{du}{(u-1)(u+2)}
+        =\frac{1}{3\ln2}\int\left(\frac1{u-1}-\frac1{u+2}\right)du
       \]
       \[
         =\frac{1}{3\ln2}\ln\left|\frac{u-1}{u+2}\right|+C
-        =\frac{1}{3\ln2}\ln\left|\frac{2^x-1}{2^x+2}\right|+C
+      \]
+      \[
+        \boxed{\frac{1}{3\ln2}\ln\left|\frac{2^x-1}{2^x+2}\right|+C}
       \]
     `,
     '8.4 #63': String.raw`
-      <p>這是標準型：</p>
+      <p><span class="step-title">思路 1：這題外表在 8.4，但本質是標準根號公式。</span>分母是 \(\sqrt{x^2-1}\)，它對應 \(\sqrt{x^2-a^2}\) 型。</p>
       \[
         \int\frac{dx}{\sqrt{x^2-1}}
       \]
-      <p>令 \(x=\sec\theta\)，則 \(dx=\sec\theta\tan\theta\,d\theta\)，\(\sqrt{x^2-1}=\tan\theta\)：</p>
+      <p>用三角代換 \(x=\sec\theta\)：</p>
       \[
-        \int\frac{\sec\theta\tan\theta}{\tan\theta}\,d\theta
+        dx=\sec\theta\tan\theta\,d\theta,\qquad \sqrt{x^2-1}=\sqrt{\sec^2\theta-1}=\tan\theta
+      \]
+      \[
+        \int\frac{dx}{\sqrt{x^2-1}}
+        =\int\frac{\sec\theta\tan\theta}{\tan\theta}\,d\theta
         =\int\sec\theta\,d\theta
       \]
       \[
         =\ln|\sec\theta+\tan\theta|+C
       \]
+      <p>代回 \(\sec\theta=x\)，\(\tan\theta=\sqrt{x^2-1}\)：</p>
       \[
-        =\ln|x+\sqrt{x^2-1}|+C
+        \boxed{\ln|x+\sqrt{x^2-1}|+C}
       \]
     `,
     '8.4 #64': String.raw`
-      <p>先有理化：</p>
+      <p><span class="step-title">思路 1：分母有根號加法，先有理化。</span>目標是把 \(x+\sqrt{x^2+2}\) 變成沒有根號的差平方。</p>
       \[
-        \frac{x}{x+\sqrt{x^2+2}}\cdot\frac{x-\sqrt{x^2+2}}{x-\sqrt{x^2+2}}
+        \frac{x}{x+\sqrt{x^2+2}}
+        \cdot\frac{x-\sqrt{x^2+2}}{x-\sqrt{x^2+2}}
+      \]
+      \[
         =\frac{x(x-\sqrt{x^2+2})}{x^2-(x^2+2)}
+        =\frac{x(x-\sqrt{x^2+2})}{-2}
       \]
       \[
         =-\frac{x^2}{2}+\frac{x\sqrt{x^2+2}}{2}
       \]
+      <p><span class="step-title">思路 2：拆成兩個積分。</span></p>
       \[
-        \int\frac{x\sqrt{x^2+2}}{2}\,dx
+        \int\frac{x}{x+\sqrt{x^2+2}}\,dx
+        =-\frac12\int x^2\,dx+\frac12\int x\sqrt{x^2+2}\,dx
       \]
-      <p>令 \(u=x^2+2,\ du=2x\,dx\)：</p>
+      \[
+        -\frac12\int x^2\,dx=-\frac{x^3}{6}
+      \]
+      <p>第二項用 \(u=x^2+2,\ du=2x\,dx\)：</p>
       \[
         \frac12\int x\sqrt{x^2+2}\,dx
-        =\frac14\int u^{1/2}\,du=\frac16(x^2+2)^{3/2}
+        =\frac14\int u^{1/2}\,du
+        =\frac16u^{3/2}
       \]
       \[
-        \int-\frac{x^2}{2}\,dx=-\frac{x^3}{6}
-      \]
-      \[
-        =\frac16(x^2+2)^{3/2}-\frac{x^3}{6}+C
+        \boxed{\frac16(x^2+2)^{3/2}-\frac{x^3}{6}+C}
       \]
     `,
     '8.7 #12': String.raw`
