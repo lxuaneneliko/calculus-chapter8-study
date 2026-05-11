@@ -321,6 +321,44 @@
       font-size: 13px;
       text-align: center;
     }
+    .teacher-picks {
+      margin-top: 44px;
+      padding-top: 22px;
+      border-top: 2px solid var(--line);
+    }
+    .pick-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin: 16px 0 0;
+    }
+    .pick-card {
+      display: block;
+      padding: 14px 16px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .pick-card:hover,
+    .pick-card:focus-visible {
+      border-color: var(--accent);
+      outline: 3px solid color-mix(in srgb, var(--accent) 28%, transparent);
+      outline-offset: 2px;
+    }
+    .pick-card strong {
+      display: block;
+      color: var(--accent);
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .pick-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
     .toc {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -489,7 +527,7 @@
     <p class="answer"><span class="label">答案</span>\(\displaystyle -\frac13\cos(x^3)+C\)</p>
   </section>
 
-  <section class="problem">
+  <section class="problem" id="p-8-1-52">
     <h3>8.1 #52</h3>
     <p><span class="label">題目</span>\(\displaystyle \int x^2\tan^{-1}\!\left(\frac{x}{2}\right)\,dx\)</p>
     <p><span class="label">詳解</span>這題是「多項式 \(\times\) 反三角函數」，通常用分部積分，並且把反三角函數選成 \(u\)，因為它微分後會變成有理式。</p>
@@ -678,7 +716,7 @@
     <p class="answer"><span class="label">答案</span>\(\displaystyle \frac15\sec^5x-\frac13\sec^3x+C\)</p>
   </section>
 
-  <section class="problem">
+  <section class="problem" id="p-8-2-40">
     <h3>8.2 #40</h3>
     <p><span class="label">題目</span>\(\displaystyle \int e^x\sec^3(e^x)\,dx\)</p>
     <p><span class="label">詳解</span>令 \(u=e^x\)，則 \(du=e^x\,dx\)。</p>
@@ -858,7 +896,7 @@
     <p class="answer"><span class="label">答案</span>\(\displaystyle \frac23\sin^{-1}(x^{3/2})+C\)</p>
   </section>
 
-  <section class="problem">
+  <section class="problem" id="p-8-3-48">
     <h3>8.3 #48</h3>
     <p><span class="label">題目</span>\(\displaystyle \int\sqrt{\frac{x-2}{x-1}}\,dx\)</p>
     <p><span class="label">詳解</span>令 \(t=\sqrt{x-2}\)，則 \(x=t^2+2\), \(dx=2t\,dt\), \(x-1=t^2+1\)。</p>
@@ -917,7 +955,7 @@
     <p class="answer"><span class="label">答案</span>\(\displaystyle \frac23\ln|x-1|+\frac16\ln(x^2+x+1)-\sqrt3\tan^{-1}\left(\frac{2x+1}{\sqrt3}\right)+C\)</p>
   </section>
 
-  <section class="problem">
+  <section class="problem" id="p-8-4-30">
     <h3>8.4 #30</h3>
     <p><span class="label">題目</span>\(\displaystyle \int\frac{x^2+x}{x^4-3x^2-4}\,dx\)</p>
     <p><span class="label">詳解</span>先分解分母：</p>
@@ -1108,7 +1146,7 @@
     <p class="answer"><span class="label">答案</span>發散。</p>
   </section>
 
-  <section class="problem">
+  <section class="problem" id="p-8-7-50">
     <h3>8.7 #50</h3>
     <p><span class="label">題目</span>判斷 \(\displaystyle \int_{-1}^{1}-x\ln|x|\,dx\) 收斂或發散。</p>
     <p><span class="label">詳解</span>\(\ln|x|\) 在 \(x=0\) 有問題，但 \(x\ln|x|\) 在 0 附近仍可積。又因 \(\ln|x|\) 是偶函數，\(-x\) 是奇函數，所以 integrand 是奇函數。</p>
@@ -1179,6 +1217,33 @@
       =\pi\int_0^\infty e^{-2x}dx
     \]
     <p class="answer"><span class="label">答案</span>\(\displaystyle \frac{\pi}{2}\)</p>
+  </section>
+
+  <section class="teacher-picks" id="teacher-picks">
+    <h2>老師挑的課後題</h2>
+    <p class="note">依照你傳的板書照片整理；下面只集中列一次，點卡片可以跳回原本題目與詳解。</p>
+    <div class="pick-list">
+      <a class="pick-card" href="#p-8-1-52">
+        <strong>8.1 #52</strong>
+        <span>\(\displaystyle \int x^2\tan^{-1}\!\left(\frac{x}{2}\right)\,dx\)</span>
+      </a>
+      <a class="pick-card" href="#p-8-2-40">
+        <strong>8.2 #40</strong>
+        <span>\(\displaystyle \int e^x\sec^3(e^x)\,dx\)</span>
+      </a>
+      <a class="pick-card" href="#p-8-3-48">
+        <strong>8.3 #48</strong>
+        <span>\(\displaystyle \int\sqrt{\frac{x-2}{x-1}}\,dx\)</span>
+      </a>
+      <a class="pick-card" href="#p-8-4-30">
+        <strong>8.4 #30</strong>
+        <span>\(\displaystyle \int\frac{x^2+x}{x^4-3x^2-4}\,dx\)</span>
+      </a>
+      <a class="pick-card" href="#p-8-7-50">
+        <strong>8.7 #50</strong>
+        <span>判斷 \(\displaystyle \int_{-1}^{1}-x\ln|x|\,dx\) 收斂或發散。</span>
+      </a>
+    </div>
   </section>
 
 </main>
