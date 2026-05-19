@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>??? Chapter 13 ???????</title>
+  <title>微積分 Chapter 13 作業題目與解法</title>
   <script>
     (() => {
       const savedTheme = localStorage.getItem('theme');
@@ -12,7 +12,7 @@
   </script>
   <script>
     window.MathJax = {
-      tex: { inlineMath: [['\(', '\)']], displayMath: [['\[', '\]']], processEscapes: true },
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true },
       svg: { fontCache: 'global' }
     };
   </script>
@@ -74,679 +74,679 @@
 <main>
   <div class="page-header">
     <div>
-      <h1>??? Chapter 13 ???????</h1>
-      <p class="note">? Homework-chpater 13(2).pdf ?????????? MathJax ??????????????????????????</p>
+      <h1>微積分 Chapter 13 作業題目與解法</h1>
+      <p class="note">依 Homework-chpater 13(2).pdf 指定題號整理。題目用 MathJax 排版；含圖題已放入課本裁圖；每題都有解法與最後答案。</p>
     </div>
     <div class="top-actions">
       <a class="chapter-link" href="index.html">Chapter 8</a>
       <label class="theme-switch" for="themeToggle">
-        <span id="themeText">????</span>
-        <input id="themeToggle" type="checkbox" aria-label="??????">
+        <span id="themeText">夜間模式</span>
+        <input id="themeToggle" type="checkbox" aria-label="切換夜間模式">
         <span class="switch-track" aria-hidden="true"></span>
       </label>
     </div>
   </div>
 
-  <nav class="chapter-nav" aria-label="????">
+  <nav class="chapter-nav" aria-label="章節切換">
     <a href="#s132">13.2</a><a href="#s133">13.3</a><a href="#s134">13.4</a><a href="#s135">13.5</a><a href="#s136">13.6</a><a href="#s137">13.7</a><a href="#s138">13.8</a>
   </nav>
 
   <div class="summary-grid">
-    <a href="#s132">13.2?11 ?</a><a href="#s133">13.3?8 ?</a><a href="#s134">13.4?10 ?</a><a href="#s135">13.5?7 ?</a><a href="#s136">13.6?5 ?</a><a href="#s137">13.7?7 ?</a><a href="#s138">13.8?7 ?</a>
+    <a href="#s132">13.211 </a><a href="#s133">13.38 </a><a href="#s134">13.410 </a><a href="#s135">13.57 </a><a href="#s136">13.65 </a><a href="#s137">13.77 </a><a href="#s138">13.87 </a>
   </div>
 
   
   <h2 id="s132">13.2</h2>
   <section class="problem" id="p-13-2-9">
     <h3>13.2 #9</h3>
-    <div class="problem-block"><span class="label">??</span>\[\lim_{(x,y)\to(0,0)} \frac{e^y\sin x}{x}\]</div>
-    <div class="solution"><span class="label">??</span><p>?????????????</p>
+    <div class="problem-block"><span class="label">題目</span>\[\lim_{(x,y)\to(0,0)} \frac{e^y\sin x}{x}\]</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[\frac{e^y\sin x}{x}=e^y\cdot \frac{\sin x}{x}.\]
-<p>? \((x,y)\to(0,0)\) ??\(e^y\to1\)????????? \(\sin x/x\to1\)?</p></div>
-    <div class="answer"><span class="label">??</span>\[1\]</div>
+<p>計算重點如下。</p>\(e^y\to1\)\(\sin x/x\to1\)</div>
+    <div class="answer"><span class="label">答案</span>\[1\]</div>
   </section>
   <section class="problem" id="p-13-2-13">
     <h3>13.2 #13</h3>
-    <div class="problem-block"><span class="label">??</span>\[\lim_{(x,y)\to(1,1)}\frac{x^2-2xy+y^2}{x-y},\quad x\ne y\]</div>
-    <div class="solution"><span class="label">??</span><p>????????</p>
+    <div class="problem-block"><span class="label">題目</span>\[\lim_{(x,y)\to(1,1)}\frac{x^2-2xy+y^2}{x-y},\quad x\ne y\]</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[x^2-2xy+y^2=(x-y)^2.\]
-<p>?????? \(x\ne y\)???????? \(x-y\)?</p>
+<p>計算重點如下。</p>\(x\ne y\)\(x-y\)
 \[\frac{(x-y)^2}{x-y}=x-y.\]
-<p>?????? \((1,1)\)?</p></div>
-    <div class="answer"><span class="label">??</span>\[0\]</div>
+<p>依照定義與公式計算如下。</p></div>
+    <div class="answer"><span class="label">答案</span>\[0\]</div>
   </section>
   <section class="problem" id="p-13-2-23">
     <h3>13.2 #23</h3>
-    <div class="problem-block"><span class="label">??</span>\[\lim_{(x,y)\to(1,-1)}\frac{x^3+y^3}{x+y}\]</div>
-    <div class="solution"><span class="label">??</span><p>????????</p>
+    <div class="problem-block"><span class="label">題目</span>\[\lim_{(x,y)\to(1,-1)}\frac{x^3+y^3}{x+y}\]</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[x^3+y^3=(x+y)(x^2-xy+y^2).\]
-<p>?? \(x+y\) ?????</p>
+<p>計算重點如下。</p>\(x+y\)
 \[x^2-xy+y^2\to 1^2-1(-1)+(-1)^2=3.\]</div>
-    <div class="answer"><span class="label">??</span>\[3\]</div>
+    <div class="answer"><span class="label">答案</span>\[3\]</div>
   </section>
   <section class="problem" id="p-13-2-41">
     <h3>13.2 #41</h3>
-    <div class="problem-block"><span class="label">??</span><figure><img src="assets/chapter13/p13-2-41-48.png" alt="13.2 #41 and #44 textbook figures"><figcaption>??????#41 ? #44 ????????</figcaption></figure>
+    <div class="problem-block"><span class="label">題目</span><figure><img src="assets/chapter13/p13-2-41-48.png" alt="13.2 #41 and #44 textbook figures"><figcaption>課本含圖題：曲面圖與題目裁切。</figcaption></figure>
 \[f(x,y)=-\frac{x}{\sqrt{x^2+y^2}}\]
-<p>????????? \((x,y)\to(0,0)\) ???????</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(y=0\) ??????</p>
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(y=0\)
 \[f(x,0)=-\frac{x}{|x|}.\]
-<p>? \(x\to0^+\)??? \(-1\)?? \(x\to0^-\)??? \(1\)??????????????????????</p></div>
-    <div class="answer"><span class="label">??</span>??????</div>
+<p>計算重點如下。</p>\(x\to0^+\)\(-1\)\(x\to0^-\)\(1\)</div>
+    <div class="answer"><span class="label">答案</span>極限不存在。</div>
   </section>
   <section class="problem" id="p-13-2-44">
     <h3>13.2 #44</h3>
-    <div class="problem-block"><span class="label">??</span><figure><img src="assets/chapter13/p13-2-41-48.png" alt="13.2 #41 and #44 textbook figures"><figcaption>??????#44 ???????????</figcaption></figure>
+    <div class="problem-block"><span class="label">題目</span><figure><img src="assets/chapter13/p13-2-41-48.png" alt="13.2 #41 and #44 textbook figures"><figcaption>課本含圖題：曲面圖與題目裁切。</figcaption></figure>
 \[f(x,y)=\frac{xy}{|xy|}\]
-<p>????????? \((x,y)\to(0,0)\) ???????</p></div>
-    <div class="solution"><span class="label">??</span><p>?????? \(y=x\), \(x>0\)?</p>
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(y=x\)\(x>0\)
 \[\frac{x^2}{|x^2|}=1.\]
-<p>?????? \(y=-x\), \(x>0\)?</p>
+<p>計算重點如下。</p>\(y=-x\)\(x>0\)
 \[\frac{-x^2}{|-x^2|}=-1.\]
-<p>????????????????????</p></div>
-    <div class="answer"><span class="label">??</span>??????</div>
+<p>依照定義與公式計算如下。</p></div>
+    <div class="answer"><span class="label">答案</span>極限不存在。</div>
   </section>
   <section class="problem" id="p-13-2-49">
     <h3>13.2 #49</h3>
-    <div class="problem-block"><span class="label">??</span>\[\lim_{(x,y)\to(1,1)}\frac{xy^2-1}{y-1}\]</div>
-    <div class="solution"><span class="label">??</span><p>???????</p>
-<p>????? \(x=1\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[\lim_{(x,y)\to(1,1)}\frac{xy^2-1}{y-1}\]</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
+<p>計算重點如下。</p>\(x=1\)
 \[\frac{y^2-1}{y-1}=y+1\to2.\]
-<p>????? \(x=1/y^2\)????????? \((1,1)\)????? 0?</p>
+<p>計算重點如下。</p>\(x=1/y^2\)
 \[\frac{(1/y^2)y^2-1}{y-1}=0\to0.\]
-<p>?????????</p></div>
-    <div class="answer"><span class="label">??</span>??????</div>
+<p>依照定義與公式計算如下。</p></div>
+    <div class="answer"><span class="label">答案</span>極限不存在。</div>
   </section>
   <section class="problem" id="p-13-2-67">
     <h3>13.2 #67</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=\frac{y^2}{x^2+y^2}\]
-<p>? \((x,y)\to(0,0)\) ???????????</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(y=0\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=\frac{y^2}{x^2+y^2}\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(y=0\)
 \[f(x,0)=0.\]
-<p>? \(x=0\)?</p>
+<p>計算重點如下。</p>\(x=0\)
 \[f(0,y)=1.\]
-<p>?????????????????</p></div>
-    <div class="answer"><span class="label">??</span>??????</div>
+<p>依照定義與公式計算如下。</p></div>
+    <div class="answer"><span class="label">答案</span>極限不存在。</div>
   </section>
   <section class="problem" id="p-13-2-73">
     <h3>13.2 #73</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=x^2+y^2,\quad \varepsilon=0.01\]
-<p>???? \(\delta>0\)?? \(\sqrt{x^2+y^2}<\delta\Rightarrow |f(x,y)-f(0,0)|<\varepsilon\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(r=\sqrt{x^2+y^2}\)??? \(f(0,0)=0\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=x^2+y^2,\quad \varepsilon=0.01\]
+<p>計算重點如下。</p>\(\delta>0\)</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(r=\sqrt{x^2+y^2}\)
 \[|f(x,y)-f(0,0)|=x^2+y^2=r^2.\]
-<p>?? \(r<\delta\)??? \(r^2<\delta^2\)?????? \(0.01\)??</p>
+<p>計算重點如下。</p>\(r<\delta\)\(r^2<\delta^2\)\(0.01\)
 \[\delta=0.1.\]</div>
-    <div class="answer"><span class="label">??</span>?? \(\delta=0.1\)?</div>
+    <div class="answer"><span class="label">答案</span>可取 \(\delta=0.1\)。</div>
   </section>
   <section class="problem" id="p-13-2-74">
     <h3>13.2 #74</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=\frac{y}{x^2+1},\quad \varepsilon=0.05\]</div>
-    <div class="solution"><span class="label">??</span><p>?? \(x^2+1\ge1\)???</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=\frac{y}{x^2+1},\quad \varepsilon=0.05\]</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(x^2+1\ge1\)
 \[\left|\frac{y}{x^2+1}\right|\le |y|\le \sqrt{x^2+y^2}.\]
-<p>?? \(\delta=0.05\)?? \(\sqrt{x^2+y^2}<\delta\) ????? \(|f(x,y)-0|<0.05\)?</p></div>
-    <div class="answer"><span class="label">??</span>?? \(\delta=0.05\)?</div>
+<p>計算重點如下。</p>\(\delta=0.05\)\(\sqrt{x^2+y^2}<\delta\)</div>
+    <div class="answer"><span class="label">答案</span>可取 \(\delta=0.05\)。</div>
   </section>
   <section class="problem" id="p-13-2-75">
     <h3>13.2 #75</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=\frac{x+y}{x^2+1},\quad \varepsilon=0.01\]</div>
-    <div class="solution"><span class="label">??</span><p>????? 1???</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=\frac{x+y}{x^2+1},\quad \varepsilon=0.01\]</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[|f(x,y)|\le |x+y|\le |x|+|y|\le \sqrt2\sqrt{x^2+y^2}.\]
-<p>?????? \(0.01\)??</p>
+<p>計算重點如下。</p>\(0.01\)
 \[\delta=\frac{0.01}{\sqrt2}.\]</div>
-    <div class="answer"><span class="label">??</span>?? \(\delta=0.01/\sqrt2\)?</div>
+    <div class="answer"><span class="label">答案</span>可取 \(\delta=0.01/\sqrt2\)。</div>
   </section>
   <section class="problem" id="p-13-2-77">
     <h3>13.2 #77</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=\frac{xy^2}{x^2+y^2},\quad f(0,0)=0,\quad \varepsilon=0.04\]</div>
-    <div class="solution"><span class="label">??</span><p>???????????? \(|x|\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=\frac{xy^2}{x^2+y^2},\quad f(0,0)=0,\quad \varepsilon=0.04\]</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(|x|\)
 \[\left|\frac{xy^2}{x^2+y^2}\right|=|x|\frac{y^2}{x^2+y^2}\le |x|\le \sqrt{x^2+y^2}.\]
-<p>??? \(\delta=0.04\) ???</p></div>
-    <div class="answer"><span class="label">??</span>?? \(\delta=0.04\)?</div>
+<p>計算重點如下。</p>\(\delta=0.04\)</div>
+    <div class="answer"><span class="label">答案</span>可取 \(\delta=0.04\)。</div>
   </section>
   <h2 id="s133">13.3</h2>
   <section class="problem" id="p-13-3-14">
     <h3>13.3 #14</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=e^{-x}\sin(x+y)\]
-<p>? \(f_x\) ? \(f_y\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(x\) ?????\(e^{-x}\) ? \(\sin(x+y)\) ?? \(x\)?????????</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=e^{-x}\sin(x+y)\]
+<p>計算重點如下。</p>\(f_x\)\(f_y\)</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(x\)\(e^{-x}\)\(x\)
 \[f_x=-e^{-x}\sin(x+y)+e^{-x}\cos(x+y).\]
-<p>? \(y\) ?????\(e^{-x}\) ????</p>
+<p>計算重點如下。</p>\(y\)\(e^{-x}\)
 \[f_y=e^{-x}\cos(x+y).\]</div>
-    <div class="answer"><span class="label">??</span>\[f_x=e^{-x}(\cos(x+y)-\sin(x+y)),\quad f_y=e^{-x}\cos(x+y).\]</div>
+    <div class="answer"><span class="label">答案</span>\[f_x=e^{-x}(\cos(x+y)-\sin(x+y)),\quad f_y=e^{-x}\cos(x+y).\]</div>
   </section>
   <section class="problem" id="p-13-3-18">
     <h3>13.3 #18</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=\cos^2(3x-y^2)\]
-<p>? \(f_x\) ? \(f_y\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(u=3x-y^2\)?? \(f=\cos^2u\)????????</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=\cos^2(3x-y^2)\]
+<p>計算重點如下。</p>\(f_x\)\(f_y\)</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(u=3x-y^2\)\(f=\cos^2u\)
 \[\frac{d}{du}\cos^2u=-2\sin u\cos u.\]
-<p>???????</p>
+<p>依照定義與公式計算如下。</p>
 \[f_x=-2\sin u\cos u\cdot3=-6\sin u\cos u,\]
 \[f_y=-2\sin u\cos u\cdot(-2y)=4y\sin u\cos u.\]</div>
-    <div class="answer"><span class="label">??</span>\[f_x=-3\sin(2(3x-y^2)),\quad f_y=2y\sin(2(3x-y^2)).\]</div>
+    <div class="answer"><span class="label">答案</span>\[f_x=-3\sin(2(3x-y^2)),\quad f_y=2y\sin(2(3x-y^2)).\]</div>
   </section>
   <section class="problem" id="p-13-3-51">
     <h3>13.3 #51</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=x^2y^3-x^4+y^5\]
-<p>????????</p></div>
-    <div class="solution"><span class="label">??</span><p>?????</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=x^2y^3-x^4+y^5\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[f_x=2xy^3-4x^3,\quad f_y=3x^2y^2+5y^4.\]
-<p>???? \(x,y\) ???</p>
+<p>計算重點如下。</p>\(x,y\)
 \[f_{xx}=2y^3-12x^2,\quad f_{xy}=6xy^2,\]
 \[f_{yx}=6xy^2,\quad f_{yy}=6x^2y+20y^3.\]</div>
-    <div class="answer"><span class="label">??</span>\[f_{xx}=2y^3-12x^2,\ f_{xy}=f_{yx}=6xy^2,\ f_{yy}=6x^2y+20y^3.\]</div>
+    <div class="answer"><span class="label">答案</span>\[f_{xx}=2y^3-12x^2,\ f_{xy}=f_{yx}=6xy^2,\ f_{yy}=6x^2y+20y^3.\]</div>
   </section>
   <section class="problem" id="p-13-3-54">
     <h3>13.3 #54</h3>
-    <div class="problem-block"><span class="label">??</span>\[z=xe^{x/y^2}\]
-<p>????????</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(a=x/y^2\)??????</p>
+    <div class="problem-block"><span class="label">題目</span>\[z=xe^{x/y^2}\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(a=x/y^2\)
 \[z_x=e^a\left(1+\frac{x}{y^2}\right),\quad z_y=-\frac{2x^2}{y^3}e^a.\]
-<p>????</p>
+<p>依照定義與公式計算如下。</p>
 \[z_{xx}=e^a\left(\frac{2}{y^2}+\frac{x}{y^4}\right),\]
 \[z_{xy}=z_{yx}=e^a\left(-\frac{4x}{y^3}-\frac{2x^2}{y^5}\right),\]
 \[z_{yy}=e^a\left(\frac{6x^2}{y^4}+\frac{4x^3}{y^6}\right).\]</div>
-    <div class="answer"><span class="label">??</span>????????????</div>
+    <div class="answer"><span class="label">答案</span>答案為詳解中列出的四個二階偏導。</div>
   </section>
   <section class="problem" id="p-13-3-56">
     <h3>13.3 #56</h3>
-    <div class="problem-block"><span class="label">??</span>\[w=e^x+x\ln y+y\ln x\]
-<p>?? \(w_{xy}=w_{yx}\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>?? \(w_x\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[w=e^x+x\ln y+y\ln x\]
+<p>計算重點如下。</p>\(w_{xy}=w_{yx}\)</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(w_x\)
 \[w_x=e^x+\ln y+\frac{y}{x}.\]
-<p>?? \(y\) ???</p>
+<p>計算重點如下。</p>\(y\)
 \[w_{xy}=\frac1y+\frac1x.\]
-<p>????? \(w_y\)?</p>
+<p>計算重點如下。</p>\(w_y\)
 \[w_y=\frac{x}{y}+\ln x.\]
-<p>?? \(x\) ???</p>
+<p>計算重點如下。</p>\(x\)
 \[w_{yx}=\frac1y+\frac1x.\]</p></div>
-    <div class="answer"><span class="label">??</span>\[w_{xy}=w_{yx}=\frac1x+\frac1y.\]</div>
+    <div class="answer"><span class="label">答案</span>\[w_{xy}=w_{yx}=\frac1x+\frac1y.\]</div>
   </section>
   <section class="problem" id="p-13-3-70">
     <h3>13.3 #70</h3>
-    <div class="problem-block"><span class="label">??</span>\[xz+y\ln x-x^2+4=0\]
-<p>???? \(x\) ??? \(y,z\) ?????? \((1,-1,-3)\) ? \(\partial x/\partial z\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(F(x,y,z)=xz+y\ln x-x^2+4\)???????</p>
+    <div class="problem-block"><span class="label">題目</span>\[xz+y\ln x-x^2+4=0\]
+<p>計算重點如下。</p>\(x\)\(y,z\)\(\partial x/\partial z\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[x_z=-\frac{F_z}{F_x}.\]
-<p>??</p>
+<p>依照定義與公式計算如下。</p>
 \[F_z=x,\quad F_x=z+\frac{y}{x}-2x.\]
-<p>? \((1,-1,-3)\)?</p>
+<p>依照定義與公式計算如下。</p>
 \[F_z=1,\quad F_x=-3-1-2=-6.\]
 \[x_z=-\frac1{-6}=\frac16.\]</div>
-    <div class="answer"><span class="label">??</span>\[\frac{\partial x}{\partial z}=\frac16\]</div>
+    <div class="answer"><span class="label">答案</span>\[\frac{\partial x}{\partial z}=\frac16\]</div>
   </section>
   <section class="problem" id="p-13-3-75">
     <h3>13.3 #75</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=2x+3y-4\]
-<p>???? \((2,-1)\) ??? (a) \(x=2\)?(b) \(y=-1\) ?????????</p></div>
-    <div class="solution"><span class="label">??</span><p>??? \(z=f(x,y)\)???? \(x=2\) ???? \(y\) ??????? \(f_y\)???? \(y=-1\) ???? \(x\) ??????? \(f_x\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=2x+3y-4\]
+<p>計算重點如下。</p>\(x=2\)\(y=-1\)</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(x=2\)\(y\)\(f_y\)\(y=-1\)\(x\)\(f_x\)
 \[f_x=2,\quad f_y=3.\]</div>
-    <div class="answer"><span class="label">??</span>(a) \(3\)?(b) \(2\)?</div>
+    <div class="answer"><span class="label">答案</span>(a) \(3\)，(b) \(2\)。</div>
   </section>
   <section class="problem" id="p-13-3-85">
     <h3>13.3 #85</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=e^{-2y}\cos2x\]
-<p>????? Laplace equation?</p></div>
-    <div class="solution"><span class="label">??</span><p>?? Laplace equation ?</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=e^{-2y}\cos2x\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[f_{xx}+f_{yy}=0.\]
-<p>???</p>
+<p>依照定義與公式計算如下。</p>
 \[f_x=-2e^{-2y}\sin2x,\quad f_{xx}=-4e^{-2y}\cos2x,\]
 \[f_y=-2e^{-2y}\cos2x,\quad f_{yy}=4e^{-2y}\cos2x.\]
-<p>???? 0?</p></div>
-    <div class="answer"><span class="label">??</span>\[f_{xx}+f_{yy}=0\]????? Laplace equation?</div>
+<p>依照定義與公式計算如下。</p></div>
+    <div class="answer"><span class="label">答案</span>\[f_{xx}+f_{yy}=0\] 所以滿足 Laplace equation。</div>
   </section>
   <h2 id="s134">13.4</h2>
   <section class="problem" id="p-13-4-2">
     <h3>13.4 #2</h3>
-    <div class="problem-block"><span class="label">??</span>\[w=x^2+y^2,\quad x=\cos t+\sin t,\quad y=\cos t-\sin t,\quad t=0\]
-<p>?????????????? \(dw/dt\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>?????</p>
+    <div class="problem-block"><span class="label">題目</span>\[w=x^2+y^2,\quad x=\cos t+\sin t,\quad y=\cos t-\sin t,\quad t=0\]
+<p>計算重點如下。</p>\(dw/dt\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[w=(\cos t+\sin t)^2+(\cos t-\sin t)^2=2.\]
-<p>?? \(dw/dt=0\)?????????????</p>
+<p>計算重點如下。</p>\(dw/dt=0\)
 \[\frac{dw}{dt}=2x\frac{dx}{dt}+2y\frac{dy}{dt}.\]
-<p>?? \(x,y,x',y'\) ???????</p></div>
-    <div class="answer"><span class="label">??</span>\[\frac{dw}{dt}=0,\quad \left.\frac{dw}{dt}\right|_{t=0}=0.\]</div>
+<p>計算重點如下。</p>\(x,y,x',y'\)</div>
+    <div class="answer"><span class="label">答案</span>\[\frac{dw}{dt}=0,\quad \left.\frac{dw}{dt}\right|_{t=0}=0.\]</div>
   </section>
   <section class="problem" id="p-13-4-5">
     <h3>13.4 #5</h3>
-    <div class="problem-block"><span class="label">??</span>\[w=2ye^x-\ln z,\quad x=\ln(t^2+1),\quad y=\tan^{-1}t,\quad z=e^t,\quad t=1\]</div>
-    <div class="solution"><span class="label">??</span><p>???? \(w\) ?? \(t\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[w=2ye^x-\ln z,\quad x=\ln(t^2+1),\quad y=\tan^{-1}t,\quad z=e^t,\quad t=1\]</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(w\)\(t\)
 \[w(t)=2(\tan^{-1}t)(t^2+1)-t.\]
-<p>???</p>
+<p>依照定義與公式計算如下。</p>
 \[w'(t)=2\left(\frac{1}{1+t^2}(t^2+1)+(\tan^{-1}t)(2t)\right)-1=1+4t\tan^{-1}t.\]
-<p>?? \(t=1\)?</p>
+<p>計算重點如下。</p>\(t=1\)
 \[1+4\cdot1\cdot\frac\pi4=1+\pi.\]</div>
-    <div class="answer"><span class="label">??</span>\[\frac{dw}{dt}=1+4t\tan^{-1}t,\quad \left.\frac{dw}{dt}\right|_{t=1}=1+\pi.\]</div>
+    <div class="answer"><span class="label">答案</span>\[\frac{dw}{dt}=1+4t\tan^{-1}t,\quad \left.\frac{dw}{dt}\right|_{t=1}=1+\pi.\]</div>
   </section>
   <section class="problem" id="p-13-4-9">
     <h3>13.4 #9</h3>
-    <div class="problem-block"><span class="label">??</span>\[w=xy+yz+xz,\quad x=u+v,\quad y=u-v,\quad z=uv,\quad (u,v)=\left(\frac12,1\right)\]
-<p>? \(w_u,w_v\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>???????</p>
+    <div class="problem-block"><span class="label">題目</span>\[w=xy+yz+xz,\quad x=u+v,\quad y=u-v,\quad z=uv,\quad (u,v)=\left(\frac12,1\right)\]
+<p>計算重點如下。</p>\(w_u,w_v\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[w=(u+v)(u-v)+(u-v)uv+(u+v)uv=u^2-v^2+2u^2v.\]
-<p>??</p>
+<p>依照定義與公式計算如下。</p>
 \[w_u=2u+4uv,\quad w_v=-2v+2u^2.\]
-<p>? \((u,v)=(1/2,1)\)?</p>
+<p>依照定義與公式計算如下。</p>
 \[w_u=3,\quad w_v=-\frac32.\]</div>
-    <div class="answer"><span class="label">??</span>\[w_u=3,\quad w_v=-\frac32.\]</div>
+    <div class="answer"><span class="label">答案</span>\[w_u=3,\quad w_v=-\frac32.\]</div>
   </section>
   <section class="problem" id="p-13-4-11">
     <h3>13.4 #11</h3>
-    <div class="problem-block"><span class="label">??</span>\[u=\frac{p-q}{q-r},\quad p=x+y+z,\quad q=x-y+z,\quad r=x+y-z\]
-<p>? \((x,y,z)=(\sqrt3,2,1)\) ? \(u_x,u_y,u_z\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>?? \(u\) ???? \(x,y,z\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[u=\frac{p-q}{q-r},\quad p=x+y+z,\quad q=x-y+z,\quad r=x+y-z\]
+<p>計算重點如下。</p>\(u_x,u_y,u_z\)</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(u\)\(x,y,z\)
 \[p-q=2y,\quad q-r=2(z-y),\quad u=\frac{y}{z-y}.\]
-<p>??</p>
+<p>依照定義與公式計算如下。</p>
 \[u_x=0,\quad u_y=\frac{z}{(z-y)^2},\quad u_z=-\frac{y}{(z-y)^2}.\]
-<p>?? \((\sqrt3,2,1)\)?? \(z-y=-1\)?</p></div>
-    <div class="answer"><span class="label">??</span>\[u_x=0,\quad u_y=1,\quad u_z=-2.\]</div>
+<p>計算重點如下。</p>\(z-y=-1\)</div>
+    <div class="answer"><span class="label">答案</span>\[u_x=0,\quad u_y=1,\quad u_z=-2.\]</div>
   </section>
   <section class="problem" id="p-13-4-26">
     <h3>13.4 #26</h3>
-    <div class="problem-block"><span class="label">??</span>\[xy+y^2-3x-3=0,\quad (-1,1)\]
-<p>? \(dy/dx\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(F(x,y)=xy+y^2-3x-3\)???????</p>
+    <div class="problem-block"><span class="label">題目</span>\[xy+y^2-3x-3=0,\quad (-1,1)\]
+<p>計算重點如下。</p>\(dy/dx\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[\frac{dy}{dx}=-\frac{F_x}{F_y}.\]
-<p>??</p>
+<p>依照定義與公式計算如下。</p>
 \[F_x=y-3,\quad F_y=x+2y.\]
-<p>? \((-1,1)\)?</p>
+<p>依照定義與公式計算如下。</p>
 \[\frac{dy}{dx}=-\frac{-2}{1}=2.\]</div>
-    <div class="answer"><span class="label">??</span>\[\frac{dy}{dx}=2\]</div>
+    <div class="answer"><span class="label">答案</span>\[\frac{dy}{dx}=2\]</div>
   </section>
   <section class="problem" id="p-13-4-31">
     <h3>13.4 #31</h3>
-    <div class="problem-block"><span class="label">??</span>\[z^3-xy+yz+y^3-2=0,\quad (1,1,1)\]
-<p>? \(z_x,z_y\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(F=z^3-xy+yz+y^3-2\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[z^3-xy+yz+y^3-2=0,\quad (1,1,1)\]
+<p>計算重點如下。</p>\(z_x,z_y\)</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(F=z^3-xy+yz+y^3-2\)
 \[z_x=-\frac{F_x}{F_z},\quad z_y=-\frac{F_y}{F_z}.\]
-<p>???</p>
+<p>依照定義與公式計算如下。</p>
 \[F_x=-y,\quad F_y=-x+z+3y^2,\quad F_z=3z^2+y.\]
-<p>? \((1,1,1)\)?</p>
+<p>依照定義與公式計算如下。</p>
 \[F_x=-1,\quad F_y=3,\quad F_z=4.\]</div>
-    <div class="answer"><span class="label">??</span>\[z_x=\frac14,\quad z_y=-\frac34.\]</div>
+    <div class="answer"><span class="label">答案</span>\[z_x=\frac14,\quad z_y=-\frac34.\]</div>
   </section>
   <section class="problem" id="p-13-4-33">
     <h3>13.4 #33</h3>
-    <div class="problem-block"><span class="label">??</span>\[\sin(x+y)+\sin(y+z)+\sin(x+z)=0,\quad (\pi,\pi,\pi)\]
-<p>? \(z_x,z_y\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(F=\sin(x+y)+\sin(y+z)+\sin(x+z)\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[\sin(x+y)+\sin(y+z)+\sin(x+z)=0,\quad (\pi,\pi,\pi)\]
+<p>計算重點如下。</p>\(z_x,z_y\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[F_x=\cos(x+y)+\cos(x+z),\]
 \[F_y=\cos(x+y)+\cos(y+z),\]
 \[F_z=\cos(y+z)+\cos(x+z).\]
-<p>? \((\pi,\pi,\pi)\)??? \(\cos(2\pi)=1\)????????? 2?</p>
+<p>依照定義與公式計算如下。</p>
 \[z_x=-\frac{F_x}{F_z}=-1,\quad z_y=-\frac{F_y}{F_z}=-1.\]</div>
-    <div class="answer"><span class="label">??</span>\[z_x=-1,\quad z_y=-1.\]</div>
+    <div class="answer"><span class="label">答案</span>\[z_x=-1,\quad z_y=-1.\]</div>
   </section>
   <section class="problem" id="p-13-4-47">
     <h3>13.4 #47</h3>
-    <div class="problem-block"><span class="label">??</span><figure><img src="assets/chapter13/p13-4-47-circuit.png" alt="13.4 #47 circuit figure"><figcaption>??????????????????</figcaption></figure>
+    <div class="problem-block"><span class="label">題目</span><figure><img src="assets/chapter13/p13-4-47-circuit.png" alt="13.4 #47 circuit figure"><figcaption>課本含圖題：電壓、電流、電阻電路圖。</figcaption></figure>
 \[V=IR,\quad R=600,\ I=0.04,\ \frac{dR}{dt}=0.5,\ \frac{dV}{dt}=-0.01\]
-<p>? \(dI/dt\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(V=IR\) ???</p>
+<p>計算重點如下。</p>\(dI/dt\)</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(V=IR\)
 \[\frac{dV}{dt}=R\frac{dI}{dt}+I\frac{dR}{dt}.\]
-<p>?????</p>
+<p>依照定義與公式計算如下。</p>
 \[-0.01=600\frac{dI}{dt}+0.04(0.5).\]
 \[-0.01=600\frac{dI}{dt}+0.02.\]
 \[600\frac{dI}{dt}=-0.03.\]</div>
-    <div class="answer"><span class="label">??</span>\[\frac{dI}{dt}=-0.00005\ \text{A/s}.\]</div>
+    <div class="answer"><span class="label">答案</span>\[\frac{dI}{dt}=-0.00005\ \text{A/s}.\]</div>
   </section>
   <section class="problem" id="p-13-4-55">
     <h3>13.4 #55</h3>
-    <div class="problem-block"><span class="label">??</span>\[x=\cos t,\quad y=\sin t,\quad T_x=8x-4y,\quad T_y=8y-4x\]
-<p>??????/??????? \(T=4x^2-4xy+4y^2\)????????</p></div>
-    <div class="solution"><span class="label">??</span><p>?????</p>
+    <div class="problem-block"><span class="label">題目</span>\[x=\cos t,\quad y=\sin t,\quad T_x=8x-4y,\quad T_y=8y-4x\]
+<p>計算重點如下。</p>\(T=4x^2-4xy+4y^2\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[\frac{dT}{dt}=T_x(-\sin t)+T_y(\cos t).\]
-<p>?? \(x=\cos t,y=\sin t\)?</p>
+<p>計算重點如下。</p>\(x=\cos t,y=\sin t\)
 \[\frac{dT}{dt}=4(\sin^2t-\cos^2t)=-4\cos2t.\]
-<p>???? \(t=\pi/4,3\pi/4,5\pi/4,7\pi/4\)????? \(8\sin2t\)???????????</p>
-<p>? \(T=4x^2-4xy+4y^2=4-4xy\)???? \(xy=1/2\) ??????? \(xy=-1/2\) ????</p></div>
-    <div class="answer"><span class="label">??</span>???\(t=3\pi/4,7\pi/4\)?\(T_{\max}=6\)????\(t=\pi/4,5\pi/4\)?\(T_{\min}=2\)?</div>
+<p>計算重點如下。</p>\(t=\pi/4,3\pi/4,5\pi/4,7\pi/4\)\(8\sin2t\)
+<p>計算重點如下。</p>\(T=4x^2-4xy+4y^2=4-4xy\)\(xy=1/2\)\(xy=-1/2\)</div>
+    <div class="answer"><span class="label">答案</span>最高：\(t=3\pi/4,7\pi/4\)，\(T_{\max}=6\)。最低：\(t=\pi/4,5\pi/4\)，\(T_{\min}=2\)。</div>
   </section>
   <section class="problem" id="p-13-4-58">
     <h3>13.4 #58</h3>
-    <div class="problem-block"><span class="label">??</span>\[z=x^2-y^2,\quad x=f(t),\quad y=g(t)\]
+    <div class="problem-block"><span class="label">題目</span>\[z=x^2-y^2,\quad x=f(t),\quad y=g(t)\]
 \[f(2)=4,\ f'(2)=-1,\ g(2)=-2,\ g'(2)=-3\]
-<p>? \(t=2\) ??? \(z\) ?????</p></div>
-    <div class="solution"><span class="label">??</span><p>?????</p>
+<p>計算重點如下。</p>\(t=2\)\(z\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[\frac{dz}{dt}=2x\frac{dx}{dt}-2y\frac{dy}{dt}.\]
-<p>?? \(t=2\)?</p>
+<p>計算重點如下。</p>\(t=2\)
 \[\frac{dz}{dt}=2(4)(-1)-2(-2)(-3)=-8-12=-20.\]</div>
-    <div class="answer"><span class="label">??</span>\[-20\]</div>
+    <div class="answer"><span class="label">答案</span>\[-20\]</div>
   </section>
   <h2 id="s135">13.5</h2>
   <section class="problem" id="p-13-5-12">
     <h3>13.5 #12</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=2x^2+y^2,\quad P_0=(-1,1),\quad v=3i-4j\]
-<p>??????</p></div>
-    <div class="solution"><span class="label">??</span><p>???????</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=2x^2+y^2,\quad P_0=(-1,1),\quad v=3i-4j\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[u=\frac{(3,-4)}{5}=\left(\frac35,-\frac45\right).\]
-<p>???</p>
+<p>依照定義與公式計算如下。</p>
 \[\nabla f=(4x,2y),\quad \nabla f(-1,1)=(-4,2).\]
-<p>????????</p>
+<p>依照定義與公式計算如下。</p>
 \[D_u f=(-4,2)\cdot\left(\frac35,-\frac45\right)=-4.\]</div>
-    <div class="answer"><span class="label">??</span>\[-4\]</div>
+    <div class="answer"><span class="label">答案</span>\[-4\]</div>
   </section>
   <section class="problem" id="p-13-5-15">
     <h3>13.5 #15</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y,z)=xy+yz+zx,\quad P_0=(1,-1,2),\quad v=3i+6j-2k\]</div>
-    <div class="solution"><span class="label">??</span><p>???</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y,z)=xy+yz+zx,\quad P_0=(1,-1,2),\quad v=3i+6j-2k\]</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[\nabla f=(y+z,x+z,x+y).\]
-<p>? \(P_0\)?</p>
+<p>計算重點如下。</p>\(P_0\)
 \[\nabla f(1,-1,2)=(1,3,0).\]
-<p>?????? \(\sqrt{3^2+6^2+(-2)^2}=7\)???</p>
+<p>依照定義與公式計算如下。</p>
 \[u=\left(\frac37,\frac67,-\frac27\right).\]
 \[D_u f=(1,3,0)\cdot u=\frac{21}{7}=3.\]</div>
-    <div class="answer"><span class="label">??</span>\[3\]</div>
+    <div class="answer"><span class="label">答案</span>\[3\]</div>
   </section>
   <section class="problem" id="p-13-5-19">
     <h3>13.5 #19</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=x^2+xy+y^2,\quad P_0=(-1,1)\]
-<p>?????/??????????</p></div>
-    <div class="solution"><span class="label">??</span><p>????????????</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=x^2+xy+y^2,\quad P_0=(-1,1)\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[\nabla f=(2x+y,x+2y),\quad \nabla f(-1,1)=(-1,1).\]
-<p>?????</p>
+<p>依照定義與公式計算如下。</p>
 \[u_{\max}=\frac{(-1,1)}{\sqrt2}.\]
-<p>??????????? \(\sqrt2\)?????????????????? \(-\sqrt2\)?</p></div>
-    <div class="answer"><span class="label">??</span>?????\((-1/\sqrt2,1/\sqrt2)\)?? \(\sqrt2\)??????\((1/\sqrt2,-1/\sqrt2)\)?? \(-\sqrt2\)?</div>
+<p>計算重點如下。</p>\(\sqrt2\)\(-\sqrt2\)</div>
+    <div class="answer"><span class="label">答案</span>最快增加：\((-1/\sqrt2,1/\sqrt2)\)，值 \(\sqrt2\)。最快減少：\((1/\sqrt2,-1/\sqrt2)\)，值 \(-\sqrt2\)。</div>
   </section>
   <section class="problem" id="p-13-5-23">
     <h3>13.5 #23</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y,z)=\ln(xy)+\ln(yz)+\ln(xz),\quad P_0=(1,1,1)\]
-<p>?????/??????????</p></div>
-    <div class="solution"><span class="label">??</span><p>????</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y,z)=\ln(xy)+\ln(yz)+\ln(xz),\quad P_0=(1,1,1)\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[f=2\ln x+2\ln y+2\ln z.\]
-<p>??</p>
+<p>依照定義與公式計算如下。</p>
 \[\nabla f=\left(\frac2x,\frac2y,\frac2z\right),\quad \nabla f(1,1,1)=(2,2,2).\]
-<p>????? \(2\sqrt3\)?</p></div>
-    <div class="answer"><span class="label">??</span>?????? \((1,1,1)/\sqrt3\)?? \(2\sqrt3\)??????? \(-(1,1,1)/\sqrt3\)?? \(-2\sqrt3\)?</div>
+<p>計算重點如下。</p>\(2\sqrt3\)</div>
+    <div class="answer"><span class="label">答案</span>最快增加方向 \((1,1,1)/\sqrt3\)，值 \(2\sqrt3\)。最快減少方向 \(-(1,1,1)/\sqrt3\)，值 \(-2\sqrt3\)。</div>
   </section>
   <section class="problem" id="p-13-5-25">
     <h3>13.5 #25</h3>
-    <div class="problem-block"><span class="label">??</span>\[x^2+y^2=4,\quad (\sqrt2,\sqrt2)\]
-<p>?????????</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(F=x^2+y^2\)??? \(\nabla F=(2x,2y)\) ?????</p>
+    <div class="problem-block"><span class="label">題目</span>\[x^2+y^2=4,\quad (\sqrt2,\sqrt2)\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(F=x^2+y^2\)
 \[\nabla F(\sqrt2,\sqrt2)=(2\sqrt2,2\sqrt2).\]
-<p>????</p>
+<p>依照定義與公式計算如下。</p>
 \[2\sqrt2(x-\sqrt2)+2\sqrt2(y-\sqrt2)=0.\]</div>
-    <div class="answer"><span class="label">??</span>\[x+y=2\sqrt2\]</div>
+    <div class="answer"><span class="label">答案</span>\[x+y=2\sqrt2\]</div>
   </section>
   <section class="problem" id="p-13-5-28">
     <h3>13.5 #28</h3>
-    <div class="problem-block"><span class="label">??</span>\[x^2-xy+y^2=7,\quad (-1,2)\]
-<p>?????????</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(F=x^2-xy+y^2\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[x^2-xy+y^2=7,\quad (-1,2)\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(F=x^2-xy+y^2\)
 \[\nabla F=(2x-y,-x+2y).\]
-<p>? \((-1,2)\)?</p>
+<p>依照定義與公式計算如下。</p>
 \[\nabla F=(-4,5).\]
-<p>?????</p>
+<p>依照定義與公式計算如下。</p>
 \[-4(x+1)+5(y-2)=0.\]</div>
-    <div class="answer"><span class="label">??</span>\[-4x+5y-14=0\]</div>
+    <div class="answer"><span class="label">答案</span>\[-4x+5y-14=0\]</div>
   </section>
   <section class="problem" id="p-13-5-34">
     <h3>13.5 #34</h3>
-    <div class="problem-block"><span class="label">??</span>\[T(x,y,z)=2xy-yz,\quad P=(1,-1,1)\]
-<p>????????????? \(-3\,^{\circ}\mathrm C/\mathrm m\)?</p></div>
-    <div class="solution"><span class="label">??</span><p>??????????</p>
+    <div class="problem-block"><span class="label">題目</span>\[T(x,y,z)=2xy-yz,\quad P=(1,-1,1)\]
+<p>計算重點如下。</p>\(-3\,^{\circ}\mathrm C/\mathrm m\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[-\|\nabla T\|\le D_uT\le \|\nabla T\|.\]
-<p>???</p>
+<p>依照定義與公式計算如下。</p>
 \[\nabla T=(2y,2x-z,-y).\]
-<p>? \((1,-1,1)\)?</p>
+<p>依照定義與公式計算如下。</p>
 \[\nabla T=(-2,1,1),\quad \|\nabla T\|=\sqrt6.\]
-<p>?? \(\sqrt6\approx2.45<3\)???????? \(-3\)?</p></div>
-    <div class="answer"><span class="label">??</span>????</div>
+<p>計算重點如下。</p>\(\sqrt6\approx2.45<3\)\(-3\)</div>
+    <div class="answer"><span class="label">答案</span>不存在。</div>
   </section>
   <h2 id="s136">13.6</h2>
   <section class="problem" id="p-13-6-4">
     <h3>13.6 #4</h3>
-    <div class="problem-block"><span class="label">??</span>\[x^2+2xy-y^2+z^2=7,\quad P_0=(1,-1,3)\]
-<p>????????</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(F=x^2+2xy-y^2+z^2-7\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[x^2+2xy-y^2+z^2=7,\quad P_0=(1,-1,3)\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(F=x^2+2xy-y^2+z^2-7\)
 \[\nabla F=(2x+2y,2x-2y,2z).\]
-<p>? \(P_0\)?</p>
+<p>計算重點如下。</p>\(P_0\)
 \[\nabla F(1,-1,3)=(0,4,6).\]
-<p>????</p>
+<p>依照定義與公式計算如下。</p>
 \[0(x-1)+4(y+1)+6(z-3)=0.\]
-<p>????????????</p></div>
-    <div class="answer"><span class="label">??</span>????\(2y+3z-7=0\)????\((x,y,z)=(1,-1,3)+t(0,4,6)\)?</div>
+<p>依照定義與公式計算如下。</p></div>
+    <div class="answer"><span class="label">答案</span>切平面：\(2y+3z-7=0\)。法線：\((x,y,z)=(1,-1,3)+t(0,4,6)\)。</div>
   </section>
   <section class="problem" id="p-13-6-15">
     <h3>13.6 #15</h3>
-    <div class="problem-block"><span class="label">??</span>\[x+y^2+2z=4,\quad x=1,\quad P=(1,1,1)\]
-<p>?????????????</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(F=x+y^2+2z-4\)?\(G=x-1\)????????????????????</p>
+    <div class="problem-block"><span class="label">題目</span>\[x+y^2+2z=4,\quad x=1,\quad P=(1,1,1)\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(F=x+y^2+2z-4\)\(G=x-1\)
 \[\nabla F\times \nabla G.\]
-<p>? \(P\)?</p>
+<p>計算重點如下。</p>\(P\)
 \[\nabla F=(1,2,2),\quad \nabla G=(1,0,0).\]
 \[\nabla F\times\nabla G=(0,2,-2).\]</div>
-    <div class="answer"><span class="label">??</span>\[x=1,\quad y=1+2t,\quad z=1-2t.\]</div>
+    <div class="answer"><span class="label">答案</span>\[x=1,\quad y=1+2t,\quad z=1-2t.\]</div>
   </section>
   <section class="problem" id="p-13-6-21">
     <h3>13.6 #21</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y,z)=\ln\sqrt{x^2+y^2+z^2}\]
-<p>?? \(P_0=(3,4,12)\) ? \(3i+6j-2k\) ???? \(ds=0.1\)??? \(f\) ?????</p></div>
-    <div class="solution"><span class="label">??</span><p>??????</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y,z)=\ln\sqrt{x^2+y^2+z^2}\]
+<p>計算重點如下。</p>\(3i+6j-2k\)\(ds=0.1\)\(f\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[df\approx \nabla f(P_0)\cdot u\,ds.\]
-<p>?? \(f=\ln r\)?</p>
+<p>計算重點如下。</p>\(f=\ln r\)
 \[\nabla f=\frac{(x,y,z)}{x^2+y^2+z^2}.\]
-<p>? \((3,4,12)\)???? \(169\)??? \(\nabla f=(3,4,12)/169\)????????</p>
+<p>計算重點如下。</p>\(169\)
 \[u=\frac{(3,6,-2)}7.\]
-<p>???</p>
+<p>依照定義與公式計算如下。</p>
 \[\nabla f\cdot u=\frac{9+24-24}{169\cdot7}=\frac9{1183}.\]
-<p>?? \(ds=0.1\)?</p></div>
-    <div class="answer"><span class="label">??</span>\[\Delta f\approx \frac{0.9}{1183}\approx0.000761.\]</div>
+<p>計算重點如下。</p>\(ds=0.1\)</div>
+    <div class="answer"><span class="label">答案</span>\[\Delta f\approx \frac{0.9}{1183}\approx0.000761.\]</div>
   </section>
   <section class="problem" id="p-13-6-26">
     <h3>13.6 #26</h3>
-    <div class="problem-block"><span class="label">??</span>\[T(x,y,z)=2x^2-xyz,\quad x=2t^2,\ y=3t,\ z=-t^2\]
-<p>??? \(P=(8,6,-4)\) ???????????????</p></div>
-    <div class="solution"><span class="label">??</span><p>?????\(2t^2=8\Rightarrow t=2\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[T(x,y,z)=2x^2-xyz,\quad x=2t^2,\ y=3t,\ z=-t^2\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(2t^2=8\Rightarrow t=2\)
 \[\nabla T=(4x-yz,-xz,-xy).\]
-<p>? \((8,6,-4)\)?</p>
+<p>依照定義與公式計算如下。</p>
 \[\nabla T=(56,32,-48).\]
-<p>????</p>
+<p>依照定義與公式計算如下。</p>
 \[r'(t)=(4t,3,-2t),\quad r'(2)=(8,3,-4).\]
-<p>??????</p>
+<p>依照定義與公式計算如下。</p>
 \[\nabla T\cdot r'(2)=56(8)+32(3)-48(-4)=736.\]
-<p>??? \(\|r'(2)\|=\sqrt{89}\)?????????? \(736/\sqrt{89}\)?</p></div>
-    <div class="answer"><span class="label">??</span>????\(736/\sqrt{89}\)????\(736\)?</div>
+<p>計算重點如下。</p>\(736/\sqrt{89}\)</div>
+    <div class="answer"><span class="label">答案</span>每公尺：\(736/\sqrt{89}\)。每秒：\(736\)。</div>
   </section>
   <section class="problem" id="p-13-6-52">
     <h3>13.6 #52</h3>
-    <div class="problem-block"><span class="label">??</span><figure><img src="assets/chapter13/p13-6-52-resistors.png" alt="13.6 #52 resistance formula"><img src="assets/chapter13/p13-6-52-resistors-cont.png" alt="13.6 #52 resistor circuit"><figcaption>?????????????????</figcaption></figure>
+    <div class="problem-block"><span class="label">題目</span><figure><img src="assets/chapter13/p13-6-52-resistors.png" alt="13.6 #52 resistance formula"><figcaption>課本含圖題：並聯電阻公式。</figcaption><img src="assets/chapter13/p13-6-52-resistors-cont.png" alt="13.6 #52 resistor circuit"><figcaption>課本含圖題：並聯電阻電路圖與小題。</figcaption></figure>
 \[\frac1R=\frac1{R_1}+\frac1{R_2}\]
-<p>? (a)(b)(c)?</p></div>
-    <div class="solution"><span class="label">??</span><p>(a) ? \(R=\dfrac{R_1R_2}{R_1+R_2}\)???</p>
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(R=\dfrac{R_1R_2}{R_1+R_2}\)
 \[\frac{\partial R}{\partial R_1}=\left(\frac{R}{R_1}\right)^2,\quad \frac{\partial R}{\partial R_2}=\left(\frac{R}{R_2}\right)^2.\]
-<p>??</p>
+<p>依照定義與公式計算如下。</p>
 \[dR=\left(\frac{R}{R_1}\right)^2dR_1+\left(\frac{R}{R_2}\right)^2dR_2.\]
-<p>(b) ? \(R_1=100,R_2=400\)?\(R=80\)???????</p>
+<p>計算重點如下。</p>\(R_1=100,R_2=400\)\(R=80\)
 \[\left(\frac{80}{100}\right)^2=0.64,\quad \left(\frac{80}{400}\right)^2=0.04.\]
-<p>??? \(R_1\) ????</p>
-<p>(c) ? \(R_1=20,R_2=25\)?\(R=100/9\)?? \(dR_1=0.1,dR_2=-0.1\)?</p>
+<p>計算重點如下。</p>\(R_1\)
+<p>計算重點如下。</p>\(R_1=20,R_2=25\)\(R=100/9\)\(dR_1=0.1,dR_2=-0.1\)
 \[dR=\left(\frac{5}{9}\right)^2(0.1)+\left(\frac{4}{9}\right)^2(-0.1)=\frac1{90}.\]
-<p>??????</p>
+<p>依照定義與公式計算如下。</p>
 \[\frac{dR}{R}=\frac{1/90}{100/9}=0.001=0.1\%.\]</div>
-    <div class="answer"><span class="label">??</span>(a) ??? (b) ? \(R_1\) ???? (c) ??? \(0.1\%\)?</div>
+    <div class="answer"><span class="label">答案</span>(a) 如詳解。 (b) 對 \(R_1\) 較敏感。 (c) 約增加 \(0.1\%\)。</div>
   </section>
   <h2 id="s137">13.7</h2>
   <section class="problem" id="p-13-7-3">
     <h3>13.7 #3</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=x^2+xy+3x+2y+5\]
-<p>? local maxima, local minima, saddle points?</p></div>
-    <div class="solution"><span class="label">??</span><p>??????? 0?</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=x^2+xy+3x+2y+5\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[f_x=2x+y+3=0,\quad f_y=x+2=0.\]
-<p>???? \(x=-2\)???? \(y=1\)?</p>
-<p>?????</p>
+<p>計算重點如下。</p>\(x=-2\)\(y=1\)
+<p>依照定義與公式計算如下。</p>
 \[f_{xx}=2,\quad f_{yy}=0,\quad f_{xy}=1.\]
 \[D=f_{xx}f_{yy}-f_{xy}^2=2\cdot0-1=-1<0.\]</p></div>
-    <div class="answer"><span class="label">??</span>\((-2,1)\) ? saddle point?? local max/min?</div>
+    <div class="answer"><span class="label">答案</span>\((-2,1)\) 是 saddle point。無 local max/min。</div>
   </section>
   <section class="problem" id="p-13-7-35">
     <h3>13.7 #35</h3>
-    <div class="problem-block"><span class="label">??</span>\[T(x,y)=x^2+xy+y^2-6x+2\]
-<p>??? \(0\le x\le5,\ -3\le y\le0\) ????????</p></div>
-    <div class="solution"><span class="label">??</span><p>??????</p>
+    <div class="problem-block"><span class="label">題目</span>\[T(x,y)=x^2+xy+y^2-6x+2\]
+<p>計算重點如下。</p>\(0\le x\le5,\ -3\le y\le0\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[T_x=2x+y-6=0,\quad T_y=x+2y=0.\]
-<p>?? \((x,y)=(4,-2)\)??</p>
+<p>依照定義與公式計算如下。</p>
 \[T(4,-2)=-10.\]
-<p>?????</p>
+<p>依照定義與公式計算如下。</p>
 \[x=0:\ T=y^2+2\Rightarrow 2\le T\le11.\]
-\[x=5:\ T=y^2+5y-3\Rightarrow \text{?? }-37/4.\]
-\[y=-3:\ T=x^2-9x+11\Rightarrow \text{?? }-37/4.\]
-\[y=0:\ T=x^2-6x+2\Rightarrow \text{?? }-7.\]
-<p>????????</p></div>
-    <div class="answer"><span class="label">??</span>???? \(-10\) at \((4,-2)\)????? \(11\) at \((0,-3)\)?</div>
+\[x=5:\ T=y^2+5y-3\Rightarrow \text{ }-37/4.\]
+\[y=-3:\ T=x^2-9x+11\Rightarrow \text{ }-37/4.\]
+\[y=0:\ T=x^2-6x+2\Rightarrow \text{ }-7.\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="answer"><span class="label">答案</span>絕對最小 \(-10\) at \((4,-2)\)。絕對最大 \(11\) at \((0,-3)\)。</div>
   </section>
   <section class="problem" id="p-13-7-38">
     <h3>13.7 #38</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=4x-8xy+2y+1\]
-<p>???????? \(x=0,y=0,x+y=1\) ?????????</p></div>
-    <div class="solution"><span class="label">??</span><p>??????</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=4x-8xy+2y+1\]
+<p>計算重點如下。</p>\(x=0,y=0,x+y=1\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[f_x=4-8y=0\Rightarrow y=\frac12,\quad f_y=-8x+2=0\Rightarrow x=\frac14.\]
-<p>Hessian ??? \(D=0\cdot0-(-8)^2<0\)?? saddle??????????</p>
-<p>???</p>
+<p>依照定義與公式計算如下。</p>
+<p>依照定義與公式計算如下。</p>
 \[y=0:\ f=4x+1\Rightarrow 1\le f\le5.\]
 \[x=0:\ f=2y+1\Rightarrow 1\le f\le3.\]
 \[x+y=1:\ f=8x^2-6x+3,\quad 0\le x\le1.\]
-<p>??????? \(x=3/8\)?? \(15/8\)????? 3 ? 5?</p></div>
-    <div class="answer"><span class="label">??</span>???? \(1\) at \((0,0)\)????? \(5\) at \((1,0)\)?</div>
+<p>計算重點如下。</p>\(x=3/8\)\(15/8\)</div>
+    <div class="answer"><span class="label">答案</span>絕對最小 \(1\) at \((0,0)\)。絕對最大 \(5\) at \((1,0)\)。</div>
   </section>
   <section class="problem" id="p-13-7-41">
     <h3>13.7 #41</h3>
-    <div class="problem-block"><span class="label">??</span>\[T(x,y)=x^2+2y^2-x,\quad x^2+y^2\le1\]
-<p>???????????</p></div>
-    <div class="solution"><span class="label">??</span><p>??????</p>
+    <div class="problem-block"><span class="label">題目</span>\[T(x,y)=x^2+2y^2-x,\quad x^2+y^2\le1\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[T_x=2x-1=0,\quad T_y=4y=0\Rightarrow (x,y)=\left(\frac12,0\right).\]
 \[T\left(\frac12,0\right)=-\frac14.\]
-<p>?? \(x^2+y^2=1\)?</p>
+<p>計算重點如下。</p>\(x^2+y^2=1\)
 \[T=x^2+2(1-x^2)-x=2-x^2-x.\]
-<p>? \([-1,1]\) ???????? \(x=-1/2\)?? \(9/4\)??? \(y=\pm\sqrt3/2\)???????????? \(-1/4\)?</p></div>
-    <div class="answer"><span class="label">??</span>???\((1/2,0)\)?\(T=-1/4\)????\((-1/2,\pm\sqrt3/2)\)?\(T=9/4\)?</div>
+<p>計算重點如下。</p>\([-1,1]\)\(x=-1/2\)\(9/4\)\(y=\pm\sqrt3/2\)\(-1/4\)</div>
+    <div class="answer"><span class="label">答案</span>最冷：\((1/2,0)\)，\(T=-1/4\)。最熱：\((-1/2,\pm\sqrt3/2)\)，\(T=9/4\)。</div>
   </section>
   <section class="problem" id="p-13-7-50">
     <h3>13.7 #50</h3>
-    <div class="problem-block"><span class="label">??</span>\[z=x^2+y^2+10\]
-<p>??????? \(x+2y-z=0\) ?????</p></div>
-    <div class="solution"><span class="label">??</span><p>?????</p>
+    <div class="problem-block"><span class="label">題目</span>\[z=x^2+y^2+10\]
+<p>計算重點如下。</p>\(x+2y-z=0\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[d=\frac{|x+2y-z|}{\sqrt6}.\]
-<p>?? \(z=x^2+y^2+10\)?</p>
+<p>計算重點如下。</p>\(z=x^2+y^2+10\)
 \[x+2y-z=x+2y-x^2-y^2-10.\]
-<p>???????????????</p>
+<p>依照定義與公式計算如下。</p>
 \[q=x+2y-x^2-y^2-10.\]
-<p>????????? 0?</p>
+<p>依照定義與公式計算如下。</p>
 \[q_x=1-2x=0\Rightarrow x=\frac12,\quad q_y=2-2y=0\Rightarrow y=1.\]
-<p>??</p>
+<p>依照定義與公式計算如下。</p>
 \[z=\left(\frac12\right)^2+1^2+10=\frac{45}{4}.\]</div>
-    <div class="answer"><span class="label">??</span>??? \(\left(\frac12,1,\frac{45}{4}\right)\)??? \(\frac{35}{4\sqrt6}\)?</div>
+    <div class="answer"><span class="label">答案</span>最近點 \(\left(\frac12,1,\frac{45}{4}\right)\)，距離 \(\frac{35}{4\sqrt6}\)。</div>
   </section>
   <section class="problem" id="p-13-7-51">
     <h3>13.7 #51</h3>
-    <div class="problem-block"><span class="label">??</span>\[3x+2y+z=6\]
-<p>????????????</p></div>
-    <div class="solution"><span class="label">??</span><p>????????????????????? \(n=(3,2,1)\)???? \(tn\)?</p>
+    <div class="problem-block"><span class="label">題目</span>\[3x+2y+z=6\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(tn\)
 \[3(3t)+2(2t)+1(t)=14t=6.\]
 \[t=\frac37.\]
-<p>????</p>
+<p>依照定義與公式計算如下。</p>
 \[\frac37(3,2,1)=\left(\frac97,\frac67,\frac37\right).\]</div>
-    <div class="answer"><span class="label">??</span>??? \((9/7,6/7,3/7)\)??? \(6/\sqrt{14}\)?</div>
+    <div class="answer"><span class="label">答案</span>最近點 \((9/7,6/7,3/7)\)，距離 \(6/\sqrt{14}\)。</div>
   </section>
   <section class="problem" id="p-13-7-58">
     <h3>13.7 #58</h3>
-    <div class="problem-block"><span class="label">??</span><p>????? \(27\text{ cm}^3\) ?????????????????</p></div>
-    <div class="solution"><span class="label">??</span><p>??? \(x,y,z>0\)??? \(xyz=27\)????</p>
+    <div class="problem-block"><span class="label">題目</span><p>計算重點如下。</p>\(27\text{ cm}^3\)</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(x,y,z>0\)\(xyz=27\)
 \[S=2(xy+xz+yz).\]
-<p>????????????????????? AM-GM ? Lagrange multiplier ??</p>
+<p>依照定義與公式計算如下。</p>
 \[x=y=z=3.\]
-<p>??</p>
+<p>依照定義與公式計算如下。</p>
 \[S=6(3^2)=54.\]</div>
-    <div class="answer"><span class="label">??</span>????? \(54\text{ cm}^2\)???? \(3\times3\times3\)?</div>
+    <div class="answer"><span class="label">答案</span>最小表面積 \(54\text{ cm}^2\)，盒子是 \(3\times3\times3\)。</div>
   </section>
   <h2 id="s138">13.8</h2>
   <section class="problem" id="p-13-8-2">
     <h3>13.8 #2</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=xy,\quad x^2+y^2=10\]
-<p>?????????</p></div>
-    <div class="solution"><span class="label">??</span><p>? Lagrange multiplier?</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=xy,\quad x^2+y^2=10\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[\nabla f=(y,x),\quad \nabla g=(2x,2y).\]
 \[y=2\lambda x,\quad x=2\lambda y.\]
-<p>???? \(x^2=y^2\)??? \(x=\pm y\)?????</p>
+<p>計算重點如下。</p>\(x^2=y^2\)\(x=\pm y\)
 \[2x^2=10\Rightarrow x=\pm\sqrt5.\]
-<p>??? \(xy=5\)???? \(xy=-5\)?</p></div>
-    <div class="answer"><span class="label">??</span>??? \(5\) at \((\sqrt5,\sqrt5),(-\sqrt5,-\sqrt5)\)???? \(-5\) at \((\sqrt5,-\sqrt5),(-\sqrt5,\sqrt5)\)?</div>
+<p>計算重點如下。</p>\(xy=5\)\(xy=-5\)</div>
+    <div class="answer"><span class="label">答案</span>最大值 \(5\) at \((\sqrt5,\sqrt5),(-\sqrt5,-\sqrt5)\)。最小值 \(-5\) at \((\sqrt5,-\sqrt5),(-\sqrt5,\sqrt5)\)。</div>
   </section>
   <section class="problem" id="p-13-8-3">
     <h3>13.8 #3</h3>
-    <div class="problem-block"><span class="label">??</span>\[f(x,y)=49-x^2-y^2,\quad x+3y=10\]
-<p>?????</p></div>
-    <div class="solution"><span class="label">??</span><p>??? \(49-x^2-y^2\) ????????? \(x^2+y^2\)??????????????</p>
-<p>????? \((1,3)\)????</p>
+    <div class="problem-block"><span class="label">題目</span>\[f(x,y)=49-x^2-y^2,\quad x+3y=10\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(49-x^2-y^2\)\(x^2+y^2\)
+<p>依照定義與公式計算如下。</p>
 \[\frac{10}{1^2+3^2}(1,3)=(1,3).\]
-<p>???</p>
+<p>依照定義與公式計算如下。</p>
 \[f(1,3)=49-1-9=39.\]</div>
-    <div class="answer"><span class="label">??</span>??? \(39\)???? \((1,3)\)?</div>
+    <div class="answer"><span class="label">答案</span>最大值 \(39\)，發生在 \((1,3)\)。</div>
   </section>
   <section class="problem" id="p-13-8-13">
     <h3>13.8 #13</h3>
-    <div class="problem-block"><span class="label">??</span>\[\text{maximize/minimize }x^2+y^2\quad\text{subject to}\quad x^2-2x+y^2-4y=0\]</div>
-    <div class="solution"><span class="label">??</span><p>????????</p>
+    <div class="problem-block"><span class="label">題目</span>\[\text{maximize/minimize }x^2+y^2\quad\text{subject to}\quad x^2-2x+y^2-4y=0\]</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[(x-1)^2+(y-2)^2=5.\]
-<p>???? \((1,2)\)??? \(\sqrt5\) ???????????? \(\sqrt5\)?????????</p>
-<p>???????? \((0,0)\)?? \(x^2+y^2=0\)??????????????????????? \((2,4)\)?????? \(20\)?</p></div>
-    <div class="answer"><span class="label">??</span>??? \(0\) at \((0,0)\)???? \(20\) at \((2,4)\)?</div>
+<p>計算重點如下。</p>\(\sqrt5\)\(\sqrt5\)
+<p>計算重點如下。</p>\(x^2+y^2=0\)\(20\)</div>
+    <div class="answer"><span class="label">答案</span>最小值 \(0\) at \((0,0)\)。最大值 \(20\) at \((2,4)\)。</div>
   </section>
   <section class="problem" id="p-13-8-29">
     <h3>13.8 #29</h3>
-    <div class="problem-block"><span class="label">??</span>\[4x^2+y^2+4z^2=16,\quad T=8x^2+4yz-16z+600\]
-<p>?????</p></div>
-    <div class="solution"><span class="label">??</span><p>??? \(g=4x^2+y^2+4z^2-16=0\)?Lagrange equations?</p>
+    <div class="problem-block"><span class="label">題目</span>\[4x^2+y^2+4z^2=16,\quad T=8x^2+4yz-16z+600\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(g=4x^2+y^2+4z^2-16=0\)
 \[(16x,4z,4y-16)=\lambda(8x,2y,8z).\]
-<p>? \(x\ne0\)????? \(\lambda=2\)???</p>
+<p>計算重點如下。</p>\(x\ne0\)\(\lambda=2\)
 \[2z=\lambda y=2y\Rightarrow z=y,\]
 \[y-4=2\lambda z=4z.\]
-<p>?? \(y=z=-4/3\)??????</p>
+<p>計算重點如下。</p>\(y=z=-4/3\)
 \[4x^2+\frac{16}{9}+4\cdot\frac{16}{9}=16\Rightarrow x=\pm\frac43.\]
-<p>?? \(x=0\) ????????????????????</p></div>
-    <div class="answer"><span class="label">??</span>??? \(\left(\pm\frac43,-\frac43,-\frac43\right)\)???? \(\frac{1928}{3}\)?</div>
+<p>計算重點如下。</p>\(x=0\)</div>
+    <div class="answer"><span class="label">答案</span>最熱點 \(\left(\pm\frac43,-\frac43,-\frac43\right)\)，最高溫 \(\frac{1928}{3}\)。</div>
   </section>
   <section class="problem" id="p-13-8-30">
     <h3>13.8 #30</h3>
-    <div class="problem-block"><span class="label">??</span>\[x^2+y^2+z^2=1,\quad T=400xyz^2\]
-<p>??????????</p></div>
-    <div class="solution"><span class="label">??</span><p>???? 400 ?????????/??? \(xyz^2\)?????????\(|x|\) ? \(|y|\) ????</p>
-<p>? \(s=x^2+y^2\)????? \(s\) ? \(|xy|\le s/2\)?? \(z^2=1-s\)???</p>
+    <div class="problem-block"><span class="label">題目</span>\[x^2+y^2+z^2=1,\quad T=400xyz^2\]
+<p>依照定義與公式計算如下。</p></div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(xyz^2\)\(|x|\)\(|y|\)
+<p>計算重點如下。</p>\(s=x^2+y^2\)\(s\)\(|xy|\le s/2\)\(z^2=1-s\)
 \[|xyz^2|\le \frac{s}{2}(1-s).\]
-<p>??? \(\frac{s}{2}(1-s)\)?</p>
+<p>依照定義與公式計算如下。</p>
 \[\frac{d}{ds}\left(\frac{s-s^2}{2}\right)=\frac{1-2s}{2}=0\Rightarrow s=\frac12.\]
-<p>?? \(z^2=1/2\)?? \(x^2=y^2=1/4\)?</p></div>
-    <div class="answer"><span class="label">??</span>??? \(50\)?\(x,y\) ???\(|x|=|y|=1/2\)?\(z=\pm1/\sqrt2\)???? \(-50\)?\(x,y\) ???\(|x|=|y|=1/2\)?\(z=\pm1/\sqrt2\)?</div>
+<p>計算重點如下。</p>\(z^2=1/2\)\(x^2=y^2=1/4\)</div>
+    <div class="answer"><span class="label">答案</span>最高溫 \(50\)：\(x,y\) 同號，\(|x|=|y|=1/2\)，\(z=\pm1/\sqrt2\)。最低溫 \(-50\)：\(x,y\) 異號，\(|x|=|y|=1/2\)，\(z=\pm1/\sqrt2\)。</div>
   </section>
   <section class="problem" id="p-13-8-39">
     <h3>13.8 #39</h3>
-    <div class="problem-block"><span class="label">??</span><p>???? \(y+2z=12\)?\(x+y=6\) ???????????</p></div>
-    <div class="solution"><span class="label">??</span><p>? \(z=t\)??</p>
+    <div class="problem-block"><span class="label">題目</span><p>計算重點如下。</p>\(y+2z=12\)\(x+y=6\)</div>
+    <div class="solution"><span class="label">解法</span><p>計算重點如下。</p>\(z=t\)
 \[y=12-2t,\quad x=6-y=2t-6.\]
-<p>?????</p>
+<p>依照定義與公式計算如下。</p>
 \[D(t)=(2t-6)^2+(12-2t)^2+t^2=9t^2-72t+180.\]
-<p>???</p>
+<p>依照定義與公式計算如下。</p>
 \[D'(t)=18t-72=0\Rightarrow t=4.\]
-<p>??</p>
+<p>依照定義與公式計算如下。</p>
 \[z=4,\quad y=4,\quad x=2.\]</div>
-    <div class="answer"><span class="label">??</span>??? \((2,4,4)\)??? \(6\)?</div>
+    <div class="answer"><span class="label">答案</span>最近點 \((2,4,4)\)，距離 \(6\)。</div>
   </section>
   <section class="problem" id="p-13-8-44">
     <h3>13.8 #44</h3>
-    <div class="problem-block"><span class="label">??</span><p>??? \(2y+4z=5\) ??? \(z^2=4x^2+4y^2\) ???????????</p></div>
-    <div class="solution"><span class="label">??</span><p>????</p>
+    <div class="problem-block"><span class="label">題目</span><p>計算重點如下。</p>\(2y+4z=5\)\(z^2=4x^2+4y^2\)</div>
+    <div class="solution"><span class="label">解法</span><p>依照定義與公式計算如下。</p>
 \[x^2+y^2=\frac{z^2}{4}.\]
-<p>????</p>
+<p>依照定義與公式計算如下。</p>
 \[D=x^2+y^2+z^2=\frac54z^2.\]
-<p>??????????????? \(|z|\) ???????</p>
+<p>計算重點如下。</p>\(|z|\)
 \[y=\frac{5-4z}{2}.\]
-<p>???? \(x\)???</p>
+<p>計算重點如下。</p>\(x\)
 \[y^2\le\frac{z^2}{4}.\]
 \[\left(\frac{5-4z}{2}\right)^2\le\frac{z^2}{4}\Rightarrow (5-4z)^2\le z^2.\]
-<p>?? \(1\le z\le5/3\)???? \(z=1\)??? \(y=1/2\)?? \(x=0\)?</p></div>
-    <div class="answer"><span class="label">??</span>??? \((0,1/2,1)\)??? \(\sqrt5/2\)?</div>
+<p>計算重點如下。</p>\(1\le z\le5/3\)\(z=1\)\(y=1/2\)\(x=0\)</div>
+    <div class="answer"><span class="label">答案</span>最近點 \((0,1/2,1)\)，距離 \(\sqrt5/2\)。</div>
   </section>
 </main>
 <script>
@@ -757,7 +757,7 @@
     localStorage.setItem('theme', theme);
     const isDark = theme === 'dark';
     themeToggle.checked = isDark;
-    themeText.textContent = isDark ? '????' : '????';
+    themeText.textContent = isDark ? '夜間模式' : '日間模式';
   }
   setTheme(document.documentElement.dataset.theme || 'dark');
   themeToggle.addEventListener('change', () => setTheme(themeToggle.checked ? 'dark' : 'light'));
