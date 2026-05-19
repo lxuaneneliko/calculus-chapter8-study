@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
@@ -360,22 +360,37 @@
       line-height: 1.55;
     }
     .toc {
+      position: sticky;
+      top: 0;
+      z-index: 30;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 8px;
-      margin: 22px 0 30px;
+      margin: 22px -12px 30px;
       padding: 14px;
-      background: var(--soft);
+      background: color-mix(in srgb, var(--soft) 92%, transparent);
       border: 1px solid var(--line);
       border-radius: 8px;
+      box-shadow: 0 10px 24px var(--shadow);
+      backdrop-filter: blur(12px);
     }
     .toc a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 6px 10px;
       color: var(--accent);
+      text-align: center;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
+      border-radius: 6px;
     }
-    .toc a:hover {
+    .toc a:hover,
+    .toc a:focus-visible,
+    .toc a.is-active {
       color: var(--accent-strong);
+      background: var(--paper);
     }
     mjx-container {
       color: var(--ink);
@@ -444,7 +459,7 @@
     <a href="#s83">8.3 Trigonometric Substitutions</a>
     <a href="#s84">8.4 Partial Fractions</a>
     <a href="#s87">8.7 Improper Integrals</a>
-  </nav>
+      <a href="#teacher-picks">老師挑題</a>`n  </nav>
 
   <h2 id="s81">8.1 Integration by Parts</h2>
 
@@ -1264,6 +1279,25 @@
     setTheme(themeToggle.checked ? 'dark' : 'light');
   });
 
+  const chapterLinks = [...document.querySelectorAll('.toc a')];
+  const chapterTargets = chapterLinks
+    .map((link) => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+
+  const chapterObserver = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+    const id = `#${visible.target.id}`;
+    for (const link of chapterLinks) {
+      link.classList.toggle('is-active', link.getAttribute('href') === id);
+    }
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.25, 0.5] });
+
+  for (const target of chapterTargets) {
+    chapterObserver.observe(target);
+  }
   const detailNotes = {
     '8.1 #8': String.raw`分部積分的選擇原則是讓 \(u\) 微分後變簡單，所以取 \(u=x\)。\(e^{3x}\) 積分後只多出係數 \(\frac13\)，因此計算量最少。最後記得把剩下的 \(\int e^{3x}\,dx\) 再積一次，常數 \(C\) 只需放在最後。`,
     '8.1 #10': String.raw`這題也可以連續分部積分兩次；設 \(e^{2x}(ax^2+bx+c)\) 是比較快的做法。因為微分 \(e^{2x}P(x)\) 會得到 \(e^{2x}(2P(x)+P'(x))\)，所以只要讓 \(2P+P'=x^2-2x+1\)，逐項比較係數即可。`,
@@ -2666,3 +2700,5 @@
 </script>
 </body>
 </html>
+
+
