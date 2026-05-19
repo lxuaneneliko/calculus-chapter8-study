@@ -57,6 +57,44 @@
     .label { display: inline-block; margin-right: 8px; color: var(--accent); font-weight: 800; }
     .solution { padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: color-mix(in srgb, var(--soft) 70%, transparent); }
     .answer { padding: 10px 14px; margin-top: 12px; border-left: 4px solid var(--accent-strong); background: var(--soft); }
+    .deep-steps {
+      margin: 12px 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--soft) 62%, transparent);
+      overflow: hidden;
+    }
+    .deep-steps summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      color: var(--accent);
+      font-weight: 800;
+      cursor: pointer;
+      list-style: none;
+    }
+    .deep-steps summary::-webkit-details-marker { display: none; }
+    .deep-steps summary::after {
+      content: "+";
+      display: inline-grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--ink);
+      background: var(--paper);
+      font-size: 18px;
+      line-height: 1;
+    }
+    .deep-steps[open] summary { border-bottom: 1px solid var(--line); }
+    .deep-steps[open] summary::after { content: "-"; }
+    .deep-steps-body { padding: 12px 14px 14px; }
+    .deep-steps-body p { margin: 7px 0; }
+    .step-title { color: var(--accent-strong); font-weight: 800; }
     figure { margin: 12px 0; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--soft); }
     figure img { display: block; width: 100%; max-width: 720px; height: auto; margin: 8px auto; border-radius: 6px; }
     figcaption { color: var(--muted); font-size: 13px; text-align: center; }
@@ -761,6 +799,93 @@
   }
   setTheme(document.documentElement.dataset.theme || 'dark');
   themeToggle.addEventListener('change', () => setTheme(themeToggle.checked ? 'dark' : 'light'));
+
+  const detailedSteps = {
+    '13.2 #9': [String.raw`先把二變數極限拆成「只看 \(y\)」和「只看 \(x\)」：\[\frac{e^y\sin x}{x}=e^y\cdot\frac{\sin x}{x}.\]`, String.raw`當 \((x,y)\to(0,0)\)，有 \(e^y\to e^0=1\)，且 \(\lim_{x\to0}\sin x/x=1\)。兩個極限都存在，所以可以相乘。`, String.raw`因此整體極限是 \(1\cdot1=1\)。`],
+    '13.2 #13': [String.raw`這題的分母 \(x-y\) 在目標點會變成 0，所以不能直接代入，要先因式分解分子。`, String.raw`\[x^2-2xy+y^2=(x-y)^2,\qquad \frac{x^2-2xy+y^2}{x-y}=x-y.\]`, String.raw`題目已限制 \(x\ne y\)，所以約分合法。最後代入 \((1,1)\)：\(1-1=0\)。`],
+    '13.2 #23': [String.raw`看到 \(x^3+y^3\) 且分母是 \(x+y\)，使用和立方公式：\[\ x^3+y^3=(x+y)(x^2-xy+y^2). \]`, String.raw`約掉 \(x+y\) 後，原極限改成多項式極限：\[\lim_{(x,y)\to(1,-1)}(x^2-xy+y^2).\]`, String.raw`代入得到 \(1^2-1(-1)+(-1)^2=3\)。`],
+    '13.2 #41': [String.raw`要證明極限不存在，只要找到兩種靠近原點的方式得到不同數值。`, String.raw`走 \(y=0\)：\[f(x,0)=-\frac{x}{|x|}.\] 若 \(x\to0^+\)，值是 \(-1\)；若 \(x\to0^-\)，值是 \(1\)。`, String.raw`同一個目標點，左右靠近已經不同，因此二變數極限不存在。`],
+    '13.2 #44': [String.raw`分母是 \(|xy|\)，所以函數只看 \(xy\) 的正負號。`, String.raw`第一象限路徑 \(y=x,\ x>0\)：\[\frac{xy}{|xy|}=\frac{x^2}{|x^2|}=1.\]`, String.raw`第二象限路徑 \(y=-x,\ x>0\)：\[\frac{xy}{|xy|}=\frac{-x^2}{|-x^2|}=-1.\] 兩路徑不同，所以極限不存在。`],
+    '13.2 #49': [String.raw`用兩條路徑比較。先取 \(x=1\)：\[\frac{xy^2-1}{y-1}=\frac{y^2-1}{y-1}=y+1\to2.\]`, String.raw`再取 \(x=1/y^2\)，這條路徑仍趨近 \((1,1)\)：\[\frac{(1/y^2)y^2-1}{y-1}=0\to0.\]`, String.raw`同一極限點得到 \(2\) 與 \(0\)，所以極限不存在。`],
+    '13.2 #67': [String.raw`走 \(y=0\)：\[\frac{0^2}{x^2+0^2}=0.\]`, String.raw`走 \(x=0\)：\[\frac{y^2}{0+y^2}=1.\]`, String.raw`兩條路徑都往原點，但結果不同，因此極限不存在。`],
+    '13.2 #73': [String.raw`令 \(r=\sqrt{x^2+y^2}\)，則 \(x^2+y^2=r^2\)。題目要控制的是 \(|f(x,y)-f(0,0)|=r^2\)。`, String.raw`如果 \(r<\delta\)，則 \(r^2<\delta^2\)。要讓 \(r^2<0.01\)，令 \(\delta^2=0.01\)。`, String.raw`所以可取 \(\delta=0.1\)。`],
+    '13.2 #74': [String.raw`因為 \(x^2+1\ge1\)，所以分母只會讓數值變小：\[\left|\frac{y}{x^2+1}\right|\le |y|.\]`, String.raw`又 \(|y|\le\sqrt{x^2+y^2}\)。若 \(\sqrt{x^2+y^2}<0.05\)，則 \(|f(x,y)|<0.05\)。`, String.raw`因此 \(\delta=0.05\) 就足夠。`],
+    '13.2 #75': [String.raw`先估計絕對值：\[\left|\frac{x+y}{x^2+1}\right|\le |x+y|\le |x|+|y|.\]`, String.raw`由 Cauchy 不等式，\(|x|+|y|\le\sqrt2\sqrt{x^2+y^2}\)。`, String.raw`要小於 \(0.01\)，令 \(\sqrt2\,\delta=0.01\)，所以 \(\delta=0.01/\sqrt2\)。`],
+    '13.2 #77': [String.raw`因為 \(0\le y^2/(x^2+y^2)\le1\)，所以\[\left|\frac{xy^2}{x^2+y^2}\right|=|x|\frac{y^2}{x^2+y^2}\le |x|.\]`, String.raw`而 \(|x|\le\sqrt{x^2+y^2}\)。若 \(\sqrt{x^2+y^2}<0.04\)，就能保證函數值小於 \(0.04\)。`, String.raw`所以可取 \(\delta=0.04\)。`],
+
+    '13.3 #14': [String.raw`對 \(x\) 微分時，\(e^{-x}\) 和 \(\sin(x+y)\) 都含 \(x\)，所以用乘積法則。`, String.raw`\[f_x=(-e^{-x})\sin(x+y)+e^{-x}\cos(x+y)=e^{-x}(\cos(x+y)-\sin(x+y)).\]`, String.raw`對 \(y\) 微分時，\(e^{-x}\) 是常數，只微分 \(\sin(x+y)\)：\[f_y=e^{-x}\cos(x+y).\]`],
+    '13.3 #18': [String.raw`令 \(u=3x-y^2\)，則 \(f=\cos^2u\)。外層微分是 \(-2\sin u\cos u\)。`, String.raw`\[f_x=-2\sin u\cos u\cdot 3=-6\sin u\cos u=-3\sin(2u).\]`, String.raw`\[f_y=-2\sin u\cos u\cdot(-2y)=4y\sin u\cos u=2y\sin(2u).\]`],
+    '13.3 #51': [String.raw`先做一階偏導：\[f_x=2xy^3-4x^3,\qquad f_y=3x^2y^2+5y^4.\]`, String.raw`再從 \(f_x\) 得到 \[f_{xx}=2y^3-12x^2,\qquad f_{xy}=6xy^2.\]`, String.raw`從 \(f_y\) 得到 \[f_{yx}=6xy^2,\qquad f_{yy}=6x^2y+20y^3.\] 混合偏導相同。`],
+    '13.3 #54': [String.raw`令 \(a=x/y^2\)。先求一階：\[z_x=e^a\left(1+\frac{x}{y^2}\right),\qquad z_y=-\frac{2x^2}{y^3}e^a.\]`, String.raw`再對 \(z_x\) 分別微分：\[z_{xx}=e^a\left(\frac2{y^2}+\frac{x}{y^4}\right),\quad z_{xy}=e^a\left(-\frac{4x}{y^3}-\frac{2x^2}{y^5}\right).\]`, String.raw`再對 \(z_y\) 對 \(y\) 微分：\[z_{yy}=e^a\left(\frac{6x^2}{y^4}+\frac{4x^3}{y^6}\right).\]`],
+    '13.3 #56': [String.raw`先走 \(x\) 再走 \(y\)：\[w_x=e^x+\ln y+\frac{y}{x},\qquad w_{xy}=\frac1y+\frac1x.\]`, String.raw`反過來先走 \(y\) 再走 \(x\)：\[w_y=\frac{x}{y}+\ln x,\qquad w_{yx}=\frac1y+\frac1x.\]`, String.raw`兩邊相同，所以驗證 \(w_{xy}=w_{yx}\)。`],
+    '13.3 #70': [String.raw`把方程寫成 \(F(x,y,z)=xz+y\ln x-x^2+4=0\)。因為 \(x\) 是 \(y,z\) 的函數，用 \[x_z=-\frac{F_z}{F_x}.\]`, String.raw`計算偏導：\[F_z=x,\qquad F_x=z+\frac{y}{x}-2x.\]`, String.raw`代入 \((1,-1,-3)\)：\(F_z=1,\ F_x=-6\)，所以 \(x_z=-1/(-6)=1/6\)。`],
+    '13.3 #75': [String.raw`曲面是 \(z=f(x,y)=2x+3y-4\)。若固定 \(x=2\)，切線只沿 \(y\) 方向走，斜率是 \(f_y\)。`, String.raw`若固定 \(y=-1\)，切線只沿 \(x\) 方向走，斜率是 \(f_x\)。`, String.raw`\[f_x=2,\qquad f_y=3.\] 所以 (a) 是 \(3\)，(b) 是 \(2\)。`],
+    '13.3 #85': [String.raw`Laplace equation 是 \(f_{xx}+f_{yy}=0\)。`, String.raw`先對 \(x\)：\[f_x=-2e^{-2y}\sin2x,\qquad f_{xx}=-4e^{-2y}\cos2x.\]`, String.raw`再對 \(y\)：\[f_y=-2e^{-2y}\cos2x,\qquad f_{yy}=4e^{-2y}\cos2x.\] 相加為 0。`],
+
+    '13.4 #2': [String.raw`直接代入最乾淨：\[(\cos t+\sin t)^2+(\cos t-\sin t)^2=2\cos^2t+2\sin^2t=2.\]`, String.raw`所以 \(w\) 其實是常數函數，\(dw/dt=0\)。`, String.raw`用鏈鎖律也會得到同樣結果，因為 \(2x x'+2y y'\) 會完全抵消。`],
+    '13.4 #5': [String.raw`先把 \(w\) 全部寫成 \(t\)：\[w(t)=2(\tan^{-1}t)e^{\ln(t^2+1)}-\ln(e^t)=2(t^2+1)\tan^{-1}t-t.\]`, String.raw`微分：\[w'(t)=2\left(2t\tan^{-1}t+(t^2+1)\frac1{1+t^2}\right)-1=4t\tan^{-1}t+1.\]`, String.raw`代 \(t=1\)，\(\tan^{-1}1=\pi/4\)，所以 \(w'(1)=1+\pi\)。`],
+    '13.4 #9': [String.raw`先代入化簡：\[w=(u+v)(u-v)+(u-v)uv+(u+v)uv=u^2-v^2+2u^2v.\]`, String.raw`因此 \[w_u=2u+4uv,\qquad w_v=-2v+2u^2.\]`, String.raw`代入 \((u,v)=(1/2,1)\)：\(w_u=3,\ w_v=-3/2\)。`],
+    '13.4 #11': [String.raw`先把 \(p,q,r\) 代入：\[p-q=2y,\qquad q-r=2z-2y=2(z-y).\]`, String.raw`所以 \[u=\frac{p-q}{q-r}=\frac{y}{z-y}.\] 它不含 \(x\)，所以 \(u_x=0\)。`, String.raw`再微分：\[u_y=\frac{z}{(z-y)^2},\qquad u_z=-\frac{y}{(z-y)^2}.\] 代 \((\sqrt3,2,1)\) 得 \(0,1,-2\)。`],
+    '13.4 #26': [String.raw`令 \(F(x,y)=xy+y^2-3x-3\)。隱微分公式是 \(\displaystyle y'=-F_x/F_y\)。`, String.raw`\[F_x=y-3,\qquad F_y=x+2y.\]`, String.raw`代入 \((-1,1)\)：\(F_x=-2,\ F_y=1\)，所以 \(dy/dx=2\)。`],
+    '13.4 #31': [String.raw`令 \(F=z^3-xy+yz+y^3-2\)。三變數隱函數公式：\[z_x=-\frac{F_x}{F_z},\qquad z_y=-\frac{F_y}{F_z}.\]`, String.raw`偏導：\[F_x=-y,\quad F_y=-x+z+3y^2,\quad F_z=3z^2+y.\]`, String.raw`在 \((1,1,1)\)：\(F_x=-1,\ F_y=3,\ F_z=4\)，所以 \(z_x=1/4,\ z_y=-3/4\)。`],
+    '13.4 #33': [String.raw`令 \(F=\sin(x+y)+\sin(y+z)+\sin(x+z)\)。`, String.raw`在 \((\pi,\pi,\pi)\)，\(\cos(x+y)=\cos(y+z)=\cos(x+z)=1\)，所以 \(F_x=F_y=F_z=2\)。`, String.raw`因此 \[z_x=-F_x/F_z=-1,\qquad z_y=-F_y/F_z=-1.\]`],
+    '13.4 #47': [String.raw`由 \(V=IR\)，對時間微分：\[\frac{dV}{dt}=R\frac{dI}{dt}+I\frac{dR}{dt}.\]`, String.raw`代入 \(R=600,\ I=0.04,\ dR/dt=0.5,\ dV/dt=-0.01\)：\[-0.01=600I'+0.04(0.5).\]`, String.raw`所以 \(600I'=-0.03\)，得到 \(I'=-0.00005\text{ A/s}\)。`],
+    '13.4 #55': [String.raw`沿圓 \(x=\cos t,\ y=\sin t\)，用鏈鎖律：\[T'(t)=T_x(-\sin t)+T_y(\cos t).\]`, String.raw`代入 \(T_x=8x-4y,\ T_y=8y-4x\) 得 \[T'(t)=-4\cos2t.\] 臨界點為 \(t=\pi/4,3\pi/4,5\pi/4,7\pi/4\)。`, String.raw`若 \(T=4x^2-4xy+4y^2=4-4xy\)，同號點 \(xy=1/2\) 給最小 \(2\)，異號點 \(xy=-1/2\) 給最大 \(6\)。`],
+    '13.4 #58': [String.raw`高度是 \(z=x^2-y^2\)，其中 \(x=f(t),y=g(t)\)。`, String.raw`鏈鎖律：\[\frac{dz}{dt}=2x\frac{dx}{dt}-2y\frac{dy}{dt}.\]`, String.raw`代入 \(x=4,x'=-1,y=-2,y'=-3\)：\[z'=2(4)(-1)-2(-2)(-3)=-8-12=-20.\]`],
+
+    '13.5 #12': [String.raw`方向導數要先把方向向量單位化：\[\|3i-4j\|=5,\quad u=(3/5,-4/5).\]`, String.raw`梯度是 \(\nabla f=(4x,2y)\)，在 \((-1,1)\) 得 \((-4,2)\)。`, String.raw`方向導數 \[D_uf=\nabla f\cdot u=(-4)(3/5)+2(-4/5)=-4.\]`],
+    '13.5 #15': [String.raw`先求梯度：\[\nabla f=(y+z,\ x+z,\ x+y).\]`, String.raw`在 \(P_0=(1,-1,2)\)：\(\nabla f=(1,3,0)\)。方向 \(v=(3,6,-2)\) 的長度是 7，所以 \(u=(3/7,6/7,-2/7)\)。`, String.raw`點積得到 \((1,3,0)\cdot u=3/7+18/7=3\)。`],
+    '13.5 #19': [String.raw`最快增加方向就是梯度方向。`, String.raw`\[\nabla f=(2x+y,\ x+2y),\quad \nabla f(-1,1)=(-1,1).\]`, String.raw`單位化得到最快增加方向 \((-1,1)/\sqrt2\)，最大方向導數是梯度長度 \(\sqrt2\)；最快減少方向相反，值為 \(-\sqrt2\)。`],
+    '13.5 #23': [String.raw`先合併對數：\[f=\ln(xy)+\ln(yz)+\ln(xz)=2\ln x+2\ln y+2\ln z.\]`, String.raw`所以 \[\nabla f=(2/x,2/y,2/z),\quad \nabla f(1,1,1)=(2,2,2).\]`, String.raw`梯度長度是 \(2\sqrt3\)。增加最快方向為 \((1,1,1)/\sqrt3\)，減少最快方向相反。`],
+    '13.5 #25': [String.raw`令 \(F=x^2+y^2\)。level curve 的法向量是 \(\nabla F=(2x,2y)\)。`, String.raw`在 \((\sqrt2,\sqrt2)\)，法向量是 \((2\sqrt2,2\sqrt2)\)。`, String.raw`切線方程：\[2\sqrt2(x-\sqrt2)+2\sqrt2(y-\sqrt2)=0,\] 化簡得 \(x+y=2\sqrt2\)。`],
+    '13.5 #28': [String.raw`令 \(F=x^2-xy+y^2\)。梯度是 \(\nabla F=(2x-y,-x+2y)\)。`, String.raw`在 \((-1,2)\)，\(\nabla F=(-4,5)\)，它是切線的法向量。`, String.raw`切線：\[-4(x+1)+5(y-2)=0,\] 化簡得 \(-4x+5y-14=0\)。`],
+    '13.5 #34': [String.raw`任何方向導數都介於 \(-\|\nabla T\|\) 和 \(\|\nabla T\|\) 之間。`, String.raw`\[\nabla T=(2y,2x-z,-y),\quad \nabla T(1,-1,1)=(-2,1,1).\]`, String.raw`梯度長度 \(\sqrt6\approx2.45\)，小於 3，因此不可能有方向導數 \(-3\)。`],
+
+    '13.6 #4': [String.raw`令 \(F=x^2+2xy-y^2+z^2-7\)。切平面的法向量是 \(\nabla F\)。`, String.raw`\[\nabla F=(2x+2y,\ 2x-2y,\ 2z),\quad \nabla F(1,-1,3)=(0,4,6).\]`, String.raw`切平面：\(0(x-1)+4(y+1)+6(z-3)=0\)，化簡為 \(2y+3z-7=0\)。法線方向同 \((0,4,6)\)。`],
+    '13.6 #15': [String.raw`兩曲面交線的切向量同時垂直於兩個曲面的法向量，所以用叉積。`, String.raw`令 \(F=x+y^2+2z-4\)，\(G=x-1\)。在 \((1,1,1)\)：\(\nabla F=(1,2,2)\)，\(\nabla G=(1,0,0)\)。`, String.raw`\[\nabla F\times\nabla G=(0,2,-2).\] 因此切線可寫 \(x=1,\ y=1+2t,\ z=1-2t\)。`],
+    '13.6 #21': [String.raw`小位移下用 \(df\approx \nabla f(P_0)\cdot u\,ds\)。`, String.raw`因 \(f=\ln r\)，\[\nabla f=\frac{(x,y,z)}{x^2+y^2+z^2}.\] 在 \((3,4,12)\) 得 \((3,4,12)/169\)。`, String.raw`方向單位向量是 \((3,6,-2)/7\)。點積是 \(9/1183\)，再乘 \(ds=0.1\)，得約 \(0.000761\)。`],
+    '13.6 #26': [String.raw`先由 \(x=2t^2=8\) 得 \(t=2\)。`, String.raw`\[\nabla T=(4x-yz,\ -xz,\ -xy),\quad \nabla T(8,6,-4)=(56,32,-48).\]`, String.raw`速度 \(r'(t)=(4t,3,-2t)\)，所以 \(r'(2)=(8,3,-4)\)。每秒變化率是點積 \(736\)，每公尺變化率是 \(736/\sqrt{89}\)。`],
+    '13.6 #52': [String.raw`由 \(\frac1R=\frac1{R_1}+\frac1{R_2}\) 可改寫成 \(R=\frac{R_1R_2}{R_1+R_2}\)。`, String.raw`偏導後得到 \(\partial R/\partial R_1=(R/R_1)^2\)，\(\partial R/\partial R_2=(R/R_2)^2\)，所以 \(dR\) 公式成立。`, String.raw`(b) \(R_1=100,R_2=400\) 時 \(R=80\)，係數 \(0.64>0.04\)，所以對 \(R_1\) 較敏感。(c) \(dR=1/90\)，相對 \(R=100/9\) 是 \(0.1\%\)。`],
+
+    '13.7 #3': [String.raw`先找臨界點：\[f_x=2x+y+3=0,\qquad f_y=x+2=0.\]`, String.raw`由 \(x=-2\)，代回得 \(y=1\)，所以臨界點是 \((-2,1)\)。`, String.raw`二階判別式 \(D=f_{xx}f_{yy}-f_{xy}^2=2\cdot0-1=-1<0\)，因此是 saddle point。`],
+    '13.7 #35': [String.raw`先檢查內部：\(T_x=2x+y-6\)，\(T_y=x+2y\)。解得 \((4,-2)\)，值為 \(-10\)。`, String.raw`再檢查四條邊：\(x=0\)、\(x=5\)、\(y=-3\)、\(y=0\)。每條邊都變成單變數二次函數，找端點與頂點。`, String.raw`比較全部候選值後，最小是 \(-10\) at \((4,-2)\)，最大是 \(11\) at \((0,-3)\)。`],
+    '13.7 #38': [String.raw`內部點由 \(f_x=4-8y=0\)，\(f_y=-8x+2=0\) 得 \((1/4,1/2)\)，但它是 saddle。`, String.raw`三角形三邊分別是 \(y=0\)、\(x=0\)、\(x+y=1\)。逐邊代入後都變成單變數函數。`, String.raw`比較端點與邊界臨界值，最小 \(1\) 在 \((0,0)\)，最大 \(5\) 在 \((1,0)\)。`],
+    '13.7 #41': [String.raw`圓盤內部臨界點：\(T_x=2x-1=0\)，\(T_y=4y=0\)，所以 \((1/2,0)\)，值 \(-1/4\)。`, String.raw`邊界 \(x^2+y^2=1\) 上，令 \(y^2=1-x^2\)：\[T=x^2+2(1-x^2)-x=2-x^2-x.\]`, String.raw`在 \([-1,1]\) 上最大於 \(x=-1/2\)，對應 \(y=\pm\sqrt3/2\)，值 \(9/4\)。`],
+    '13.7 #50': [String.raw`點到平面距離是 \(\frac{|x+2y-z|}{\sqrt6}\)。代入 \(z=x^2+y^2+10\)。`, String.raw`要讓距離最小，就是讓 \(x+2y-x^2-y^2-10\) 盡量接近 0；此式最大時最接近 0。`, String.raw`令偏導 \(1-2x=0,\ 2-2y=0\)，得 \(x=1/2,y=1\)，所以 \(z=45/4\)。`],
+    '13.7 #51': [String.raw`平面法向量是 \(n=(3,2,1)\)。原點到平面的最近點一定在法向量方向上，所以設點為 \(tn\)。`, String.raw`代入平面：\[3(3t)+2(2t)+t=14t=6,\] 得 \(t=3/7\)。`, String.raw`最近點是 \((9/7,6/7,3/7)\)，距離是 \(6/\sqrt{14}\)。`],
+    '13.7 #58': [String.raw`設盒子邊長為 \(x,y,z>0\)，體積限制 \(xyz=27\)，表面積 \(S=2(xy+xz+yz)\)。`, String.raw`固定體積時，\(xy+xz+yz\) 最小會發生在 \(x=y=z\)；也可用 Lagrange multiplier 得到同樣結果。`, String.raw`因此 \(x=y=z=3\)，最小表面積 \(S=6\cdot3^2=54\)。`],
+
+    '13.8 #2': [String.raw`Lagrange equations：\[\nabla f=(y,x)=\lambda(2x,2y).\]`, String.raw`所以 \(y=2\lambda x,\ x=2\lambda y\)。非零情況給 \(x^2=y^2\)，即 \(x=\pm y\)。`, String.raw`代入 \(x^2+y^2=10\)：\(|x|=|y|=\sqrt5\)。同號時 \(xy=5\)，異號時 \(xy=-5\)。`],
+    '13.8 #3': [String.raw`最大化 \(49-x^2-y^2\) 等同最小化 \(x^2+y^2\)，也就是找直線 \(x+3y=10\) 上離原點最近的點。`, String.raw`直線法向量是 \((1,3)\)，垂足為 \[\frac{10}{1^2+3^2}(1,3)=(1,3).\]`, String.raw`代回 \(f=49-1-9=39\)。`],
+    '13.8 #13': [String.raw`限制式完成平方：\[(x-1)^2+(y-2)^2=5.\] 這是圓心 \((1,2)\)、半徑 \(\sqrt5\) 的圓。`, String.raw`原點到圓心距離也是 \(\sqrt5\)，所以圓通過原點，最近距離平方是 0。`, String.raw`最遠點在原點到圓心方向的另一端，即 \((2,4)\)，距離平方 \(2^2+4^2=20\)。`],
+    '13.8 #29': [String.raw`令 \(g=4x^2+y^2+4z^2-16=0\)。Lagrange equations 是 \[(16x,4z,4y-16)=\lambda(8x,2y,8z).\]`, String.raw`若 \(x\ne0\)，第一式給 \(\lambda=2\)。接著 \(2z=2y\Rightarrow z=y\)，且 \(y-4=4z\)，所以 \(y=z=-4/3\)。`, String.raw`代回橢球得 \(x=\pm4/3\)。比較候選點後，這兩點溫度最高。`],
+    '13.8 #30': [String.raw`因為常數 400 不影響位置，先最大化/最小化 \(xyz^2\)。`, String.raw`設 \(s=x^2+y^2\)，則固定 \(s\) 時 \(|xy|\le s/2\)，且 \(z^2=1-s\)，所以 \[|xyz^2|\le \frac{s}{2}(1-s).\]`, String.raw`最大化右式：\((1-2s)/2=0\Rightarrow s=1/2\)。所以 \(x^2=y^2=1/4,\ z^2=1/2\)。\(x,y\) 同號給最高，異號給最低。`],
+    '13.8 #39': [String.raw`用參數 \(z=t\)。由 \(y+2z=12\) 得 \(y=12-2t\)，再由 \(x+y=6\) 得 \(x=2t-6\)。`, String.raw`距離平方：\[D(t)=(2t-6)^2+(12-2t)^2+t^2=9t^2-72t+180.\]`, String.raw`令 \(D'(t)=18t-72=0\)，得 \(t=4\)，所以點是 \((2,4,4)\)。`],
+    '13.8 #44': [String.raw`由錐面 \(z^2=4x^2+4y^2\)，可寫成 \(x^2+y^2=z^2/4\)。距離平方 \[D=x^2+y^2+z^2=\frac54z^2.\]`, String.raw`所以要讓距離最小，就是找限制下最小的 \(|z|\)。平面給 \(y=(5-4z)/2\)。`, String.raw`要有實數 \(x\)，需 \(y^2\le z^2/4\)，即 \((5-4z)^2\le z^2\)，得到 \(1\le z\le5/3\)。取 \(z=1\)，得 \(y=1/2,x=0\)。`]
+  };
+
+  for (const problem of document.querySelectorAll('.problem')) {
+    const key = problem.querySelector('h3')?.textContent.trim();
+    const steps = detailedSteps[key];
+    if (!steps || problem.querySelector('.deep-steps')) continue;
+    const details = document.createElement('details');
+    details.className = 'deep-steps';
+    const summary = document.createElement('summary');
+    summary.textContent = '展開完整步驟';
+    const body = document.createElement('div');
+    body.className = 'deep-steps-body';
+    const title = document.createElement('p');
+    title.className = 'step-title';
+    title.textContent = '推導';
+    body.appendChild(title);
+    for (const step of steps) {
+      const p = document.createElement('p');
+      p.innerHTML = step;
+      body.appendChild(p);
+    }
+    details.append(summary, body);
+    problem.querySelector('.solution')?.insertAdjacentElement('afterend', details);
+  }
 
   const navLinks = [...document.querySelectorAll('.chapter-nav a')];
   const sectionObserver = new IntersectionObserver((entries) => {
